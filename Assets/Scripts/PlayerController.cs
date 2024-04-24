@@ -1,0 +1,285 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
+
+public class PlayerController : MonoBehaviour
+{
+    [Header("Components")]
+    private Rigidbody rb;
+    [SerializeField] private Transform groundCheckStart;
+    [SerializeField] private Transform groundCheckEnd;
+    [SerializeField] private float groundCheckRadius;
+    [SerializeField] private LayerMask groundLayer;
+
+    [Header("Player Stats")]
+    [SerializeField] private float maxStamina = 100f;
+    [SerializeField] private float currentStamina = 100f;
+
+    [Header("Player Movement")]
+    [Range(1f, 10f)]
+    [SerializeField] private float staminaLossMultiplier = 3f;
+
+    [SerializeField] private float normalSpeed = 3f;
+    [SerializeField] private float currentSpeed = 3f;
+    [SerializeField] private float runningSpeed = 8f;
+    [SerializeField] private float rotationSpeed = 2f;
+
+    [Header("Throw Cheese")]
+    [SerializeField] private GameObject cheesePrefab;
+    [SerializeField] private float projectileSpeed = 10.0f;
+    [SerializeField] private float projectileDistance = 2.0f;
+    [SerializeField] private float projectileAngle = 45.0f;
+
+    [Header("Hiding")]
+    [SerializeField] private Transform camGoalPosition;
+    [SerializeField] private float camLerpVelocity;
+
+    [Header("Interact")]
+    [SerializeField] private float interactRadius;
+    [SerializeField] private LayerMask interactLayer;
+
+    [Header("Public Bools")]
+    public bool isHidden = false;
+    public bool canHide = false;
+    public bool canJump = false;
+    public bool canWalk = false;
+    public bool isResting = false;
+    public bool isRunning = false;
+
+    Transform[] jumpWaypoints = new Transform[8];
+    Vector3 movementDirection;
+    float hor;
+    float ver;
+    bool isJumping = false;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden)
+            StartCoroutine(Hide());
+        else if (Input.GetKeyDown(KeyCode.F) && isHidden)
+            UnHide();
+        else if (Input.GetKeyDown(KeyCode.F))
+            CallInteraction();
+
+        if (!isHidden)
+        {
+            if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && !isResting)
+            {
+                if (hor != 0 || ver != 0)
+                {
+                    isRunning = true;
+                    currentSpeed = runningSpeed;
+                    currentStamina -= staminaLossMultiplier * Time.deltaTime;
+                }
+                else
+                {
+                    isRunning = false;
+                }
+            }
+            else
+            {
+                isRunning = false;
+                currentSpeed = normalSpeed;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && canJump)
+            {
+                Transform closestWaypoint = null;
+                foreach (Transform t in jumpWaypoints)
+                {
+                    if (t != null)
+                    {
+                        if (closestWaypoint == null)
+                            closestWaypoint = t;
+                        else if (Vector3.Distance(transform.position, t.position) < Vector3.Distance(transform.position, closestWaypoint.position))
+                            closestWaypoint = t;
+                    }
+                }
+                Jump(new Vector3(closestWaypoint.position.x, closestWaypoint.position.y, closestWaypoint.position.z));
+            }
+
+            if (Input.GetMouseButtonDown(1))
+                ThrowCheese();
+
+            canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (currentStamina <= 0)
+        {
+            isResting = true;
+            isRunning = false;
+        }
+
+        if (isResting && currentStamina >= 50)
+            isResting = false;
+
+        if (currentStamina < maxStamina && !isRunning)
+            currentStamina += 0.1f;
+
+        if (isJumping && Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer))
+            isJumping = false;
+
+        if (canWalk)
+            Movement();
+    }
+
+    private void CallInteraction()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, interactRadius, interactLayer);
+
+        // If it finds any object, calls the method "Interaction" inside the object
+        if (colliders.Length > 0)
+        {
+            foreach (Collider collider in colliders)
+            {
+                collider.gameObject.GetComponent<Interact>().Interaction();
+            }
+        }
+    }
+
+    private void ThrowCheese()
+    {
+        // Instantiate the prefab
+        GameObject projectile = Instantiate(cheesePrefab, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
+
+        // Calculate the parabolic trajectory
+        Vector3 direction = Camera.main.transform.forward;
+        direction.y = 0;
+        direction.Normalize();
+        Vector3 gravity = Physics.gravity * projectileDistance;
+        float y = projectileDistance * Mathf.Tan(projectileAngle * Mathf.Deg2Rad) + 0.5f * gravity.y * Mathf.Pow(projectileDistance / projectileSpeed, 2f);
+
+        // Add velocity to the projectile
+        projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed + Vector3.up * y;
+
+        Destroy(projectile, 5f);
+    }
+
+    private IEnumerator Hide()
+    {
+        isHidden = true;
+        GetComponent<MeshRenderer>().enabled = false;
+
+        float t = 0;
+        float time = 0.25f;
+        for (; t < time; t += camLerpVelocity * Time.deltaTime)
+        {
+            Camera.main.gameObject.transform.position = Vector3.Lerp(Camera.main.gameObject.transform.position, camGoalPosition.position + new Vector3(0, 1, 0), t / time);
+            Camera.main.gameObject.transform.rotation = camGoalPosition.rotation;
+            yield return null;
+        }
+    }
+
+    private void UnHide()
+    {
+        isHidden = false;
+        GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    private void Jump(Vector3 goal)
+    {
+        isJumping = true;
+
+        rb.velocity = Vector3.zero;
+        float jumpForce = Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (goal - transform.position).magnitude);
+
+        Vector3 jumpVelocity = Vector3.up * jumpForce;
+        rb.velocity = jumpVelocity;
+
+        float distance = Vector3.Distance(goal, transform.position);
+        float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
+        float horizontalSpeed = distance / time;
+        float jumpHeight = (goal.y - transform.position.y) + 1.0f; // Jump Height
+        float verticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight);
+
+        Vector3 direction = (goal - transform.position).normalized;
+        Vector3 velocity = new Vector3(direction.x * horizontalSpeed, verticalSpeed, direction.z * horizontalSpeed);
+
+        rb.velocity = velocity;
+    }
+
+    private void Movement()
+    {
+        hor = Input.GetAxis("Horizontal");
+        ver = Input.GetAxis("Vertical");
+
+        if (!canWalk)
+        {
+            hor = 0;
+            ver = 0;
+        }
+
+        movementDirection = new Vector3(hor, 0, ver);
+        // Correct according to the camera direction
+        movementDirection = Quaternion.AngleAxis(Camera.main.transform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
+        movementDirection.y = 0;
+        movementDirection.Normalize();
+
+        if (movementDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.fixedDeltaTime);
+        }
+        // Walk
+        rb.velocity = new Vector3(movementDirection.x * currentSpeed, rb.velocity.y, movementDirection.z * currentSpeed);
+    }
+
+    public void Death()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene("GameOver");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("JumpArea"))
+        {
+            canJump = true;
+
+            for (int i = 0; i < other.transform.parent.GetChild(0).childCount; i++)
+            {
+                jumpWaypoints[i] = other.transform.parent.GetChild(0).GetChild(i).transform;
+            }
+        }
+
+        if (other.gameObject.CompareTag("HideArea"))
+        {
+            canHide = true;
+            camGoalPosition = other.gameObject.transform.GetChild(0).GetComponent<Transform>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("JumpArea"))
+        {
+            canJump = false;
+            jumpWaypoints = new Transform[8];
+        }
+        if (other.gameObject.CompareTag("HideArea"))
+        {
+            canHide = false;
+            camGoalPosition = null;
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        // Draw Interact Radius
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, interactRadius);
+    }
+}

@@ -1,0 +1,64 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+using static EnemyState;
+
+public class DroppableObjects : Interact
+{
+    private enum ThrowDirection { LEFT, RIGHT, FRONT, BACK }
+
+    private Rigidbody rb;
+    [SerializeField] private ThrowDirection direction;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private float throwingForce;
+    [SerializeField] private float callRadius;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    public override void Interaction()
+    {
+        base.Interaction();
+        switch (direction)
+        {
+            case ThrowDirection.LEFT:
+                rb.AddForce(this.transform.position + Camera.main.gameObject.transform.right * -1 * throwingForce);
+                break;
+            case ThrowDirection.RIGHT:
+                rb.AddForce(this.transform.position + Camera.main.gameObject.transform.right * throwingForce);
+                break;
+            case ThrowDirection.FRONT:
+                rb.AddForce(this.transform.position + Camera.main.gameObject.transform.forward * throwingForce);
+                break;
+            case ThrowDirection.BACK:
+                rb.AddForce(this.transform.position + Camera.main.gameObject.transform.forward * -1 * throwingForce);
+                break;
+            default:
+                Debug.Log("Set a direction to the object!");
+                break;
+        }
+        Collider[] colliders = Physics.OverlapSphere(transform.position, callRadius, enemyLayer);
+
+        // If it finds any object, calls the method "Interaction" inside the object
+        if (colliders.Length > 0)
+        {
+            foreach (Collider collider in colliders)
+            {
+                EnemyAI enemy = collider.gameObject.GetComponent<EnemyAI>();
+                if (enemy.beingAtracted == false)
+                {
+                    enemy.agent.SetDestination(transform.position);
+                    enemy.beingAtracted = true;
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, callRadius);
+    }
+}

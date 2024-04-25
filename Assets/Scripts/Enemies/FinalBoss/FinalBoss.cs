@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FinalBoss : MonoBehaviour
 {
+    private int lastState = -1;
     public int currentState = -1; //0 = Waiting, 1 = Changing Tube, 2 = Attacking
     [Header("Movement")]
     public Transform[] tubeSpawnPoint;
@@ -14,20 +15,34 @@ public class FinalBoss : MonoBehaviour
     [Header("Stats")]
     public float bossMaxHp;
     public float bossCurrentHp;
+    [SerializeField] private float speed;
 
-    private bool isWaiting = false;
-    private bool isSwitching = false;
-    private bool isAttacking = false;
+    [SerializeField] private bool isWaiting = false;
+    [SerializeField] private bool isSwitching = false;
+    [SerializeField] private bool isAttacking = false;
+
+
+    [SerializeField] private bool goingIn = false;
+    [SerializeField] private bool goingOut = false;
     
     void Start()
     {
+        currentTube = Random.Range(0, tubeSpawnPoint.Length);
+        transform.position = tubeSpawnPoint[currentTube].position;
         bossCurrentHp = bossMaxHp;
     }
 
     void Update()
     {
         if (currentState == -1)
-            currentState = Random.Range(1, 3);
+        {
+            int i = Random.Range(0, 3);
+            if (i != lastState)
+            {
+                currentState = i;
+                lastState = currentState;
+            }
+        }
 
         if (currentState == 0 && !isWaiting)
         {
@@ -41,7 +56,30 @@ public class FinalBoss : MonoBehaviour
 
         if( currentState == 2 && !isAttacking)
         {
+            Attack();
+        }
 
+        if(isSwitching && goingIn)
+        {
+            Vector3 direction = tubeSpawnPoint[currentTube].position - transform.position;
+            transform.Translate(direction * speed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, tubeSpawnPoint[currentTube].position) < 1)
+            {
+                goingIn = false;
+                SwitchTube();
+            }
+        }
+        else if(isSwitching && goingOut)
+        {
+            Vector3 direction = tubeEndingPoint[currentTube].position - transform.position;
+            transform.Translate(direction * speed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, tubeEndingPoint[currentTube].position) < 1)
+            {
+                isSwitching = false;
+                currentState = -1;
+            }
         }
     }
 
@@ -49,26 +87,12 @@ public class FinalBoss : MonoBehaviour
     {
         currentState = 1;
         isSwitching = true;
-
-        Vector3 direction = tubeSpawnPoint[currentTube].position - transform.position;
-        transform.Translate(direction);
-
-        if (Vector3.Distance(transform.position, tubeSpawnPoint[currentTube].position) < 1)
-        {
-            SwitchTube();
-        }
+        goingIn = true;
     }
 
     void GoOutside()
     {
-        Vector3 direction = tubeEndingPoint[currentTube].position - transform.position;
-        transform.Translate(direction); 
-
-        if (Vector3.Distance(transform.position, tubeEndingPoint[currentTube].position) < 1)
-        {
-            isSwitching = false;
-            currentState = -1;
-        }
+        goingOut = true;
     }
 
     void SwitchTube()
@@ -91,6 +115,7 @@ public class FinalBoss : MonoBehaviour
     {
         isAttacking = true;
         currentState = 2;
+        print("Attack");
         currentState = -1;
         isAttacking = false;
     }

@@ -4,82 +4,120 @@ using UnityEngine;
 
 public class FinalBoss : MonoBehaviour
 {
-    private int lastState = -1;
-    public int currentState = -1; //0 = Waiting, 1 = Changing Tube, 2 = Attacking
+    [SerializeField] private int lastState = -1;
+    [SerializeField] private int currentState = -1; //0 = Waiting, 1 = Changing Tube, 2 = Attacking
+
+    [Header("Components")]
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform projectileSpawn;
+    [SerializeField] private Rigidbody rb;
+
     [Header("Movement")]
-    public Transform[] tubeSpawnPoint;
-    public Transform[] tubeEndingPoint;
-    public int currentTube;
+    [SerializeField] private Transform[] tubeSpawnPoint;
+    [SerializeField] private Transform[] tubeEndingPoint;
+    [SerializeField] private int currentTube;
     [SerializeField] private float waitTimeToChangeTube;
 
     [Header("Stats")]
-    public float bossMaxHp;
+    [SerializeField] private float bossMaxHp;
     public float bossCurrentHp;
     [SerializeField] private float speed;
 
+    [Header("States")]
     [SerializeField] private bool isWaiting = false;
     [SerializeField] private bool isSwitching = false;
+        [SerializeField] private bool goingIn = false;
+        [SerializeField] private bool goingOut = false;
     [SerializeField] private bool isAttacking = false;
 
-
-    [SerializeField] private bool goingIn = false;
-    [SerializeField] private bool goingOut = false;
     
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        rb = GetComponent<Rigidbody>(); 
+
         currentTube = Random.Range(0, tubeSpawnPoint.Length);
+        currentState = 1;
         transform.position = tubeSpawnPoint[currentTube].position;
         bossCurrentHp = bossMaxHp;
     }
 
     void Update()
     {
-        if (currentState == -1)
-        {
-            int i = Random.Range(0, 3);
-            if (i != lastState)
-            {
-                currentState = i;
-                lastState = currentState;
-            }
-        }
 
-        if (currentState == 0 && !isWaiting)
+        switch (currentState)
         {
-            StartCoroutine(Wait());
-        }
+            case 0: 
+                if(!isWaiting)
+                    StartCoroutine(Wait());
+                break;
+            case 1:
+                if (isSwitching)
+                {
+                    if (goingIn)
+                    {
+                        Vector3 direction = tubeSpawnPoint[currentTube].position - transform.position;
+                        direction.y = 0;
 
-        if(currentState == 1 && !isSwitching)
-        {
-            GoInside();
-        }
+                        var targetRotation = Quaternion.LookRotation(direction);
 
-        if( currentState == 2 && !isAttacking)
-        {
-            Attack();
-        }
+                        if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
+                        {
+                            rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
 
-        if(isSwitching && goingIn)
-        {
-            Vector3 direction = tubeSpawnPoint[currentTube].position - transform.position;
-            transform.Translate(direction * speed * Time.deltaTime);
+                            if (Vector3.Distance(transform.position, tubeSpawnPoint[currentTube].position) < 2)
+                            {
+                                goingIn = false;
+                                SwitchTube();
+                            }
+                        }
+                        else
+                        {
+                            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
+                        }
+                    }
+                    else if (goingOut)
+                    {
+                        Vector3 direction = tubeEndingPoint[currentTube].position - transform.position;
+                        direction.y = 0;
 
-            if (Vector3.Distance(transform.position, tubeSpawnPoint[currentTube].position) < 1)
-            {
-                goingIn = false;
-                SwitchTube();
-            }
-        }
-        else if(isSwitching && goingOut)
-        {
-            Vector3 direction = tubeEndingPoint[currentTube].position - transform.position;
-            transform.Translate(direction * speed * Time.deltaTime);
+                        var targetRotation = Quaternion.LookRotation(direction);
 
-            if (Vector3.Distance(transform.position, tubeEndingPoint[currentTube].position) < 1)
-            {
-                isSwitching = false;
-                currentState = -1;
-            }
+                        if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
+                        {
+                            rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+
+                            if (Vector3.Distance(transform.position, tubeEndingPoint[currentTube].position) < 1)
+                            {
+                                isSwitching = false;
+                                goingOut = false;
+                                currentState = -1;
+                            }
+                        }
+                        else
+                        {
+                            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
+                        }
+                    }
+                }
+                else
+                {
+                    GoInside();
+                }
+                break;
+            case 2:
+                if(!isAttacking)
+                    Attack();
+                break;
+            default:
+                int i = Random.Range(0, 3);
+                if (i != lastState)
+                {
+                    currentState = i;
+                    lastState = currentState;
+                }
+                break;
         }
     }
 
@@ -115,8 +153,35 @@ public class FinalBoss : MonoBehaviour
     {
         isAttacking = true;
         currentState = 2;
-        print("Attack");
-        currentState = -1;
+
+        Vector3 playerDirection = player.transform.position - transform.position;
+        playerDirection.y = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(playerDirection);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
+
+        GameObject projectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        ApplyForceOnProj(rb);
+
+        currentState = 0;
         isAttacking = false;
+    }
+
+    void ApplyForceOnProj(Rigidbody rb)
+    {
+        float projForce = Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (player.transform.position - transform.position).magnitude);
+
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
+        float horizontalSpeed = distance / time;
+        float projHeight = Mathf.Abs(player.transform.position.y - transform.position.y) + 1.0f; // Jump Height
+        float verticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * projHeight);
+
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Vector3 horizontalVelocity = direction * horizontalSpeed;
+        Vector3 verticalVelocity = Vector3.up * verticalSpeed;
+
+        rb.velocity = horizontalVelocity + verticalVelocity;
     }
 }

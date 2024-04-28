@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [Header("Player Stats")]
     [SerializeField] private float maxStamina = 100f;
     [SerializeField] private float currentStamina = 100f;
+    [SerializeField] private float maxHp = 100f;
+    [SerializeField] private float currentHp = 100f;
+    [SerializeField] private float playerRestoreHpTime = 4f;
 
     [Header("Player Movement")]
     [Range(1f, 10f)]
@@ -52,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     Transform[] jumpWaypoints = new Transform[8];
     Vector3 movementDirection;
+    float lastTimeTookDmg;
     float hor;
     float ver;
     bool isJumping = false;
@@ -109,6 +113,9 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))
                 ThrowCheese();
+
+            if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
+                currentHp += Time.deltaTime;
 
             canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
         }
@@ -234,6 +241,14 @@ public class PlayerController : MonoBehaviour
         }
         // Walk
         rb.velocity = new Vector3(movementDirection.x * currentSpeed, rb.velocity.y, movementDirection.z * currentSpeed);
+    }
+
+    public void TakeDamage(float amountOfDamage)
+    {
+        currentHp -= amountOfDamage;
+        lastTimeTookDmg = Time.time;
+        if (currentHp < 0)
+            Death();
     }
 
     public void Death()

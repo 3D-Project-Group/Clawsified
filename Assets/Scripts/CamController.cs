@@ -15,6 +15,7 @@ public class CamController : MonoBehaviour
     [SerializeField] private float maxDistance = 8f;
     [SerializeField] private float minDistance = 2f;
     [SerializeField] private float currentDistance = 8f;
+    [SerializeField] private LayerMask layersToCollide;
     
     bool isColliding = true;
     void Awake()
@@ -54,8 +55,11 @@ public class CamController : MonoBehaviour
     {
         if (Physics.Linecast(target.position, target.position - this.transform.forward * maxDistance, out RaycastHit hit))
         {
-            this.transform.position = hit.point + this.transform.forward * 2.0f;
-            isColliding = true;
+            if ((layersToCollide & 1 << hit.collider.gameObject.layer) == 1 << hit.collider.gameObject.layer)
+            {
+                this.transform.position = hit.point + this.transform.forward * 2.0f;
+                isColliding = true;
+            }
         }
         else if (isColliding)
         {

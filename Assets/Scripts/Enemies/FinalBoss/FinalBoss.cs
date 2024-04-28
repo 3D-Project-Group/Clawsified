@@ -5,7 +5,7 @@ using UnityEngine;
 public class FinalBoss : MonoBehaviour
 {
     [SerializeField] private int lastState = -1;
-    [SerializeField] private int currentState = -1; //0 = Waiting, 1 = Changing Tube, 2 = Attacking
+    public int currentState = -1; //0 = Waiting, 1 = Changing Tube, 2 = Attacking
 
     [Header("Components")]
     [SerializeField] private GameObject player;
@@ -16,12 +16,12 @@ public class FinalBoss : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private Transform[] tubeSpawnPoint;
     [SerializeField] private Transform[] tubeEndingPoint;
-    [SerializeField] private int currentTube;
+    public int currentPipe;
     [SerializeField] private float waitTimeToChangeTube;
 
     [Header("Stats")]
     [SerializeField] private float bossMaxHp;
-    public float bossCurrentHp;
+    [SerializeField] private float bossCurrentHp;
     [SerializeField] private float speed;
 
     [Header("States")]
@@ -37,9 +37,9 @@ public class FinalBoss : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody>(); 
 
-        currentTube = Random.Range(0, tubeSpawnPoint.Length);
+        currentPipe = Random.Range(0, tubeSpawnPoint.Length);
         currentState = 1;
-        transform.position = tubeSpawnPoint[currentTube].position;
+        transform.position = tubeSpawnPoint[currentPipe].position;
         bossCurrentHp = bossMaxHp;
     }
 
@@ -57,7 +57,7 @@ public class FinalBoss : MonoBehaviour
                 {
                     if (goingIn)
                     {
-                        Vector3 direction = tubeSpawnPoint[currentTube].position - transform.position;
+                        Vector3 direction = tubeSpawnPoint[currentPipe].position - transform.position;
                         direction.y = 0;
 
                         var targetRotation = Quaternion.LookRotation(direction);
@@ -66,7 +66,7 @@ public class FinalBoss : MonoBehaviour
                         {
                             rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
 
-                            if (Vector3.Distance(transform.position, tubeSpawnPoint[currentTube].position) < 2)
+                            if (Vector3.Distance(transform.position, tubeSpawnPoint[currentPipe].position) < 2)
                             {
                                 goingIn = false;
                                 SwitchTube();
@@ -79,7 +79,7 @@ public class FinalBoss : MonoBehaviour
                     }
                     else if (goingOut)
                     {
-                        Vector3 direction = tubeEndingPoint[currentTube].position - transform.position;
+                        Vector3 direction = tubeEndingPoint[currentPipe].position - transform.position;
                         direction.y = 0;
 
                         var targetRotation = Quaternion.LookRotation(direction);
@@ -88,7 +88,7 @@ public class FinalBoss : MonoBehaviour
                         {
                             rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
 
-                            if (Vector3.Distance(transform.position, tubeEndingPoint[currentTube].position) < 1)
+                            if (Vector3.Distance(transform.position, tubeEndingPoint[currentPipe].position) < 1)
                             {
                                 isSwitching = false;
                                 goingOut = false;
@@ -135,8 +135,8 @@ public class FinalBoss : MonoBehaviour
 
     void SwitchTube()
     {
-        currentTube = Random.Range(0, tubeSpawnPoint.Length);
-        transform.position = tubeSpawnPoint[currentTube].position;
+        currentPipe = Random.Range(0, tubeSpawnPoint.Length);
+        transform.position = tubeSpawnPoint[currentPipe].position;
         GoOutside();
     }
 
@@ -170,7 +170,7 @@ public class FinalBoss : MonoBehaviour
 
     void ApplyForceOnProj(Rigidbody rb)
     {
-        float projForce = Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (player.transform.position - transform.position).magnitude);
+        //float projForce = Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (player.transform.position - transform.position).magnitude);
 
         float distance = Vector3.Distance(player.transform.position, transform.position);
         float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
@@ -183,5 +183,14 @@ public class FinalBoss : MonoBehaviour
         Vector3 verticalVelocity = Vector3.up * verticalSpeed;
 
         rb.velocity = horizontalVelocity + verticalVelocity;
+    }
+
+    public void TakeDamage(float amount)
+    {
+        bossCurrentHp -= amount;
+        if(bossCurrentHp <= 0)
+        {
+            //Call Win Scene
+        }
     }
 }

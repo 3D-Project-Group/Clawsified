@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -53,20 +50,28 @@ public class PlayerController : MonoBehaviour
     public bool isResting = false;
     public bool isRunning = false;
 
+    [Header("Player UI")]
+    [SerializeField] private Slider staminaWheel;
+    [SerializeField] private Animator staminaWheelAnim;
+
     Transform[] jumpWaypoints = new Transform[8];
+    bool isJumping = false;
+
     Vector3 movementDirection;
-    float lastTimeTookDmg;
     float hor;
     float ver;
-    bool isJumping = false;
+
+    float lastTimeTookDmg;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        staminaWheel.maxValue = maxStamina;
     }
 
     void Update()
     {
+        staminaWheel.value = currentStamina;
         if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden)
             StartCoroutine(Hide());
         else if (Input.GetKeyDown(KeyCode.F) && isHidden)
@@ -83,6 +88,8 @@ public class PlayerController : MonoBehaviour
                     isRunning = true;
                     currentSpeed = runningSpeed;
                     currentStamina -= staminaLossMultiplier * Time.deltaTime;
+                    staminaWheelAnim.ResetTrigger("FadeOut");
+                    staminaWheelAnim.SetTrigger("FadeIn");
                 }
                 else
                 {
@@ -91,6 +98,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                staminaWheelAnim.ResetTrigger("FadeIn");
+                staminaWheelAnim.SetTrigger("FadeOut");
                 isRunning = false;
                 currentSpeed = normalSpeed;
             }

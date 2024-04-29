@@ -8,6 +8,7 @@ TagManager:
   - Cheese
   - HideArea
   - PuzzleButton
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - JumpArea
   - Interactable
   - Enemy
-  - 
+  - MinimapIcon
   - 
   - 
   - 

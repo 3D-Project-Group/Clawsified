@@ -87,7 +87,38 @@ Transform:
   m_GameObject: {fileID: 3936323933053786891}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000037748947, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00679, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01928477, z: 9.433289e-10}
+  m_LocalScale: {x: 0.009995815, y: 0.009995815, z: 0.009995815}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8227667598209101250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7672710367949777105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4400355212407870911}
+  m_Layer: 6
+  m_Name: GroundCheckEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4400355212407870911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672710367949777105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000037748947, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00152, z: -0.00412}
   m_LocalScale: {x: 0.009995815, y: 0.009995815, z: 0.009995815}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -103,15 +134,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.99
+      value: 50.97
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11689464
+      value: 0.252
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.565109
+      value: 11.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalRotation.w
@@ -165,6 +196,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7140824241863514038}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4400355212407870911}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       insertIndex: -1
@@ -199,13 +233,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckStart: {fileID: 3361278118457552641}
-  groundCheckEnd: {fileID: 7140824241863514038}
+  groundCheckEnd: {fileID: 4400355212407870911}
   groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   maxStamina: 100
   currentStamina: 100
+  maxHp: 100
+  currentHp: 100
+  playerRestoreHpTime: 4
   staminaLossMultiplier: 3
   normalSpeed: 3
   currentSpeed: 3

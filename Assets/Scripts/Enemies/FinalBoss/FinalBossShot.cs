@@ -32,10 +32,9 @@ public class FinalBossShot : MonoBehaviour
         lineRenderer.positionCount = circleSegments + 1; // +1 to close the circle
     }
 
-
     void Update()
     {
-        if(Vector3.Distance(player.transform.position, transform.position) < dmgRadius)
+        if (Vector3.Distance(player.transform.position, transform.position) < dmgRadius)
         {
             playerController.TakeDamage(dmgMultiplier * Time.deltaTime);
         }

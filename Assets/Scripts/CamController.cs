@@ -16,7 +16,7 @@ public class CamController : MonoBehaviour
     [SerializeField] private float minDistance = 2f;
     [SerializeField] private float currentDistance = 8f;
     [SerializeField] private LayerMask layersToCollide;
-    
+
     bool isColliding = true;
     void Awake()
     {
@@ -27,14 +27,14 @@ public class CamController : MonoBehaviour
 
     void Update()
     {
-        if(canMoveCam)
+        if (canMoveCam)
         {
             transform.RotateAround(target.position, transform.up, Input.GetAxis("Mouse X") * sensitivityX);
             transform.RotateAround(target.position, transform.right, -Input.GetAxis("Mouse Y") * sensitivityY);
 
             Vector3 rotacao = transform.eulerAngles;
             rotacao.z = 0;
-            if(rotacao.x < 180) rotacao.x = Mathf.Min(rotacao.x, 80);
+            if (rotacao.x < 180) rotacao.x = Mathf.Min(rotacao.x, 80);
             else rotacao.x = 0;
             transform.rotation = Quaternion.Euler(rotacao);
 
@@ -44,10 +44,9 @@ public class CamController : MonoBehaviour
             ScrollControl();
         }
 
-
         if (player.isHidden)
             canMoveCam = false;
-        else 
+        else
             canMoveCam = true;
     }
 
@@ -70,12 +69,12 @@ public class CamController : MonoBehaviour
 
     void ScrollControl()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             if (currentDistance > minDistance)
             {
                 currentDistance -= 0.5f;
-                if(!isColliding)
+                if (!isColliding)
                     this.transform.position = target.position - this.transform.forward * currentDistance;
             }
         }

@@ -23,9 +23,9 @@ public class FinalBossButtons : Interact
     public override void Interaction()
     {
         base.Interaction();
-        if(activated == true)
+        if (activated == true)
         {
-            if(boss.currentPipe == pipeSelected)
+            if (boss.currentPipe == pipeSelected)
             {
                 if (boss.currentState == 0 || boss.currentState == 2) //If the boss is attacking or waiting
                 {

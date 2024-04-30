@@ -15,7 +15,7 @@ public class Interact : MonoBehaviour
     }
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) < 2)
+        if (Vector3.Distance(transform.position, player.transform.position) < 2)
         {
             interactableImage.SetActive(true);
             interactableImage.transform.LookAt(Camera.main.transform.position);

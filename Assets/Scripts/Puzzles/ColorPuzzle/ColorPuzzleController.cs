@@ -19,12 +19,13 @@ public class ColorPuzzleController : MonoBehaviour
         if (isActive && randomStart)
         {
             currentValues = new ColorPuzzle[correctAnswer.Length];
-            for(int i = 0; i < currentValues.Length; i++)
+            for (int i = 0; i < currentValues.Length; i++)
             {
                 currentValues[i] = (ColorPuzzle)Random.Range(0, 3);
             }
         }
     }
+
     public void UnactiveObjects()
     {
         foreach (GameObject obj in gameObjectsToUnactivate)

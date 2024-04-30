@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CutCables : Interact
 {
-    private enum CableType { Camera, Door};
+    private enum CableType { Camera, Door };
     [SerializeField] private CableType type;
     [SerializeField] private GameObject cameraToDeactivate;
     [SerializeField] private GameObject doorToDeactivate;

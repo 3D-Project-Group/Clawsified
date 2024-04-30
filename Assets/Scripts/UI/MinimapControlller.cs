@@ -5,6 +5,7 @@ using UnityEngine;
 public class MinimapControlller : MonoBehaviour
 {
     private Transform player;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;

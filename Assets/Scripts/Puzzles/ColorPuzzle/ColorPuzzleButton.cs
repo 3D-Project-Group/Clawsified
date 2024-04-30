@@ -7,7 +7,7 @@ public class ColorPuzzleButton : Interact
     public override void Interaction()
     {
         base.Interaction();
-        if((int)tube.currentColor < 2)
+        if ((int)tube.currentColor < 2)
         {
             tube.SetValue(tube.currentColor + 1);
         }

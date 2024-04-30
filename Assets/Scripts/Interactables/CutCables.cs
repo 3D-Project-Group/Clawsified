@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CutCables : Interact
@@ -8,6 +6,7 @@ public class CutCables : Interact
     [SerializeField] private CableType type;
     [SerializeField] private GameObject cameraToDeactivate;
     [SerializeField] private GameObject doorToDeactivate;
+
     public override void Interaction()
     {
         base.Interaction();

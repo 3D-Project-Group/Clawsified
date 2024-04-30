@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour
     [Header("Player UI")]
     [SerializeField] private Slider staminaWheel;
     [SerializeField] private Animator staminaWheelAnim;
+    [SerializeField] private GameObject jumpText;
+    [SerializeField] private GameObject hideText;
+    [SerializeField] private GameObject unhideText;
 
     Transform[] jumpWaypoints = new Transform[8];
     bool isJumping = false;
@@ -71,7 +74,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        staminaWheel.value = currentStamina;
         if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden)
             StartCoroutine(Hide());
         else if (Input.GetKeyDown(KeyCode.F) && isHidden)
@@ -88,8 +90,6 @@ public class PlayerController : MonoBehaviour
                     isRunning = true;
                     currentSpeed = runningSpeed;
                     currentStamina -= staminaLossMultiplier * Time.deltaTime;
-                    staminaWheelAnim.ResetTrigger("FadeOut");
-                    staminaWheelAnim.SetTrigger("FadeIn");
                 }
                 else
                 {
@@ -98,8 +98,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                staminaWheelAnim.ResetTrigger("FadeIn");
-                staminaWheelAnim.SetTrigger("FadeOut");
                 isRunning = false;
                 currentSpeed = normalSpeed;
             }
@@ -132,6 +130,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        staminaWheel.value = currentStamina;
         if (currentStamina <= 0)
         {
             isResting = true;
@@ -149,6 +148,43 @@ public class PlayerController : MonoBehaviour
 
         if (canWalk)
             Movement();
+
+        UIControl();
+    }
+
+    void UIControl()
+    {
+        if (isRunning)
+        {
+            staminaWheelAnim.ResetTrigger("FadeOut");
+            staminaWheelAnim.SetTrigger("FadeIn");
+        }
+        else
+        {
+            staminaWheelAnim.ResetTrigger("FadeIn");
+            staminaWheelAnim.SetTrigger("FadeOut");
+        }
+
+        if(canJump)
+            jumpText.SetActive(true);
+        else
+            jumpText.SetActive(false);
+
+        if(isHidden)
+        {
+            hideText.SetActive(false);
+            unhideText.SetActive(true);
+        }
+        else if (canHide)
+        {
+            unhideText.SetActive(false);
+            hideText.SetActive(true);
+        }
+        else
+        {
+            unhideText.SetActive(false);
+            hideText.SetActive(false);
+        }
     }
 
     private void CallInteraction()
@@ -187,6 +223,8 @@ public class PlayerController : MonoBehaviour
     {
         isHidden = true;
         GetComponent<MeshRenderer>().enabled = false;
+        transform.rotation = camGoalPosition.rotation;
+        transform.position = camGoalPosition.position;
 
         float t = 0;
         float time = 0.25f;

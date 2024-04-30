@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using static EnemyState;
 
 public class DroppableObjects : Interact
 {
@@ -14,8 +10,9 @@ public class DroppableObjects : Interact
     [SerializeField] private float throwingForce;
     [SerializeField] private float callRadius;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody>();
     }
 

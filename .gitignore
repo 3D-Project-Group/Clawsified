@@ -72,5 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Art Asset Folders
-#/[Aa]ssets/[Aa]rt/[Mm]odels/
-#/[Aa]ssets/[Aa]rt/[Ss]prites/
+/[Aa]ssets/[Aa]rt/[Mm]odels/
+/[Aa]ssets/[Aa]rt/[Ss]prites/

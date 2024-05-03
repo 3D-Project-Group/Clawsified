@@ -783,6 +783,10 @@ PrefabInstance:
       propertyPath: groundLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5663053013703324832, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8176
+      objectReference: {fileID: 0}
     - target: {fileID: 6787348445375925150, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -821,6 +825,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6787348445375925150, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448570635560997380, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7852271545999575231, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
@@ -5990,9 +5998,9 @@ MonoBehaviour:
   direction: 0
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   throwingForce: 500
-  callRadius: 0
+  callRadius: 20
 --- !u!65 &1782288053
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6211,7 +6219,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 2048
-  throwingForce: 500
+  throwingForce: 400
   callRadius: 20
 --- !u!65 &1825021202
 BoxCollider:
@@ -6506,6 +6514,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6787348445375925150, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448570635560997380, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7852271545999575231, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}

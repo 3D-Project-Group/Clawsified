@@ -14,9 +14,9 @@ public class CheeseController : MonoBehaviour
         {
             foreach (Collider collider in colliders)
             {
+                collider.gameObject.GetComponent<NavMeshAgent>().SetDestination(transform.position);
                 if (collider.gameObject.GetComponent<EnemyAI>().beingAtracted == false)
                 {
-                    collider.gameObject.GetComponent<NavMeshAgent>().SetDestination(transform.position);
                     collider.gameObject.GetComponent<EnemyAI>().beingAtracted = true;
                 }
             }

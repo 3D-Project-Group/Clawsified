@@ -22,7 +22,6 @@ public class EnemyAI : MonoBehaviour
     public LayerMask obstructionMask, groundLayer;
     public bool beingAtracted = false;
     public float attractionTime = 3f;
-    float currentTime = 0;
 
     public List<GameObject> waypoints = new List<GameObject>();
 
@@ -58,16 +57,14 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            if (currentTime > 0)
-            {
-                currentTime -= Time.deltaTime;
-            }
-            else
-            {
-                beingAtracted = false;
-                currentTime = attractionTime;
-            }
+            Invoke("DeactivateAttraction", attractionTime);
         }
+    }
+
+    void DeactivateAttraction()
+    {
+        beingAtracted = false;
+        currentState = new RandomPatrolState(gameObject, agent, player, waypoints, obstructionMask, groundLayer);
     }
 
     private void CallOtherEnemies()

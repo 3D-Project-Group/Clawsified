@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxHp = 100f;
     [SerializeField] private float currentHp = 100f;
     [SerializeField] private float playerRestoreHpTime = 4f;
+    [SerializeField] private float amountOfCheese = 2f;
 
     [Header("Player Movement")]
     [Range(1f, 10f)]
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour
                 Jump(new Vector3(closestWaypoint.position.x, closestWaypoint.position.y, closestWaypoint.position.z));
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && amountOfCheese > 0)
                 ThrowCheese();
 
             if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
@@ -188,6 +189,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void AddCheese(int amount)
+    {
+        amountOfCheese += amount;
+    }
+
     private void CallInteraction()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, interactRadius, interactLayer);
@@ -204,6 +210,7 @@ public class PlayerController : MonoBehaviour
 
     private void ThrowCheese()
     {
+        amountOfCheese++;
         // Instantiate the prefab
         GameObject projectile = Instantiate(cheesePrefab, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
 
@@ -246,22 +253,6 @@ public class PlayerController : MonoBehaviour
     private void Jump(Vector3 goal)
     {
         isJumping = true;
-
-        //float jumpForce = Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (goal - transform.position).magnitude);
-
-        //Vector3 jumpVelocity = Vector3.up * jumpForce;
-        //rb.velocity = jumpVelocity;
-
-        //float distance = Vector3.Distance(goal, transform.position);
-        //float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
-        //float horizontalSpeed = distance / time;
-        //float jumpHeight = (goal.y - transform.position.y) + 1.0f; // Jump Height
-        //float verticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight);
-
-        //Vector3 direction = (goal - transform.position).normalized;
-        //Vector3 velocity = new Vector3(direction.x * horizontalSpeed, verticalSpeed, direction.z * horizontalSpeed);
-
-        //rb.velocity = velocity;
 
         Vector3 direction = goal - transform.position;
         Vector3 newDirection = new Vector3(direction.x / 2, direction.y * 2, direction.z / 2 );

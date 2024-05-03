@@ -39,11 +39,11 @@ public class DroppableObjects : Interact
         }
         Collider[] colliders = Physics.OverlapSphere(transform.position, callRadius, enemyLayer);
 
-        // If it finds any object, calls the method "Interaction" inside the object
         if (colliders.Length > 0)
         {
             foreach (Collider collider in colliders)
             {
+                print("Called");
                 EnemyAI enemy = collider.gameObject.GetComponent<EnemyAI>();
                 if (enemy.beingAtracted == false)
                 {

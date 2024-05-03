@@ -335,6 +335,11 @@ public class PlayerController : MonoBehaviour
             canHide = true;
             camGoalPosition = other.gameObject.transform.GetChild(0).GetComponent<Transform>();
         }
+
+        if (other.gameObject.CompareTag("Death"))
+        {
+            Death();
+        }
     }
 
     private void OnTriggerExit(Collider other)

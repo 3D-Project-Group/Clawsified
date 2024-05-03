@@ -177,6 +177,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7618022537570276981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7315230242834716744}
+  m_Layer: 6
+  m_Name: GroundCheckEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7315230242834716744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618022537570276981}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000037748947, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00152, z: -0.00412}
+  m_LocalScale: {x: 0.009995815, y: 0.009995815, z: 0.009995815}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8227667598209101250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7672710367949777105
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,15 +249,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 157.97
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25200298
+      value: 0.11689464
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286,6 +317,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6607934238598429343}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7315230242834716744}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       insertIndex: -1
@@ -323,8 +357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckStart: {fileID: 3361278118457552641}
-  groundCheckEnd: {fileID: 4400355212407870911}
-  groundCheckRadius: 0.3
+  groundCheckEnd: {fileID: 7315230242834716744}
+  groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -339,6 +373,8 @@ MonoBehaviour:
   runningSpeed: 8
   rotationSpeed: 300
   cheesePrefab: {fileID: 6582629836457918641, guid: 3b3508974c9a2434c87a80b4d2504265, type: 3}
+  amountOfCheese: 2
+  cheeseCooldown: 3
   projectileSpeed: 10
   projectileDistance: 2
   projectileAngle: 45

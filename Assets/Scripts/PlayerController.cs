@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxHp = 100f;
     [SerializeField] private float currentHp = 100f;
     [SerializeField] private float playerRestoreHpTime = 4f;
-    [SerializeField] private float amountOfCheese = 2f;
 
     [Header("Player Movement")]
     [Range(1f, 10f)]
@@ -31,9 +30,14 @@ public class PlayerController : MonoBehaviour
 
     [Header("Throw Cheese")]
     [SerializeField] private GameObject cheesePrefab;
+    [SerializeField] private float amountOfCheese = 2f;
+    [SerializeField] private float cheeseCooldown;
+
+    [Space]
     [SerializeField] private float projectileSpeed = 10.0f;
     [SerializeField] private float projectileDistance = 2.0f;
     [SerializeField] private float projectileAngle = 45.0f;
+    private bool canThrowCheese = true;
 
     [Header("Hiding")]
     [SerializeField] private Transform camGoalPosition;
@@ -119,7 +123,7 @@ public class PlayerController : MonoBehaviour
                 Jump(new Vector3(closestWaypoint.position.x, closestWaypoint.position.y, closestWaypoint.position.z));
             }
 
-            if (Input.GetMouseButtonDown(1) && amountOfCheese > 0)
+            if (Input.GetMouseButtonDown(1) && amountOfCheese > 0 && canThrowCheese)
                 ThrowCheese();
 
             if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
@@ -194,6 +198,11 @@ public class PlayerController : MonoBehaviour
         amountOfCheese += amount;
     }
 
+    void ActivateCheese()
+    {
+        canThrowCheese = true;
+    }
+
     private void CallInteraction()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, interactRadius, interactLayer);
@@ -210,7 +219,8 @@ public class PlayerController : MonoBehaviour
 
     private void ThrowCheese()
     {
-        amountOfCheese++;
+        amountOfCheese--;
+        canThrowCheese = false;
         // Instantiate the prefab
         GameObject projectile = Instantiate(cheesePrefab, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
 
@@ -224,6 +234,7 @@ public class PlayerController : MonoBehaviour
         // Add velocity to the projectile
         projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed + Vector3.up * y;
 
+        Invoke("ActivateCheese", cheeseCooldown);
         Destroy(projectile, 5f);
     }
 

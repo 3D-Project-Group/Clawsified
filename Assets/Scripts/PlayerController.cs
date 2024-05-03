@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
             if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
                 currentHp += Time.deltaTime;
 
+
             canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
         }
     }
@@ -246,22 +247,32 @@ public class PlayerController : MonoBehaviour
     {
         isJumping = true;
 
+        //float jumpForce = Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (goal - transform.position).magnitude);
+
+        //Vector3 jumpVelocity = Vector3.up * jumpForce;
+        //rb.velocity = jumpVelocity;
+
+        //float distance = Vector3.Distance(goal, transform.position);
+        //float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
+        //float horizontalSpeed = distance / time;
+        //float jumpHeight = (goal.y - transform.position.y) + 1.0f; // Jump Height
+        //float verticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight);
+
+        //Vector3 direction = (goal - transform.position).normalized;
+        //Vector3 velocity = new Vector3(direction.x * horizontalSpeed, verticalSpeed, direction.z * horizontalSpeed);
+
+        //rb.velocity = velocity;
+
+        Vector3 direction = goal - transform.position;
+        Vector3 newDirection = new Vector3(direction.x / 2, direction.y * 2, direction.z / 2 );
+        newDirection.Normalize();
+
+        // Scale direction vector by force magnitude
+        Vector3 forceVector = newDirection * Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (goal - transform.position).magnitude);
+
+        // Apply force to Rigidbody or character controller
         rb.velocity = Vector3.zero;
-        float jumpForce = Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (goal - transform.position).magnitude);
-
-        Vector3 jumpVelocity = Vector3.up * jumpForce;
-        rb.velocity = jumpVelocity;
-
-        float distance = Vector3.Distance(goal, transform.position);
-        float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
-        float horizontalSpeed = distance / time;
-        float jumpHeight = (goal.y - transform.position.y) + 1.0f; // Jump Height
-        float verticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight);
-
-        Vector3 direction = (goal - transform.position).normalized;
-        Vector3 velocity = new Vector3(direction.x * horizontalSpeed, verticalSpeed, direction.z * horizontalSpeed);
-
-        rb.velocity = velocity;
+        rb.AddForce(forceVector, ForceMode.VelocityChange);
     }
 
     private void Movement()

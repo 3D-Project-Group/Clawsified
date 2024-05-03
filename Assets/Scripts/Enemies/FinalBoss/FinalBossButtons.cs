@@ -15,7 +15,7 @@ public class FinalBossButtons : Interact
 
     [SerializeField] private GameObject[] pipesExplosionPoints;
 
-    private void Start()
+    private new void Start()
     {
         boss = GameObject.FindWithTag("Boss").GetComponent<FinalBoss>();
     }

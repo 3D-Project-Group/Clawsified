@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 
 public class ColorPuzzleController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ColorPuzzleController : MonoBehaviour
 
     public ColorPuzzle[] correctAnswer;
     public ColorPuzzle[] currentValues;
+    public ColorPuzzleTube[] tubes;
 
     public bool isActive = true;
     public bool randomStart = true;
@@ -32,6 +34,21 @@ public class ColorPuzzleController : MonoBehaviour
         {
             obj.SetActive(false);
             isActive = false;
+        }
+    }
+
+    public void SetTubeColor(int tubeID)
+    {
+        if(isActive)
+        {
+            if ((int)tubes[tubeID].currentColor < 2)
+            {
+                tubes[tubeID].SetValue(tubes[tubeID].currentColor + 1);
+            }
+            else
+            {
+                tubes[tubeID].SetValue(0);
+            }
         }
     }
 }

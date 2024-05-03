@@ -671,7 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 211559869}
   player: {fileID: 0}
-  tube: {fileID: 1152058696}
+  tubeID: 1
 --- !u!65 &159400688
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 1660170280}
   player: {fileID: 0}
-  tube: {fileID: 1531771294}
+  tubeID: 0
 --- !u!65 &371293396
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3978,7 +3978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 597702392}
   player: {fileID: 0}
-  tube: {fileID: 703437253}
+  tubeID: 2
 --- !u!65 &1112299139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5818,6 +5818,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctAnswer: 000000000100000002000000
   currentValues: 
+  tubes:
+  - {fileID: 1531771294}
+  - {fileID: 1152058696}
+  - {fileID: 703437253}
   isActive: 1
   randomStart: 1
   gameObjectsToUnactivate:

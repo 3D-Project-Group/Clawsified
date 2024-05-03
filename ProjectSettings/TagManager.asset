@@ -17,13 +17,13 @@ TagManager:
   - Water
   - UI
   - Player
-  - Walls
+  - Wall
   - Objects
   - JumpArea
   - Interactable
   - Enemy
   - MinimapIcon
-  - 
+  - Door
   - 
   - 
   - 

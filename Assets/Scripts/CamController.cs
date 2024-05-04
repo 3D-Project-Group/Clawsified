@@ -44,7 +44,7 @@ public class CamController : MonoBehaviour
             ScrollControl();
         }
 
-        if (player.isHidden || player.doingPuzzle)
+        if (player.isHidden || player.doingPuzzle || Time.timeScale == 0)
             canMoveCam = false;
         else
             canMoveCam = true;

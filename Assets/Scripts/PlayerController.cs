@@ -59,9 +59,12 @@ public class PlayerController : MonoBehaviour
     [Header("Player UI")]
     [SerializeField] private Slider staminaWheel;
     [SerializeField] private Animator staminaWheelAnim;
+    [Space]
     [SerializeField] private GameObject jumpText;
     [SerializeField] private GameObject hideText;
     [SerializeField] private GameObject unhideText;
+    [Space]
+    [SerializeField] private GameObject pauseMenu;
 
     Transform[] jumpWaypoints = new Transform[8];
     bool isJumping = false;
@@ -82,6 +85,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!doingPuzzle)
         {
+            if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.activeSelf)
+            {
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                pauseMenu.SetActive(true);
+            }
+
             if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden)
                 StartCoroutine(Hide());
             else if (Input.GetKeyDown(KeyCode.F) && isHidden)

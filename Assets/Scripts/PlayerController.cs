@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     public bool canWalk = false;
     public bool isResting = false;
     public bool isRunning = false;
+    public bool doingPuzzle = false;
 
     [Header("Player UI")]
     [SerializeField] private Slider staminaWheel;
@@ -79,83 +80,89 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden)
-            StartCoroutine(Hide());
-        else if (Input.GetKeyDown(KeyCode.F) && isHidden)
-            UnHide();
-        else if (Input.GetKeyDown(KeyCode.F))
-            CallInteraction();
-
-        if (!isHidden)
+        if (!doingPuzzle)
         {
-            if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && !isResting)
+            if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden)
+                StartCoroutine(Hide());
+            else if (Input.GetKeyDown(KeyCode.F) && isHidden)
+                UnHide();
+            else if (Input.GetKeyDown(KeyCode.F))
+                CallInteraction();
+
+            if (!isHidden)
             {
-                if (hor != 0 || ver != 0)
+                if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && !isResting)
                 {
-                    isRunning = true;
-                    currentSpeed = runningSpeed;
-                    currentStamina -= staminaLossMultiplier * Time.deltaTime;
+                    if (hor != 0 || ver != 0)
+                    {
+                        isRunning = true;
+                        currentSpeed = runningSpeed;
+                        currentStamina -= staminaLossMultiplier * Time.deltaTime;
+                    }
+                    else
+                    {
+                        isRunning = false;
+                    }
                 }
                 else
                 {
                     isRunning = false;
+                    currentSpeed = normalSpeed;
                 }
-            }
-            else
-            {
-                isRunning = false;
-                currentSpeed = normalSpeed;
-            }
 
-            if (Input.GetKeyDown(KeyCode.Space) && canJump)
-            {
-                Transform closestWaypoint = null;
-                foreach (Transform t in jumpWaypoints)
+                if (Input.GetKeyDown(KeyCode.Space) && canJump)
                 {
-                    if (t != null)
+                    Transform closestWaypoint = null;
+                    foreach (Transform t in jumpWaypoints)
                     {
-                        if (closestWaypoint == null)
-                            closestWaypoint = t;
-                        else if (Vector3.Distance(transform.position, t.position) < Vector3.Distance(transform.position, closestWaypoint.position))
-                            closestWaypoint = t;
+                        if (t != null)
+                        {
+                            if (closestWaypoint == null)
+                                closestWaypoint = t;
+                            else if (Vector3.Distance(transform.position, t.position) < Vector3.Distance(transform.position, closestWaypoint.position))
+                                closestWaypoint = t;
+                        }
                     }
+                    Jump(new Vector3(closestWaypoint.position.x, closestWaypoint.position.y, closestWaypoint.position.z));
                 }
-                Jump(new Vector3(closestWaypoint.position.x, closestWaypoint.position.y, closestWaypoint.position.z));
+
+                if (Input.GetMouseButtonDown(1) && amountOfCheese > 0 && canThrowCheese)
+                    ThrowCheese();
+
+                if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
+                    currentHp += Time.deltaTime;
+
+
+                canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
             }
-
-            if (Input.GetMouseButtonDown(1) && amountOfCheese > 0 && canThrowCheese)
-                ThrowCheese();
-
-            if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
-                currentHp += Time.deltaTime;
-
-
-            canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
         }
     }
 
     void FixedUpdate()
     {
-        staminaWheel.value = currentStamina;
-        if (currentStamina <= 0)
+        if (!doingPuzzle)
         {
-            isResting = true;
-            isRunning = false;
+            staminaWheel.value = currentStamina;
+            if (currentStamina <= 0)
+            {
+                isResting = true;
+                isRunning = false;
+            }
+
+            if (isResting && currentStamina >= 50)
+                isResting = false;
+
+            if (currentStamina < maxStamina && !isRunning)
+                currentStamina += 0.1f;
+
+            if (isJumping && Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer))
+                isJumping = false;
+
+            if (canWalk)
+                Movement();
+
+            UIControl();
         }
-
-        if (isResting && currentStamina >= 50)
-            isResting = false;
-
-        if (currentStamina < maxStamina && !isRunning)
-            currentStamina += 0.1f;
-
-        if (isJumping && Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer))
-            isJumping = false;
-
-        if (canWalk)
-            Movement();
-
-        UIControl();
     }
 
     void UIControl()

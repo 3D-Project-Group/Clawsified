@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalBoss : MonoBehaviour
 {
@@ -190,7 +191,8 @@ public class FinalBoss : MonoBehaviour
         bossCurrentHp -= amount;
         if(bossCurrentHp <= 0)
         {
-            //Call Win Scene
+            //Call Win Scene 
+            SceneManager.LoadSceneAsync("WinMenu");
         }
     }
 }

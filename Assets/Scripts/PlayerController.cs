@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject cheesePrefab;
     [SerializeField] private float amountOfCheese = 2f;
     [SerializeField] private float cheeseCooldown;
+    private float cheeseCooldownCurrentValue;
 
     [Space]
     [SerializeField] private float projectileSpeed = 10.0f;
@@ -65,6 +67,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject unhideText;
     [Space]
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private TMP_Text cheeseText;
+    [SerializeField] private Slider cheeseCooldownSlider;
 
     Transform[] jumpWaypoints = new Transform[8];
     bool isJumping = false;
@@ -79,6 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         staminaWheel.maxValue = maxStamina;
+        cheeseCooldownSlider.maxValue = cheeseCooldown;
     }
 
     void Update()
@@ -140,10 +145,6 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetMouseButtonDown(1) && amountOfCheese > 0 && canThrowCheese)
                     ThrowCheese();
 
-                if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
-                    currentHp += Time.deltaTime;
-
-
                 canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
             }
         }
@@ -151,6 +152,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (cheeseCooldownCurrentValue > 0)
+            cheeseCooldownCurrentValue -= Time.fixedDeltaTime;
         if (!doingPuzzle)
         {
             staminaWheel.value = currentStamina;
@@ -172,12 +175,17 @@ public class PlayerController : MonoBehaviour
             if (canWalk)
                 Movement();
 
+            if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
+                currentHp += Time.deltaTime;
+
             UIControl();
         }
     }
 
     void UIControl()
     {
+        cheeseCooldownSlider.value = cheeseCooldownCurrentValue;
+        cheeseText.text = "x" + amountOfCheese.ToString();
         if (isRunning)
         {
             staminaWheelAnim.ResetTrigger("FadeOut");
@@ -238,6 +246,7 @@ public class PlayerController : MonoBehaviour
     private void ThrowCheese()
     {
         amountOfCheese--;
+        cheeseCooldownCurrentValue = cheeseCooldown;
         canThrowCheese = false;
         // Instantiate the prefab
         GameObject projectile = Instantiate(cheesePrefab, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);

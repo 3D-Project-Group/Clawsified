@@ -185,11 +185,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1733433806}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77402463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7856501203677121140, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 1071185357401107741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &77728740 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3235839166505371123, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
   m_PrefabInstance: {fileID: 1071185357401107741}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &85318734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2452775366793905312, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 1071185357401107741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100934996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3463,6 +3485,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 77728740}
     - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
+      propertyPath: cheeseText
+      value: 
+      objectReference: {fileID: 85318734}
+    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
       propertyPath: unhideText
       value: 
       objectReference: {fileID: 1737487190}
@@ -3482,6 +3508,10 @@ PrefabInstance:
       propertyPath: staminaWheelFill
       value: 
       objectReference: {fileID: 194690272}
+    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
+      propertyPath: cheeseCooldownSlider
+      value: 
+      objectReference: {fileID: 77402463}
     - target: {fileID: 8227667598209101250, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -45.85
@@ -7814,6 +7844,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4394423529087704489, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792092363889771923, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

@@ -27,7 +27,8 @@ public class RandomPatrolState : EnemyState
                 agent.speed = 3;
                 break;
             case EnemyAI.EnemyType.Blind:
-                agent.speed = 3;
+                agent.speed = 3; 
+                visDist = visDist / 1.3f;
                 break;
             default:
                 break;

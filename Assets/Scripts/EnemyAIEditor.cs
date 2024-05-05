@@ -9,16 +9,17 @@ public class EnemyAIEditor : Editor
         if (EditorApplication.isPlaying)
         {
             EnemyAI fov = (EnemyAI)target;
+            float visionDist = fov.enemyType == EnemyAI.EnemyType.Blind ? fov.currentState.visDist / 1.3f : fov.currentState.visDist;
             // Draw Enemy Sight Range
             Handles.color = Color.white;
-            Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.currentState.visDist);
+            Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, visionDist);
 
             Vector3 viewAngle01 = DirectionFromAngle(fov.transform.eulerAngles.y, -fov.currentState.visAngle / 2);
             Vector3 viewAngle02 = DirectionFromAngle(fov.transform.eulerAngles.y, fov.currentState.visAngle / 2);
 
             Handles.color = Color.yellow;
-            Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle01 * fov.currentState.visDist);
-            Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle02 * fov.currentState.visDist);
+            Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle01 * visionDist);
+            Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle02 * visionDist);
 
             if (fov.currentState.CanSeePlayer())
             {

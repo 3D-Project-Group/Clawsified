@@ -25,7 +25,8 @@ public class PursueState : EnemyState
                 agent.speed = 4;
                 break;
             case EnemyAI.EnemyType.Blind:
-                agent.speed = 4;
+                agent.speed = 4; 
+                visDist = visDist / 1.3f;
                 break;
             default:
                 break;
@@ -40,24 +41,7 @@ public class PursueState : EnemyState
     public override void Update()
     {
         agent.SetDestination(player.position);
-        if (enemyType == EnemyAI.EnemyType.Speed)
-        {
-            if (currentStamina > 0 && !isResting)
-            {
-                currentStamina -= Time.deltaTime;
-                agent.speed = 5;
-            }
-            else if (currentStamina <= 0 || isResting)
-            {
-                isResting = true;
-                agent.speed = 0;
-                currentStamina += Time.deltaTime;
-                if (currentStamina >= maxStamina)
-                {
-                    isResting = false;
-                }
-            }
-        }
+        
 
         if (agent.hasPath)
         {
@@ -74,6 +58,24 @@ public class PursueState : EnemyState
                 }
                 else
                 {
+                    if (enemyType == EnemyAI.EnemyType.Speed)
+                    {
+                        if (currentStamina > 0 && !isResting)
+                        {
+                            currentStamina -= Time.deltaTime;
+                            agent.speed = 5;
+                        }
+                        else if (currentStamina <= 0 || isResting)
+                        {
+                            isResting = true;
+                            agent.speed = 0;
+                            currentStamina += Time.deltaTime;
+                            if (currentStamina >= maxStamina)
+                            {
+                                isResting = false;
+                            }
+                        }
+                    }
                     Vector3 direction = player.position - npc.transform.position;
                     direction.y = 0;
                     var rotation = Quaternion.LookRotation(direction);

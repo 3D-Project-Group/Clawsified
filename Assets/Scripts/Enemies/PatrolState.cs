@@ -25,6 +25,7 @@ public class PatrolState : EnemyState
                 break;
             case EnemyAI.EnemyType.Blind:
                 agent.speed = 2;
+                visDist = visDist / 1.3f;
                 break;
             default:
                 break;

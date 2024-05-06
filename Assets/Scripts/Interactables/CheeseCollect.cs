@@ -14,6 +14,7 @@ public class CheeseCollect : Interact
     {
         base.Interaction();
         controller.AddCheese(1);
+        this.gameObject.SetActive(false);
     }
 
 }

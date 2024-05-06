@@ -70,6 +70,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TMP_Text cheeseText;
     [SerializeField] private Slider cheeseCooldownSlider;
 
+    [Header("Cheats")]
+    [SerializeField] private GameObject cheatList;
+    public bool isInvisible;
+
     Transform[] jumpWaypoints = new Transform[8];
     bool isJumping = false;
 
@@ -83,13 +87,22 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         staminaWheel.maxValue = maxStamina;
-        cheeseCooldownSlider.maxValue = cheeseCooldown;
+        cheeseCooldownSlider.maxValue = cheeseCooldown; 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
     {
         if (!doingPuzzle)
         {
+            if(cheatList != null && Input.GetKeyDown(KeyCode.J))
+            {
+                cheatList.SetActive(!cheatList.activeSelf);
+                Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+                Cursor.visible = !Cursor.visible;
+            }
+
             if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.activeSelf)
             {
                 Time.timeScale = 0;

@@ -5160,6 +5160,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 13363763755836870, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 235580978286764054, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5244,6 +5248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3226296514361070179, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 174.07703
+      objectReference: {fileID: 0}
     - target: {fileID: 4394423529087704489, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5255,6 +5263,30 @@ PrefabInstance:
     - target: {fileID: 4792092363889771923, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972766975489111226, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1990818036}
+    - target: {fileID: 4972766975489111226, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972766975489111226, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754026466013947403, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 233.68018
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416580335534062967, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 233.6748
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619411715602067749, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 140.72498
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16929,6 +16961,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
+--- !u!20 &1990818036 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 655880510389007583, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
+  m_PrefabInstance: {fileID: 1990818035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2005469131
 GameObject:
   m_ObjectHideFlags: 0

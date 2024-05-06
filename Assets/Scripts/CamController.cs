@@ -18,9 +18,7 @@ public class CamController : MonoBehaviour
     bool isColliding = true;
     void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        player = GameObject.Find("Cat").GetComponent<PlayerController>();
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     void Update()

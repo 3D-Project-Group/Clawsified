@@ -69,7 +69,7 @@ public class EnemyState
         Vector3 direction = player.position - npc.transform.position;
         float angle = Vector3.Angle(direction, npc.transform.forward);
 
-        if (direction.magnitude < visDist && angle < visAngle && !playerController.isHidden)
+        if (direction.magnitude < visDist && angle < visAngle && !playerController.isHidden && !playerController.isInvisible)
         {
             return true;
         }

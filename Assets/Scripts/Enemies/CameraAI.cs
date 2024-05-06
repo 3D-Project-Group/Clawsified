@@ -9,6 +9,7 @@ public class CameraAI : MonoBehaviour
     LineRenderer lineRenderer;
 
     public Transform player;
+    public PlayerController playerController;
     public bool activated = true;
 
     [Header("Enemy Calling")]
@@ -23,6 +24,7 @@ public class CameraAI : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerController = player.GetComponent<PlayerController>();
         enemiesList = FindObjectsOfType<EnemyAI>().ToList();
         objMaterial = this.gameObject.GetComponent<MeshRenderer>().material;
         lineRenderer = GetComponentInChildren<LineRenderer>();
@@ -76,7 +78,7 @@ public class CameraAI : MonoBehaviour
         Vector3 direction = player.position - transform.position;
         float angle = Vector3.Angle(direction, transform.forward);
 
-        if (direction.magnitude < visDist && angle < visAngle)
+        if (direction.magnitude < visDist && angle < visAngle && !playerController.isInvisible)
         {
             return true;
         }
@@ -85,9 +87,11 @@ public class CameraAI : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Vector3 forwardDir = transform.forward;
-        Vector3 leftDir = Quaternion.Euler(0, -visAngle / 2, 0) * forwardDir;
-        Vector3 rightDir = Quaternion.Euler(0, visAngle / 2, 0) * forwardDir;
+        //----------->This was made to see the camera vision cone, but we can't build the game with that, so we commented, just undo if you wanna see it :D<-----------
+
+        //Vector3 forwardDir = transform.forward;
+        //Vector3 leftDir = Quaternion.Euler(0, -visAngle / 2, 0) * forwardDir;
+        //Vector3 rightDir = Quaternion.Euler(0, visAngle / 2, 0) * forwardDir;
 
         // Draw angle lines
         //Handles.color = Color.blue;
@@ -99,7 +103,7 @@ public class CameraAI : MonoBehaviour
         //Handles.DrawWireArc(transform.position, Vector3.up, leftDir, visAngle, visDist);
 
         // Draw Call Radius Sphere
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, callRadius);
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawWireSphere(transform.position, callRadius);
     }
 }

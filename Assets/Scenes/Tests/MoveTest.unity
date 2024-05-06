@@ -7520,7 +7520,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
 --- !u!4 &1871679692 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6787348445375925150, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2748568331358239685, guid: 852bbff604cd68c49b57cbf268e0c4f5, type: 3}
   m_PrefabInstance: {fileID: 1871679691}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1923760396 stripped
@@ -7767,14 +7767,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8696b2bfd88911428ef107de0f4a90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1670401444}
+  playerController: {fileID: 0}
+  activated: 1
   callRadius: 100
   enemyLayer:
     serializedVersion: 2
     m_Bits: 2048
   enemiesList: []
   calledEnemiesList: []
-  player: {fileID: 1670401444}
-  activated: 1
   visDist: 20
   visAngle: 30
 --- !u!65 &2144121178

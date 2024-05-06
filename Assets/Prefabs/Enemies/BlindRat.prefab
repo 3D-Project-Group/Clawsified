@@ -184,6 +184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rat
       objectReference: {fileID: 0}
+    - target: {fileID: 2760477486303028327, guid: d087141f20d557f4484e4287bfe4a5e2, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2793762092038692571, guid: d087141f20d557f4484e4287bfe4a5e2, type: 3}
       propertyPath: m_Name
       value: VisionAngle

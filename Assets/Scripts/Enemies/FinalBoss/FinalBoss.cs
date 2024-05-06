@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FinalBoss : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class FinalBoss : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private float bossMaxHp;
-    [SerializeField] private float bossCurrentHp;
+    public float bossCurrentHp;
     [SerializeField] private float speed;
 
     [Header("States")]
@@ -30,6 +31,9 @@ public class FinalBoss : MonoBehaviour
         [SerializeField] private bool goingIn = false;
         [SerializeField] private bool goingOut = false;
     [SerializeField] private bool isAttacking = false;
+
+    [Header("UI")]
+    [SerializeField] private Slider bossHpSlider;
 
     
     void Start()
@@ -46,7 +50,7 @@ public class FinalBoss : MonoBehaviour
 
     void Update()
     {
-
+        bossHpSlider.value = bossCurrentHp;
         switch (currentState)
         {
             case 0: 

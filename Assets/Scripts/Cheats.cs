@@ -20,4 +20,9 @@ public class Cheats : MonoBehaviour
     {
         player.GetComponent<PlayerController>().isInvisible = !player.GetComponent<PlayerController>().isInvisible;
     }
+
+    public void BossKill()
+    {
+        GameObject.Find("Boss").GetComponent<FinalBoss>().TakeDamage(GameObject.Find("Boss").GetComponent<FinalBoss>().bossCurrentHp);
+    }
 }

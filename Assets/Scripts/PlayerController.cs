@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private TMP_Text cheeseText;
     [SerializeField] private Slider cheeseCooldownSlider;
+    [SerializeField] private Slider playerHpSlider; //Just for boss fight
 
     [Header("Cheats")]
     [SerializeField] private GameObject cheatList;
@@ -199,6 +200,12 @@ public class PlayerController : MonoBehaviour
     {
         cheeseCooldownSlider.value = cheeseCooldownCurrentValue;
         cheeseText.text = "x" + amountOfCheese.ToString();
+
+        if(playerHpSlider != null)
+        {
+            playerHpSlider.value = currentHp;
+        }
+
         if (isRunning)
         {
             staminaWheelAnim.ResetTrigger("FadeOut");

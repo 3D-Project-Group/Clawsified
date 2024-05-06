@@ -1,41 +1,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static EnemyAI;
 
 public class PursueState : EnemyState
 {
-    int damping = 5;
-    float currentStamina = 5f;
-    float maxStamina = 5f;
-    EnemyAI.EnemyType enemyType;
-    bool isResting = false;
+    EnemyType enemyType;
+
+    private int rotationSpeed = 5;
+
+    [Header("Stamina Control")]
+    private float currentStamina = 5f;
+    private float maxStamina = 5f;
+    private bool isResting = false;
 
     public PursueState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
         : base(_npc, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
     {
         name = STATE.PURSUE;
-        agent.isStopped = false;
         enemyType = npc.GetComponent<EnemyAI>().enemyType;
-        switch (enemyType)
-        {
-            case EnemyAI.EnemyType.Speed:
-                agent.speed = 5;
-                break;
-            case EnemyAI.EnemyType.Normal:
-                agent.speed = 4;
-                break;
-            case EnemyAI.EnemyType.Blind:
-                agent.speed = 4; 
-                visDist = visDist / 1.3f;
-                break;
-            default:
-                break;
-        }
+        
     }
 
     public override void Enter()
     {
         base.Enter();
+
+        //Change speed and vision cone according to the type of enemy
+        switch (enemyType)
+        {
+            case EnemyType.Speed:
+                agent.speed = 5;
+                break;
+            case EnemyType.Normal:
+                agent.speed = 4;
+                break;
+            case EnemyType.Blind:
+                agent.speed = 4;
+                visDist = visDist / 1.3f;
+                break;
+            default:
+                break;
+        }
+
+        agent.isStopped = false;
     }
 
     public override void Update()
@@ -44,12 +52,14 @@ public class PursueState : EnemyState
 
         if (agent.hasPath)
         {
+            //If the rat gets close to the player
             if (Vector3.Distance(npc.transform.position, player.position) <= 2)
             {
                 player.gameObject.GetComponent<PlayerController>().Death();
             }
             else
             {
+                //If can't see the player starts Random patrolling
                 if (!CanSeePlayer())
                 {
                     nextState = new RandomPatrolState(npc, agent, player, waypoints, obstructionMask, groundLayer);
@@ -57,13 +67,15 @@ public class PursueState : EnemyState
                 }
                 else
                 {
-                    if (enemyType == EnemyAI.EnemyType.Speed)
+                    //If is a speed enemy, starts to decrease the stamina
+                    if (enemyType == EnemyType.Speed)
                     {
                         if (currentStamina > 0 && !isResting)
                         {
                             currentStamina -= Time.deltaTime;
                             agent.speed = 5;
                         }
+                        //Rest
                         else if (currentStamina <= 0 || isResting)
                         {
                             isResting = true;
@@ -71,14 +83,16 @@ public class PursueState : EnemyState
                             currentStamina += Time.deltaTime;
                             if (currentStamina >= maxStamina)
                             {
-                                isResting = false;
+                                isResting = false; //Reset resting
                             }
                         }
                     }
-                    Vector3 direction = player.position - npc.transform.position;
+                    Vector3 direction = player.position - npc.transform.position; //Calculate Direction
                     direction.y = 0;
-                    var rotation = Quaternion.LookRotation(direction);
-                    npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * damping);
+
+                    var rotation = Quaternion.LookRotation(direction); //Gets the angle
+
+                    npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * rotationSpeed); //Rotate towards the player
                 }
             }
         }

@@ -2,30 +2,30 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using static EnemyState;
-using static UnityEngine.GraphicsBuffer;
 
 public class CameraAI : MonoBehaviour
 {
+    Material objMaterial;
+    LineRenderer lineRenderer;
+
+    public Transform player;
+    public bool activated = true;
+
     [Header("Enemy Calling")]
     [SerializeField] private float callRadius;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private List<EnemyAI> enemiesList = new List<EnemyAI>();
     [SerializeField] private List<EnemyAI> calledEnemiesList = new List<EnemyAI>();
-
-    public Transform player;
-    public bool activated = true;
-
+    [Space]
     public float visDist = 20.0f;
     public float visAngle = 30.0f;
-
-    Material objMaterial;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemiesList = FindObjectsOfType<EnemyAI>().ToList();
         objMaterial = this.gameObject.GetComponent<MeshRenderer>().material;
+        lineRenderer = GetComponentInChildren<LineRenderer>();
     }
 
     void Update()
@@ -44,14 +44,19 @@ public class CameraAI : MonoBehaviour
             }
         }
         else
+        {
             objMaterial.color = Color.black;
+            lineRenderer.startColor = Color.green;
+            lineRenderer.endColor = Color.green;
+        }
     }
 
     private void CallOtherEnemies()
     {
         foreach (EnemyAI enemy in enemiesList)
         {
-            if (enemy.gameObject != this.gameObject && !calledEnemiesList.Contains(enemy) && Vector3.Distance(transform.position, enemy.gameObject.transform.position) <= callRadius)
+            if (enemy.gameObject != this.gameObject && !calledEnemiesList.Contains(enemy) 
+                    && Vector3.Distance(transform.position, enemy.gameObject.transform.position) <= callRadius)
             {
                 calledEnemiesList.Add(enemy);
             }

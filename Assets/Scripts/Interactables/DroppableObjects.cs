@@ -4,9 +4,13 @@ public class DroppableObjects : Interact
 {
     private enum ThrowDirection { LEFT, RIGHT, FRONT, BACK }
 
+    [Header("Components")]
+    private bool activate;
     private Rigidbody rb;
     [SerializeField] private ThrowDirection direction;
     [SerializeField] private LayerMask enemyLayer;
+
+    [Header("Throw Control")]
     [SerializeField] private float throwingForce;
     [SerializeField] private float callRadius;
 
@@ -19,36 +23,42 @@ public class DroppableObjects : Interact
     public override void Interaction()
     {
         base.Interaction();
-        switch (direction)
+        if (activate)
         {
-            case ThrowDirection.LEFT:
-                rb.AddForce(this.transform.position + Camera.main.gameObject.transform.right * -1 * throwingForce);
-                break;
-            case ThrowDirection.RIGHT:
-                rb.AddForce(this.transform.position + Camera.main.gameObject.transform.right * throwingForce);
-                break;
-            case ThrowDirection.FRONT:
-                rb.AddForce(this.transform.position + Camera.main.gameObject.transform.forward * throwingForce);
-                break;
-            case ThrowDirection.BACK:
-                rb.AddForce(this.transform.position + Camera.main.gameObject.transform.forward * -1 * throwingForce);
-                break;
-            default:
-                Debug.Log("Set a direction to the object!");
-                break;
-        }
-        Collider[] colliders = Physics.OverlapSphere(transform.position, callRadius, enemyLayer);
-
-        if (colliders.Length > 0)
-        {
-            foreach (Collider collider in colliders)
+            //Add force according to the direction chosen
+            switch (direction)
             {
-                print("Called");
-                EnemyAI enemy = collider.gameObject.GetComponent<EnemyAI>();
-                if (enemy.beingAtracted == false)
+                case ThrowDirection.LEFT:
+                    rb.AddForce(this.transform.position + Camera.main.gameObject.transform.right * -1 * throwingForce);
+                    break;
+                case ThrowDirection.RIGHT:
+                    rb.AddForce(this.transform.position + Camera.main.gameObject.transform.right * throwingForce);
+                    break;
+                case ThrowDirection.FRONT:
+                    rb.AddForce(this.transform.position + Camera.main.gameObject.transform.forward * throwingForce);
+                    break;
+                case ThrowDirection.BACK:
+                    rb.AddForce(this.transform.position + Camera.main.gameObject.transform.forward * -1 * throwingForce);
+                    break;
+                default:
+                    Debug.Log("Set a direction to the object!");
+                    break;
+            }
+
+            //Attract Enemies
+            Collider[] colliders = Physics.OverlapSphere(transform.position, callRadius, enemyLayer);
+
+            if (colliders.Length > 0)
+            {
+                foreach (Collider collider in colliders)
                 {
-                    enemy.agent.SetDestination(transform.position);
-                    enemy.beingAtracted = true;
+                    print("Called");
+                    EnemyAI enemy = collider.gameObject.GetComponent<EnemyAI>();
+                    if (enemy.beingAtracted == false)
+                    {
+                        enemy.agent.SetDestination(transform.position);
+                        enemy.beingAtracted = true;
+                    }
                 }
             }
         }

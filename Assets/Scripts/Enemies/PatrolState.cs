@@ -2,28 +2,40 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using static EnemyAI;
 
 public class PatrolState : EnemyState
 {
-    int currentIndex = -1; // current waypoint
-    int damping = 5;
-    EnemyAI.EnemyType enemyType;
-    float timeStarring = 0;
-    float maxTimeStarring = 3;
+    EnemyType enemyType;
+
+    private int currentIndex = -1; // current waypoint
+    private int rotationSpeed = 5;
+
+    [Header("Staring")]
+    private float timeStaring = 0;
+    private float maxTimeStaring = 3;
+
     public PatrolState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
         : base(_npc, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
     {
         name = STATE.PATROL;
         enemyType = npc.GetComponent<EnemyAI>().enemyType;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        //Change the speed and the vision according to the type of enemy
         switch (enemyType)
         {
-            case EnemyAI.EnemyType.Speed:
+            case EnemyType.Speed:
                 agent.speed = 3;
                 break;
-            case EnemyAI.EnemyType.Normal:
+            case EnemyType.Normal:
                 agent.speed = 2;
                 break;
-            case EnemyAI.EnemyType.Blind:
+            case EnemyType.Blind:
                 agent.speed = 2;
                 visDist = visDist / 1.3f;
                 break;
@@ -31,46 +43,54 @@ public class PatrolState : EnemyState
                 break;
         }
         agent.isStopped = false;
-    }
 
-    public override void Enter()
-    {
         currentIndex = 0;
-        base.Enter();
     }
 
     public override void Update()
     {
         if (agent.remainingDistance < 1)
         {
+            //Update waypoint
             if (currentIndex >= waypoints.Count - 1)
                 currentIndex = 0;
             else
                 currentIndex++;
 
+            //Set the direction to the next waypoint
             agent.ResetPath();
             agent.SetDestination(waypoints.ElementAt(currentIndex).transform.position);
-            Vector3 direction = waypoints.ElementAt(currentIndex).transform.position - npc.transform.position;
 
+            //Calculate the direction
+            Vector3 direction = waypoints.ElementAt(currentIndex).transform.position - npc.transform.position;
+            //Get the angle
             var rotation = Quaternion.LookRotation(direction);
-            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * damping);
+            //Rotate towards next waypoint
+            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * rotationSpeed);
         }
+
+        //If can see the player and there's nothing blocking the vision
         if (CanSeePlayer() && !Physics.Raycast(npc.transform.position, player.position, Vector3.Distance(npc.transform.position, player.transform.position), obstructionMask))
         {
+            //Reset the path, then we can set a new direction for it
             agent.ResetPath();
-            Vector3 direction = player.position - npc.transform.position;
-            var rotation = Quaternion.LookRotation(direction);
-            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * damping);
 
-            timeStarring += Time.deltaTime + (0.1f / Vector3.Distance(npc.transform.position, player.position));
-            if(timeStarring >= maxTimeStarring)
+            Vector3 direction = player.position - npc.transform.position; //Calculate the direction
+            var rotation = Quaternion.LookRotation(direction); //Get the angle
+            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * rotationSpeed); //Rotate towards player
+
+            //Keeps staring for a moment
+            timeStaring += Time.deltaTime + (0.1f / Vector3.Distance(npc.transform.position, player.position));
+
+            if(timeStaring >= maxTimeStaring)
             {
                 nextState = new PursueState(npc, agent, player, waypoints, obstructionMask, groundLayer);
                 stage = EVENT.EXIT;
             }
-        }else if (timeStarring > 0)
+        }
+        else if (timeStaring > 0)
         {
-            timeStarring -= Time.deltaTime;
+            timeStaring -= Time.deltaTime;
         }
     }
 

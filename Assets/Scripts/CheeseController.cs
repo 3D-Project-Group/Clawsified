@@ -22,18 +22,4 @@ public class CheeseController : MonoBehaviour
             }
         }
     }
-
-    private void OnDestroy()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, atractEnemiesRadius, enemiesLayer);
-
-        // If it finds any object, calls the method "Interaction" inside the object
-        if (colliders.Length > 0)
-        {
-            foreach (Collider collider in colliders)
-            {
-                collider.gameObject.GetComponent<EnemyAI>().beingAtracted = false;
-            }
-        }
-    }
 }

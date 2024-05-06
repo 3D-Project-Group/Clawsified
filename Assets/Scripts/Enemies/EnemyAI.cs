@@ -12,17 +12,21 @@ public class EnemyAI : MonoBehaviour
     [Header("Enemy Calling")]
     [SerializeField] private float callRadius;
     [SerializeField] private LayerMask enemyLayer;
+    [Space]
     public List<EnemyAI> enemiesList = new List<EnemyAI>();
     public List<EnemyAI> calledEnemiesList = new List<EnemyAI>();
 
+    [Header("Components")]
     public NavMeshAgent agent;
     public EnemyState currentState;
-
     public Transform player;
     public LayerMask obstructionMask, groundLayer;
+
+    [Header("Attraction")]
     public bool beingAtracted = false;
     public float attractionTime = 3f;
 
+    [Header("Patrol")]
     public List<GameObject> waypoints = new List<GameObject>();
 
     void Start()
@@ -36,7 +40,7 @@ public class EnemyAI : MonoBehaviour
                 waypoints.Add(obj);
             }
         }
-        waypoints.OrderBy(waypoint => waypoint.name).ToList();
+        waypoints.OrderBy(waypoint => waypoint.name).ToList(); //Organize it
 
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;

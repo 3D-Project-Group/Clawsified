@@ -1,18 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FinalBossButtons : Interact
 {
     private FinalBoss boss;
-
     private bool activated = true;
 
+    [Header("Explosion Control")]
     [SerializeField] private float timeToActivate = 5f;
     [SerializeField] private float damage = 20;
-
     [SerializeField] private int pipeSelected = 0;
 
+    [Space]
     [SerializeField] private GameObject[] pipesExplosionPoints;
 
     private new void Start()

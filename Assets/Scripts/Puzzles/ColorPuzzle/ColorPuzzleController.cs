@@ -4,12 +4,14 @@ public class ColorPuzzleController : MonoBehaviour
 {
     public enum ColorPuzzle { Yellow = 0, Green = 1, Blue = 2 }
 
+    [Header("Puzzle Checking")]
     public ColorPuzzle[] correctAnswer;
     public ColorPuzzle[] currentValues;
     public ColorPuzzleTube[] tubes;
-
+    [Space]
     public bool isActive = true;
     public bool randomStart = true;
+    [Space]
     [SerializeField] private GameObject[] gameObjectsToUnactivate;
 
     private void Awake()

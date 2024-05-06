@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CamController : MonoBehaviour
@@ -32,11 +30,11 @@ public class CamController : MonoBehaviour
             transform.RotateAround(target.position, transform.up, Input.GetAxis("Mouse X") * sensitivityX);
             transform.RotateAround(target.position, transform.right, -Input.GetAxis("Mouse Y") * sensitivityY);
 
-            Vector3 rotacao = transform.eulerAngles;
-            rotacao.z = 0;
-            if (rotacao.x < 180) rotacao.x = Mathf.Min(rotacao.x, 80);
-            else rotacao.x = 0;
-            transform.rotation = Quaternion.Euler(rotacao);
+            Vector3 rotation = transform.eulerAngles;
+            rotation.z = 0;
+            if (rotation.x < 180) rotation.x = Mathf.Min(rotation.x, 80);
+            else rotation.x = 0;
+            transform.rotation = Quaternion.Euler(rotation);
 
             transform.position = target.position - transform.forward * currentDistance;
 

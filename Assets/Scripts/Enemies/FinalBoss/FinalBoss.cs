@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,12 +35,13 @@ public class FinalBoss : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>();
+        bossCurrentHp = bossMaxHp;
 
+        //Set a tube for the boss
         currentPipe = Random.Range(0, tubeSpawnPoint.Length);
         currentState = 1;
         transform.position = tubeSpawnPoint[currentPipe].position;
-        bossCurrentHp = bossMaxHp;
     }
 
     void Update()
@@ -58,15 +58,19 @@ public class FinalBoss : MonoBehaviour
                 {
                     if (goingIn)
                     {
+                        //Calculate the direction
                         Vector3 direction = tubeSpawnPoint[currentPipe].position - transform.position;
                         direction.y = 0;
 
+                        //Get the angle for the direction
                         var targetRotation = Quaternion.LookRotation(direction);
 
+                        //If the boss is looking to the right direction it starts walking, otherwise it keeps rotating
                         if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
                         {
                             rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
 
+                            //If its close enough it stops
                             if (Vector3.Distance(transform.position, tubeSpawnPoint[currentPipe].position) < 2)
                             {
                                 goingIn = false;
@@ -75,20 +79,25 @@ public class FinalBoss : MonoBehaviour
                         }
                         else
                         {
+                            //Rotate the boss
                             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
                         }
                     }
                     else if (goingOut)
                     {
+                        //Calculate the direction
                         Vector3 direction = tubeEndingPoint[currentPipe].position - transform.position;
                         direction.y = 0;
 
+                        //Get the angle for the direction
                         var targetRotation = Quaternion.LookRotation(direction);
 
+                        //If the boss is looking to the right direction it starts walking, otherwise it keeps rotating
                         if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
                         {
                             rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
 
+                            //If its close enough it stops
                             if (Vector3.Distance(transform.position, tubeEndingPoint[currentPipe].position) < 1)
                             {
                                 isSwitching = false;
@@ -98,6 +107,7 @@ public class FinalBoss : MonoBehaviour
                         }
                         else
                         {
+                            //Rotate the boss
                             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
                         }
                     }
@@ -112,6 +122,7 @@ public class FinalBoss : MonoBehaviour
                     Attack();
                 break;
             default:
+                //Randomize a new state
                 int i = Random.Range(0, 3);
                 if (i != lastState)
                 {
@@ -155,12 +166,16 @@ public class FinalBoss : MonoBehaviour
         isAttacking = true;
         currentState = 2;
 
+        //Calculate player's direction
         Vector3 playerDirection = player.transform.position - transform.position;
         playerDirection.y = 0;
+        //Get the angle
         Quaternion targetRotation = Quaternion.LookRotation(playerDirection);
 
+        //Rotate the boss
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
 
+        //Instantiate the projectile and throw it
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         ApplyForceOnProj(rb);
@@ -171,8 +186,6 @@ public class FinalBoss : MonoBehaviour
 
     void ApplyForceOnProj(Rigidbody rb)
     {
-        //float projForce = Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (player.transform.position - transform.position).magnitude);
-
         float distance = Vector3.Distance(player.transform.position, transform.position);
         float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
         float horizontalSpeed = distance / time;

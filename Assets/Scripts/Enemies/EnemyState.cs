@@ -20,17 +20,21 @@ public class EnemyState
 
     public STATE name;
 
+    [Header("Components")]
     protected EVENT stage;
     protected GameObject npc;
     protected Transform player;
     protected EnemyState nextState;
     protected NavMeshAgent agent;
+    public PlayerController playerController;
 
+    [Header("Pursue")]
     public float visDist = 10.0f;
     public float visAngle = 60.0f;
     public LayerMask obstructionMask, groundLayer;
+
+    [Header("Patrol")]
     public List<GameObject> waypoints = new List<GameObject>();
-    public PlayerController playerController;
 
     public EnemyState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
     {

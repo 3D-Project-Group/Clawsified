@@ -5,6 +5,9 @@ public class FinalBossShot : MonoBehaviour
     [Header("Components")]
     private Rigidbody rb;
     private LineRenderer lineRenderer;
+    private GameObject player;
+    private PlayerController playerController;
+    private Vector3 collisionPosition;
 
     [Header("Dmg Control")]
     [SerializeField] private float timeToDestroy = 3.0f;
@@ -16,9 +19,6 @@ public class FinalBossShot : MonoBehaviour
     [SerializeField] private int circleSegments = 32;
     [SerializeField] private Material lineMaterial;
 
-    private GameObject player;
-    private PlayerController playerController;
-    private Vector3 collisionPosition;
 
     void Start()
     {
@@ -26,6 +26,7 @@ public class FinalBossShot : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
         lineRenderer = (LineRenderer)gameObject.AddComponent(typeof(LineRenderer));
+
         lineRenderer.material = lineMaterial; // Assign the material for the lines
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;

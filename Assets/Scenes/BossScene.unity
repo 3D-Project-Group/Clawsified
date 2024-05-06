@@ -5420,6 +5420,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1317554898}
     - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
+      propertyPath: cheatList
+      value: 
+      objectReference: {fileID: 993010136}
+    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 869373379}

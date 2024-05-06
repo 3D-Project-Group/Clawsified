@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class PursueState : EnemyState
 {
-    int damping = 2;
+    int damping = 5;
     float currentStamina = 5f;
     float maxStamina = 5f;
     EnemyAI.EnemyType enemyType;
@@ -41,7 +41,6 @@ public class PursueState : EnemyState
     public override void Update()
     {
         agent.SetDestination(player.position);
-        
 
         if (agent.hasPath)
         {

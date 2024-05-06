@@ -213,7 +213,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 32
+  m_fontStyle: 33
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
@@ -692,8 +692,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: -64.416}
-  m_SizeDelta: {x: 376.434, y: 128.833}
+  m_AnchoredPosition: {x: -54, y: -76}
+  m_SizeDelta: {x: 575.95, y: 530.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1479114542
 MonoBehaviour:
@@ -715,7 +715,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: In Coming!
+  m_text: "Khevynn S\xE1 - Programmer\nJo\xE3o Cunha - Programmer\nAna Sophia Ribeiro
+    - Designer\nC\xE9sar Cruz - Designer\nAlvia Merchant - Designer\nGuilherme Drago
+    - Designer\nRuhee Hudda - Designer"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9eab0a41a43c6c45adeb2df6785babe, type: 2}
   m_sharedMaterial: {fileID: 3439112578388138468, guid: a9eab0a41a43c6c45adeb2df6785babe, type: 2}
@@ -742,14 +744,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 128.8
-  m_fontSizeBase: 36
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 800
   m_fontStyle: 32
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0

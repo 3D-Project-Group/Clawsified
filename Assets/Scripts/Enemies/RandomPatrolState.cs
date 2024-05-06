@@ -9,7 +9,7 @@ public class RandomPatrolState : EnemyState
     private bool walkPointSet = false;
     public float walkPointRange = 8;
     EnemyAI.EnemyType enemyType;
-    int damping = 2;
+    int damping = 5;
 
     float timer;
 

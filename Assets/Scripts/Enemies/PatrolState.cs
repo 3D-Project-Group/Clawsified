@@ -6,10 +6,10 @@ using UnityEngine.AI;
 public class PatrolState : EnemyState
 {
     int currentIndex = -1; // current waypoint
-    int damping = 2;
+    int damping = 5;
     EnemyAI.EnemyType enemyType;
     float timeStarring = 0;
-    float maxTimeStarring = 4;
+    float maxTimeStarring = 3;
     public PatrolState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
         : base(_npc, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
     {

@@ -20,7 +20,9 @@ public class MemoryPuzzleController : MonoBehaviour
     [SerializeField] private List<int> currentSelectedOrder = new List<int>();
 
     [SerializeField] private GameObject[] buttons;
+    public MemoryPuzzleInteract puzzleToDeactivate;
     public GameObject[] objectsToUnactivate;
+    public GameObject[] UIToShow;
 
     void Update()
     {
@@ -99,6 +101,7 @@ public class MemoryPuzzleController : MonoBehaviour
         {
             obj.SetActive(false);
         }
+        puzzleToDeactivate.active = false;
         ClosePuzzle();
     }
 
@@ -153,6 +156,10 @@ public class MemoryPuzzleController : MonoBehaviour
         this.gameObject.SetActive(false); 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        foreach(GameObject obj in UIToShow)
+        {
+            obj.SetActive(true);
+        }
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().doingPuzzle = false;
     }
     public void SetValue(int value) { currentSelectedOrder.Add(value); }

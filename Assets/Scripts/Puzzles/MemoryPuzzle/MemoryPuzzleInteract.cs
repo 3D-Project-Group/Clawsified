@@ -6,19 +6,25 @@ public class MemoryPuzzleInteract : Interact
     [SerializeField] private GameObject memoryPuzzle;
     [SerializeField] private GameObject[] UIToHide;
     [SerializeField] private GameObject[] objsToUnactivate;
+    public bool active = true;
     public override void Interaction()
     {
-        base.Interaction();
-
-        foreach (GameObject obj in UIToHide)
+        if (active)
         {
-            obj.SetActive(false);
+            base.Interaction();
+
+            foreach (GameObject obj in UIToHide)
+            {
+                obj.SetActive(false);
+            }
+
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().doingPuzzle = true;
+
+            memoryPuzzle.SetActive(true);
+            memoryPuzzle.GetComponent<MemoryPuzzleController>().objectsToUnactivate = objsToUnactivate;
+            memoryPuzzle.GetComponent<MemoryPuzzleController>().UIToShow = UIToHide;
+            memoryPuzzle.GetComponent<MemoryPuzzleController>().puzzleToDeactivate = this;
+            memoryPuzzle.GetComponent<MemoryPuzzleController>().StartPuzzle();
         }
-
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().doingPuzzle = true;
-
-        memoryPuzzle.SetActive(true);
-        memoryPuzzle.GetComponent<MemoryPuzzleController>().objectsToUnactivate = objsToUnactivate;
-        memoryPuzzle.GetComponent<MemoryPuzzleController>().StartPuzzle();
     }
 }

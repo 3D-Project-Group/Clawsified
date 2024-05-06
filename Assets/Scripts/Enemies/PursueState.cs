@@ -44,7 +44,7 @@ public class PursueState : EnemyState
 
         if (agent.hasPath)
         {
-            if (Vector3.Distance(npc.transform.position, player.position) <= agent.stoppingDistance)
+            if (Vector3.Distance(npc.transform.position, player.position) <= 2)
             {
                 player.gameObject.GetComponent<PlayerController>().Death();
             }

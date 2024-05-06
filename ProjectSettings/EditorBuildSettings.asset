@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lab.unity
     guid: 86e5693452d7ab2429e2a36f0f3d2f3c
   - enabled: 1
+    path: Assets/Scenes/Tests/BossScene.unity
+    guid: 7adb3b6c8ab6b2243b7fa5b007cc4f67
+  - enabled: 1
     path: Assets/Scenes/Menus/GameOver.unity
     guid: 8879bc146cbbfbd42a545776db0da8a3
   - enabled: 1

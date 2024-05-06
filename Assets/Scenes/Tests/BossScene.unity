@@ -5252,11 +5252,42 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4792092363889771923, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+--- !u!114 &869373377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7856501203677121140, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 869373376}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &869373378 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2452775366793905312, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 869373376}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &869373379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3235839166505371123, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 869373376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &929805062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5274,6 +5305,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1317554898}
     - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 869373379}
+    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
+      propertyPath: cheeseText
+      value: 
+      objectReference: {fileID: 869373378}
+    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
       propertyPath: unhideText
       value: 
       objectReference: {fileID: 1543607279}
@@ -5285,6 +5324,10 @@ PrefabInstance:
       propertyPath: staminaWheelAnim
       value: 
       objectReference: {fileID: 1234442541}
+    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
+      propertyPath: cheeseCooldownSlider
+      value: 
+      objectReference: {fileID: 869373377}
     - target: {fileID: 8227667598209101250, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

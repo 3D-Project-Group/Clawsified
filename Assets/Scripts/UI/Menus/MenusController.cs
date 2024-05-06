@@ -31,6 +31,18 @@ public class MenusController : MonoBehaviour
         SceneManager.LoadSceneAsync(sceneName);
     }
 
+    public void Revive()
+    {
+        if (GameInfo.Fighting_Boss)
+        {
+            SceneManager.LoadScene("BossScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("Lab");
+        }
+    }
+
     public void QuitGame()
     {
         Application.Quit();

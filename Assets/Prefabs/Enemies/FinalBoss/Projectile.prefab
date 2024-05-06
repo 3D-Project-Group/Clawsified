@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 3
   dmgRadius: 4
-  dmgMultiplier: 5
+  dmgMultiplier: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

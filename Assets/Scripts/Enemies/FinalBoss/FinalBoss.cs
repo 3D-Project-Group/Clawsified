@@ -21,7 +21,7 @@ public class FinalBoss : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private float bossMaxHp;
-    [SerializeField] private float bossCurrentHp;
+    public float bossCurrentHp;
     [SerializeField] private float speed;
 
     [Header("States")]

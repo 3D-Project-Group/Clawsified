@@ -90,13 +90,13 @@ public class CameraAI : MonoBehaviour
         Vector3 rightDir = Quaternion.Euler(0, visAngle / 2, 0) * forwardDir;
 
         // Draw angle lines
-        Handles.color = Color.blue;
-        Handles.DrawLine(transform.position, transform.position + leftDir * visDist);
-        Handles.DrawLine(transform.position, transform.position + rightDir * visDist);
+        //Handles.color = Color.blue;
+        //Handles.DrawLine(transform.position, transform.position + leftDir * visDist);
+        //Handles.DrawLine(transform.position, transform.position + rightDir * visDist);
 
         // Draw arc
-        Handles.color = Color.blue;
-        Handles.DrawWireArc(transform.position, Vector3.up, leftDir, visAngle, visDist);
+        //Handles.color = Color.blue;
+        //Handles.DrawWireArc(transform.position, Vector3.up, leftDir, visAngle, visDist);
 
         // Draw Call Radius Sphere
         Gizmos.color = Color.green;

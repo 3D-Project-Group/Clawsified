@@ -26,6 +26,7 @@ public class MenusController : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadSceneAsync(sceneName);
     }
 
@@ -33,11 +34,11 @@ public class MenusController : MonoBehaviour
     {
         if (GameInfo.Fighting_Boss)
         {
-            SceneManager.LoadScene("BossScene");
+            LoadScene("BossScene");
         }
         else
         {
-            SceneManager.LoadScene("Lab");
+            LoadScene("Lab");
         }
     }
 

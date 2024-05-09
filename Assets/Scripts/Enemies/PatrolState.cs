@@ -49,26 +49,6 @@ public class PatrolState : EnemyState
 
     public override void Update()
     {
-        if (agent.remainingDistance < 1)
-        {
-            //Update waypoint
-            if (currentIndex >= waypoints.Count - 1)
-                currentIndex = 0;
-            else
-                currentIndex++;
-
-            //Set the direction to the next waypoint
-            agent.ResetPath();
-            agent.SetDestination(waypoints.ElementAt(currentIndex).transform.position);
-
-            //Calculate the direction
-            Vector3 direction = waypoints.ElementAt(currentIndex).transform.position - npc.transform.position;
-            //Get the angle
-            var rotation = Quaternion.LookRotation(direction);
-            //Rotate towards next waypoint
-            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * rotationSpeed);
-        }
-
         //If can see the player and there's nothing blocking the vision
         if (CanSeePlayer() && !Physics.Raycast(npc.transform.position, player.position, Vector3.Distance(npc.transform.position, player.transform.position), obstructionMask))
         {
@@ -91,6 +71,28 @@ public class PatrolState : EnemyState
         else if (timeStaring > 0)
         {
             timeStaring -= Time.deltaTime;
+        }
+        else
+        {
+            if (agent.remainingDistance < 1)
+            {
+                //Update waypoint
+                if (currentIndex >= waypoints.Count - 1)
+                    currentIndex = 0;
+                else
+                    currentIndex++;
+
+                //Set the direction to the next waypoint
+                agent.ResetPath();
+                agent.SetDestination(waypoints.ElementAt(currentIndex).transform.position);
+
+                //Calculate the direction
+                Vector3 direction = waypoints.ElementAt(currentIndex).transform.position - npc.transform.position;
+                //Get the angle
+                var rotation = Quaternion.LookRotation(direction);
+                //Rotate towards next waypoint
+                npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+            }
         }
     }
 

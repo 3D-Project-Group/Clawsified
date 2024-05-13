@@ -10,6 +10,7 @@ public class PatrolState : EnemyState
 
     private int currentIndex = -1; // current waypoint
     private int rotationSpeed = 5;
+    private float minDistanceOfPlayer = 5;
 
     [Header("Staring")]
     private float timeStaring = 0;
@@ -93,6 +94,16 @@ public class PatrolState : EnemyState
                 //Rotate towards next waypoint
                 npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, rotation, Time.deltaTime * rotationSpeed);
             }
+            CheckPlayerDistance();
+        }
+    }
+
+    private void CheckPlayerDistance()
+    {
+        if (Vector3.Distance(player.transform.position, npc.transform.position) <= minDistanceOfPlayer)
+        {
+            nextState = new PursueState(npc, agent, player, waypoints, obstructionMask, groundLayer);
+            stage = EVENT.EXIT;
         }
     }
 

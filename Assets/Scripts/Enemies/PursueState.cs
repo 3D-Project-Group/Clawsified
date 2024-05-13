@@ -8,6 +8,7 @@ public class PursueState : EnemyState
     EnemyType enemyType;
 
     private int rotationSpeed = 5;
+    private float minDistanceOfPlayer = 5;
 
     [Header("Stamina Control")]
     private float currentStamina = 5f;
@@ -60,7 +61,7 @@ public class PursueState : EnemyState
             else
             {
                 //If can't see the player starts Random patrolling
-                if (!CanSeePlayer())
+                if (!CanSeePlayer() && Vector3.Distance(npc.transform.position, player.position) > minDistanceOfPlayer)
                 {
                     nextState = new RandomPatrolState(npc, agent, player, waypoints, obstructionMask, groundLayer);
                     stage = EVENT.EXIT;

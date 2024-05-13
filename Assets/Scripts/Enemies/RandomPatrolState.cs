@@ -14,6 +14,7 @@ public class RandomPatrolState : EnemyState
     public float walkPointRange = 8;
 
     private float timer;
+    private float minDistanceOfPlayer = 5;
 
     public RandomPatrolState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
         : base(_npc, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
@@ -58,6 +59,7 @@ public class RandomPatrolState : EnemyState
         }
         else if (timer > 0)
         {
+            CheckPlayerDistance();
             //Get a random point
             if (!walkPointSet) SearchWalkPoint();
 
@@ -87,6 +89,15 @@ public class RandomPatrolState : EnemyState
         else
         {
             nextState = new PatrolState(npc, agent, player, waypoints, obstructionMask, groundLayer);
+            stage = EVENT.EXIT;
+        }
+    }
+
+    private void CheckPlayerDistance()
+    {
+        if (Vector3.Distance(player.transform.position, npc.transform.position) <= minDistanceOfPlayer)
+        {
+            nextState = new PursueState(npc, agent, player, waypoints, obstructionMask, groundLayer);
             stage = EVENT.EXIT;
         }
     }

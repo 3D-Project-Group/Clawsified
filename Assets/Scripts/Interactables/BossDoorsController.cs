@@ -12,7 +12,7 @@ public class BossDoorsController : MonoBehaviour
         bool allPressed = true;
         foreach (GameObject button in buttons)
         {
-            if(!button.GetComponent<BossDoorsButton>().pressed)
+            if(!button.GetComponent<BossDoorsButton>().activate)
                 allPressed = false;
         }
 

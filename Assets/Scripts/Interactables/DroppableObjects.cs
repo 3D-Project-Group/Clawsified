@@ -5,7 +5,6 @@ public class DroppableObjects : Interact
     private enum ThrowDirection { LEFT, RIGHT, FRONT, BACK }
 
     [Header("Components")]
-    private bool activate = true;
     private Rigidbody rb;
     [SerializeField] private ThrowDirection direction;
     [SerializeField] private LayerMask enemyLayer;

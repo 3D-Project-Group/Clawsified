@@ -2067,6 +2067,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83957651}
   m_CullTransparentMesh: 1
+--- !u!95 &86162169 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6456613114344819229, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 1541824037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &110857636
 GameObject:
   m_ObjectHideFlags: 0
@@ -17636,6 +17641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d954c33c9ca275944a1d077023bd4ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionAnimator: {fileID: 86162169}
 --- !u!65 &1122710913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23199,10 +23205,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 13363763755836870, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 176659090683341824, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -109.212036
@@ -23295,10 +23297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game UI
       objectReference: {fileID: 0}
-    - target: {fileID: 3235839166505371123, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 2479433780682659968, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: transitionAnimator
+      value: 
+      objectReference: {fileID: 86162169}
     - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 5
@@ -23341,6 +23343,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4792092363889771923, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293201193520247813, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293201193520247813, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+      propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

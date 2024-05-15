@@ -17,7 +17,6 @@ public class LoadingScreen : MonoBehaviour
 
         while (!operation.isDone)
         {
-            print(operation.progress.ToString() + " || Operation Progress");
             float progressValue = Mathf.Clamp01(operation.progress);
             progressBar.value = progressValue;
 

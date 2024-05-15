@@ -14,7 +14,7 @@ public class MenusController : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;    
-        Cursor.visible = false;    
+        Cursor.visible = true;    
     }
 
     void Update()

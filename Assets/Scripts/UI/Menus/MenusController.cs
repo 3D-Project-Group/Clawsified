@@ -19,7 +19,7 @@ public class MenusController : MonoBehaviour
 
     void Update()
     {
-        if(waitingForClick && Input.anyKeyDown)
+        if(startScreen != null && waitingForClick && Input.anyKeyDown)
         {
             waitingForClick = false;
             LoadMenu(startScreen, menusScreen);
@@ -44,7 +44,9 @@ public class MenusController : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadSceneAsync(sceneName);
+        GameInfo.SceneToLoad = sceneName;
+        GameInfo.SceneToUnload = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("LoadingScreen");
     }
 
     public void Revive()

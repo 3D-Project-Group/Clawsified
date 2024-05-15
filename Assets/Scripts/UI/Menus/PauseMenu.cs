@@ -25,6 +25,8 @@ public class PauseMenu : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadSceneAsync(sceneName);
+        GameInfo.SceneToLoad = sceneName;
+        GameInfo.SceneToUnload = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("LoadingScreen");
     }
 }

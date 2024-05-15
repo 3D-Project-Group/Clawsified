@@ -172,6 +172,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1205735520806367846, guid: d087141f20d557f4484e4287bfe4a5e2, type: 3}
+      propertyPath: m_Constraints
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2607514801629966020, guid: d087141f20d557f4484e4287bfe4a5e2, type: 3}
       propertyPath: m_BaseOffset
       value: 0

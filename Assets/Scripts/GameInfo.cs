@@ -2,6 +2,10 @@ public class GameInfo
 {
     public static bool Fighting_Boss = false;
 
+    //Load Scene Control
+    public static string SceneToLoad;
+    public static string SceneToUnload;
+
     //Video Control
     public static int currentResolutionIndex = -1;
     public static int currentFpsLimitIndex = 3;

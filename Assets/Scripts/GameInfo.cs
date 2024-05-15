@@ -10,4 +10,8 @@ public class GameInfo
     //Volume Control
     public static float currentMasterVolume = 0;
     public static float currentMusicVolume = 0;
+
+    public static bool showingPopup = false;
+    //Tutorial popups
+    public static bool bossButtonsTutorial = false;
 }

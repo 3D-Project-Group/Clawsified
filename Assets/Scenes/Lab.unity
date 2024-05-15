@@ -1933,6 +1933,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79346584}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &81265445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1510160348069598776, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 1541824037}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &83957651
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,6 +3062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 442655723}
   player: {fileID: 675448582}
+  activate: 1
   memoryPuzzle: {fileID: 557971979}
   UIToHide:
   - {fileID: 1541824041}
@@ -4109,7 +4121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 1242010255}
   player: {fileID: 0}
+  activate: 1
   tubeID: 2
+  tubeController: {fileID: 0}
 --- !u!65 &240499161
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6652,6 +6666,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389903968}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &391175671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391175673}
+  - component: {fileID: 391175672}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &391175672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391175671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef447aa17de0a940bd0b99d23dd2680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpObj: {fileID: 891698947}
+  popUpCurrentImg: {fileID: 81265445}
+  popUpTitle: {fileID: 700986999}
+  popUpText: {fileID: 1312931971}
+  popUpImages:
+  - {fileID: 21300000, guid: ea4ff237f701e5145b65a14e6c16577b, type: 3}
+  - {fileID: 21300000, guid: 6f682491c78019941bda7c52b322ca1b, type: 3}
+--- !u!4 &391175673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391175671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 552.4169, y: 220.69138, z: 71.39468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &392116193
 GameObject:
   m_ObjectHideFlags: 0
@@ -11397,6 +11462,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700494794}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &700986999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3739589398203669118, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 1541824037}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &704756371
 GameObject:
   m_ObjectHideFlags: 0
@@ -13833,6 +13909,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9342ad4931dd3964c9e968f02b96e60b, type: 3}
+--- !u!1 &891698947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7147165272195241654, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+  m_PrefabInstance: {fileID: 1541824037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &894748566
 GameObject:
   m_ObjectHideFlags: 0
@@ -14048,7 +14129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 369170040}
   player: {fileID: 0}
+  activate: 1
   tubeID: 1
+  tubeController: {fileID: 0}
 --- !u!65 &910316108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16249,7 +16332,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 870706563}
   player: {fileID: 0}
-  pressed: 0
+  activate: 1
+  tutorialTitle: Boss Buttons
+  tutorialText: To unlock the boss room, you need to press 3 different buttons that
+    are at the end of each section of the map, after pressing all them, the doors
+    of the room will open, and you will be able to enter in the boss room.
+  tutorialImgIndex: 1
 --- !u!1 &1066717015
 GameObject:
   m_ObjectHideFlags: 0
@@ -17593,7 +17681,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 250315731}
   player: {fileID: 0}
-  pressed: 0
+  activate: 1
+  tutorialTitle: Boss Buttons
+  tutorialText: To unlock the boss room, you need to press 3 different buttons that
+    are at the end of each section of the map, after pressing all them, the doors
+    of the room will open, and you will be able to enter in the boss room.
+  tutorialImgIndex: 1
 --- !u!1 &1122710910
 GameObject:
   m_ObjectHideFlags: 0
@@ -18327,7 +18420,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 1132590621}
   player: {fileID: 0}
+  activate: 1
   tubeID: 0
+  tubeController: {fileID: 0}
 --- !u!65 &1178639532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19887,7 +19982,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 1883171358}
   player: {fileID: 0}
+  activate: 1
   tubeID: 4
+  tubeController: {fileID: 0}
 --- !u!65 &1270415162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20930,11 +21027,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307287625}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1310101119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 437149715900643596, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
+--- !u!114 &1312931971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3670703966409554967, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
   m_PrefabInstance: {fileID: 1541824037}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1323769177
 GameObject:
   m_ObjectHideFlags: 0
@@ -22715,7 +22818,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 1023650400}
   player: {fileID: 0}
+  activate: 1
   tubeID: 5
+  tubeController: {fileID: 0}
 --- !u!65 &1520829053
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23205,14 +23310,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 176659090683341824, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -109.212036
-      objectReference: {fileID: 0}
-    - target: {fileID: 176659090683341824, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 989.1907
-      objectReference: {fileID: 0}
     - target: {fileID: 235580978286764054, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -23297,42 +23394,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game UI
       objectReference: {fileID: 0}
-    - target: {fileID: 2479433780682659968, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: transitionAnimator
-      value: 
-      objectReference: {fileID: 86162169}
-    - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
-      value: 
-      objectReference: {fileID: 1310101119}
-    - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494194574875716738, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4394423529087704489, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -23343,14 +23404,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4792092363889771923, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5293201193520247813, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5293201193520247813, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-      propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -25181,7 +25234,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 1798565463}
   player: {fileID: 0}
+  activate: 1
   tubeID: 2
+  tubeController: {fileID: 0}
 --- !u!65 &1667906704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27387,7 +27442,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 636948019}
   player: {fileID: 0}
+  activate: 1
   tubeID: 3
+  tubeController: {fileID: 0}
 --- !u!65 &1818550582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29085,7 +29142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 781811732}
   player: {fileID: 0}
+  activate: 1
   tubeID: 1
+  tubeController: {fileID: 0}
 --- !u!65 &1920080262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30662,7 +30721,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 896340060}
   player: {fileID: 0}
-  pressed: 0
+  activate: 1
+  tutorialTitle: Boss Buttons
+  tutorialText: To unlock the boss room, you need to press 3 different buttons that
+    are at the end of each section of the map, after pressing all them, the doors
+    of the room will open, and you will be able to enter in the boss room.
+  tutorialImgIndex: 1
 --- !u!1 &2075198337
 GameObject:
   m_ObjectHideFlags: 0
@@ -32601,7 +32665,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableImage: {fileID: 807566885}
   player: {fileID: 0}
+  activate: 1
   tubeID: 0
+  tubeController: {fileID: 0}
 --- !u!65 &2119540006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32768,6 +32834,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 7940149476383349926}
+    - target: {fileID: 6235142287310359203, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
+      propertyPath: layersToCollide.m_Bits
+      value: 8584
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33491,6 +33561,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 391175673}
   - {fileID: 2126287331}
   - {fileID: 1541824037}
   - {fileID: 1413077555}

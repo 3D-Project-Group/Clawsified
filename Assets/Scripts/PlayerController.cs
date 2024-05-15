@@ -99,9 +99,18 @@ public class PlayerController : MonoBehaviour
         {
             if(cheatList != null && Input.GetKeyDown(KeyCode.J))
             {
-                cheatList.SetActive(!cheatList.activeSelf);
-                Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
-                Cursor.visible = !Cursor.visible;
+                if (cheatList.activeSelf)
+                {
+                    cheatList.SetActive(false);
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+                else
+                {
+                    cheatList.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.activeSelf)

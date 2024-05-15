@@ -11,6 +11,12 @@ public class MenusController : MonoBehaviour
     [SerializeField]private GameObject startScreen;
     [SerializeField]private GameObject menusScreen;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;    
+        Cursor.visible = false;    
+    }
+
     void Update()
     {
         if(waitingForClick && Input.anyKeyDown)

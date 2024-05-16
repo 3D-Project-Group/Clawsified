@@ -58,6 +58,7 @@ public class VideoSettings : MonoBehaviour
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = filteredResolutions[resolutionIndex];
+        GameInfo.currentResolutionIndex = resolutionIndex;
         Screen.SetResolution(resolution.width, resolution.height, GameInfo.fullScreen);
     }
 

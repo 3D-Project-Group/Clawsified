@@ -14,11 +14,13 @@ public class AudioSettings : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
+        print("Master: " + GameInfo.currentMasterVolume);
         GameInfo.currentMasterVolume = volume;
     }
 
     public void SetMusicVolume(float volume)
     {
+        print("Music: " + GameInfo.currentMusicVolume);
         GameInfo.currentMusicVolume = volume;
     }
 }

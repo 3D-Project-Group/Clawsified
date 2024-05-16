@@ -23,7 +23,7 @@ public class LoadingScreen : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         SceneManager.UnloadSceneAsync(GameInfo.SceneToUnload); 
     }

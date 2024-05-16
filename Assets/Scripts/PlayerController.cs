@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
     void UIControl()
     {
         cheeseCooldownSlider.value = cheeseCooldownCurrentValue;
-        cheeseText.text = "x" + amountOfCheese.ToString();
+        cheeseText.text = amountOfCheese.ToString();
 
         if(playerHpSlider != null)
         {

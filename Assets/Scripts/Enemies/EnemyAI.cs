@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
     public EnemyState currentState;
     public Transform player;
+    public Animator anim;
     public LayerMask obstructionMask, groundLayer;
 
     [Header("Attraction")]
@@ -43,8 +45,9 @@ public class EnemyAI : MonoBehaviour
         waypoints.OrderBy(waypoint => waypoint.name).ToList(); //Organize it
 
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        currentState = new IdleState(gameObject, agent, player, waypoints, obstructionMask, groundLayer);
+        currentState = new IdleState(gameObject, anim, agent, player, waypoints, obstructionMask, groundLayer);
         currentState.obstructionMask = obstructionMask;
         enemiesList = FindObjectsOfType<EnemyAI>().ToList();
     }
@@ -68,7 +71,7 @@ public class EnemyAI : MonoBehaviour
     void DeactivateAttraction()
     {
         beingAtracted = false;
-        currentState = new RandomPatrolState(gameObject, agent, player, waypoints, obstructionMask, groundLayer);
+        currentState = new RandomPatrolState(gameObject, anim, agent, player, waypoints, obstructionMask, groundLayer);
     }
 
     private void CallOtherEnemies()
@@ -85,7 +88,7 @@ public class EnemyAI : MonoBehaviour
             foreach (EnemyAI enemy in calledEnemiesList)
             {
                 enemy.calledEnemiesList = this.calledEnemiesList;
-                enemy.currentState = new PursueState(enemy.gameObject, enemy.agent, enemy.player, enemy.waypoints, enemy.obstructionMask, enemy.groundLayer);
+                enemy.currentState = new PursueState(enemy.gameObject, enemy.anim, enemy.agent, enemy.player, enemy.waypoints, enemy.obstructionMask, enemy.groundLayer);
             }
         }
     }

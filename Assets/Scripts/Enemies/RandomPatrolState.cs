@@ -6,7 +6,7 @@ using static EnemyAI;
 public class RandomPatrolState : EnemyState
 {
     EnemyType enemyType;
-    private int rotationSpeed = 5; 
+    private int rotationSpeed = 10; 
 
     [Header("Walkpoint Control")]
     public Vector3 walkPoint;
@@ -16,8 +16,8 @@ public class RandomPatrolState : EnemyState
     private float timer;
     private float minDistanceOfPlayer = 5;
 
-    public RandomPatrolState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
-        : base(_npc, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
+    public RandomPatrolState(GameObject _npc, Animator _anim, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
+        : base(_npc, _anim, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
     {
         name = STATE.RANDOMPATROL;
         enemyType = npc.GetComponent<EnemyAI>().enemyType;
@@ -51,10 +51,16 @@ public class RandomPatrolState : EnemyState
 
     public override void Update()
     {
+        if (agent.velocity.sqrMagnitude > 0)
+        {
+            anim.SetBool("Walking", true);
+            anim.SetBool("Running", false);
+        }
+        
         //If can see the player and there's nothing blocking the vision starts pursuing
         if (CanSeePlayer() && !Physics.Raycast(npc.transform.position, player.position, Vector3.Distance(npc.transform.position, player.transform.position), obstructionMask))
         {
-            nextState = new PursueState(npc, agent, player, waypoints, obstructionMask, groundLayer);
+            nextState = new PursueState(npc, anim, agent, player, waypoints, obstructionMask, groundLayer);
             stage = EVENT.EXIT;
         }
         else if (timer > 0)
@@ -88,7 +94,7 @@ public class RandomPatrolState : EnemyState
         }
         else
         {
-            nextState = new PatrolState(npc, agent, player, waypoints, obstructionMask, groundLayer);
+            nextState = new PatrolState(npc, anim, agent, player, waypoints, obstructionMask, groundLayer);
             stage = EVENT.EXIT;
         }
     }
@@ -97,7 +103,7 @@ public class RandomPatrolState : EnemyState
     {
         if (Vector3.Distance(player.transform.position, npc.transform.position) <= minDistanceOfPlayer)
         {
-            nextState = new PursueState(npc, agent, player, waypoints, obstructionMask, groundLayer);
+            nextState = new PursueState(npc, anim, agent, player, waypoints, obstructionMask, groundLayer);
             stage = EVENT.EXIT;
         }
     }

@@ -9,15 +9,15 @@ public class PatrolState : EnemyState
     EnemyType enemyType;
 
     private int currentIndex = -1; // current waypoint
-    private int rotationSpeed = 5;
+    private int rotationSpeed = 10;
     private float minDistanceOfPlayer = 5;
 
     [Header("Staring")]
     private float timeStaring = 0;
     private float maxTimeStaring = 3;
 
-    public PatrolState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
-        : base(_npc, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
+    public PatrolState(GameObject _npc, Animator _anim, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
+        : base(_npc, _anim, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
     {
         name = STATE.PATROL;
         enemyType = npc.GetComponent<EnemyAI>().enemyType;
@@ -50,9 +50,17 @@ public class PatrolState : EnemyState
 
     public override void Update()
     {
+        if (agent.velocity.sqrMagnitude > 0)
+        {
+            anim.SetBool("Walking", true);
+            anim.SetBool("Running", false);
+        }
+        
         //If can see the player and there's nothing blocking the vision
         if (CanSeePlayer() && !Physics.Raycast(npc.transform.position, player.position, Vector3.Distance(npc.transform.position, player.transform.position), obstructionMask))
         {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Running", false);
             //Reset the path, then we can set a new direction for it
             agent.ResetPath();
 
@@ -65,7 +73,7 @@ public class PatrolState : EnemyState
 
             if(timeStaring >= maxTimeStaring)
             {
-                nextState = new PursueState(npc, agent, player, waypoints, obstructionMask, groundLayer);
+                nextState = new PursueState(npc, anim, agent, player, waypoints, obstructionMask, groundLayer);
                 stage = EVENT.EXIT;
             }
         }
@@ -75,6 +83,8 @@ public class PatrolState : EnemyState
         }
         else
         {
+            anim.SetBool("Walking", true);
+            anim.SetBool("Running", false);
             if (agent.remainingDistance < 1)
             {
                 //Update waypoint
@@ -102,7 +112,7 @@ public class PatrolState : EnemyState
     {
         if (Vector3.Distance(player.transform.position, npc.transform.position) <= minDistanceOfPlayer)
         {
-            nextState = new PursueState(npc, agent, player, waypoints, obstructionMask, groundLayer);
+            nextState = new PursueState(npc, anim, agent, player, waypoints, obstructionMask, groundLayer);
             stage = EVENT.EXIT;
         }
     }

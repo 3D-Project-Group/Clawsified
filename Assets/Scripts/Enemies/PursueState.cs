@@ -7,7 +7,7 @@ public class PursueState : EnemyState
 {
     EnemyType enemyType;
 
-    private int rotationSpeed = 5;
+    private int rotationSpeed = 10;
     private float minDistanceOfPlayer = 5;
 
     [Header("Stamina Control")]
@@ -15,8 +15,8 @@ public class PursueState : EnemyState
     private float maxStamina = 5f;
     private bool isResting = false;
 
-    public PursueState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
-        : base(_npc, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
+    public PursueState(GameObject _npc, Animator _anim, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
+        : base(_npc, _anim, _agent, _player, _waypoints, _obstructionMask, _groundLayer)
     {
         name = STATE.PURSUE;
         enemyType = npc.GetComponent<EnemyAI>().enemyType;
@@ -49,6 +49,9 @@ public class PursueState : EnemyState
 
     public override void Update()
     {
+        anim.SetBool("Walking", false);
+        anim.SetBool("Running", true);
+        
         agent.SetDestination(player.position);
 
         if (agent.hasPath)
@@ -63,7 +66,7 @@ public class PursueState : EnemyState
                 //If can't see the player starts Random patrolling
                 if (!CanSeePlayer() && Vector3.Distance(npc.transform.position, player.position) > minDistanceOfPlayer)
                 {
-                    nextState = new RandomPatrolState(npc, agent, player, waypoints, obstructionMask, groundLayer);
+                    nextState = new RandomPatrolState(npc, anim, agent, player, waypoints, obstructionMask, groundLayer);
                     stage = EVENT.EXIT;
                 }
                 else

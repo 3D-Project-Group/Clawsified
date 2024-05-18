@@ -26,6 +26,7 @@ public class EnemyState
     protected Transform player;
     protected EnemyState nextState;
     protected NavMeshAgent agent;
+    protected Animator anim;
     public PlayerController playerController;
 
     [Header("Pursue")]
@@ -36,9 +37,10 @@ public class EnemyState
     [Header("Patrol")]
     public List<GameObject> waypoints = new List<GameObject>();
 
-    public EnemyState(GameObject _npc, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
+    public EnemyState(GameObject _npc, Animator _anim, NavMeshAgent _agent, Transform _player, List<GameObject> _waypoints, LayerMask _obstructionMask, LayerMask _groundLayer)
     {
         npc = _npc;
+        anim = _anim;
         agent = _agent;
         player = _player;
         waypoints = _waypoints;

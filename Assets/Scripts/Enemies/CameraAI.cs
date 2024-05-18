@@ -68,7 +68,7 @@ public class CameraAI : MonoBehaviour
             foreach (EnemyAI enemy in calledEnemiesList)
             {
                 enemy.calledEnemiesList = this.calledEnemiesList;
-                enemy.currentState = new PursueState(enemy.gameObject, enemy.agent, enemy.player, enemy.waypoints, enemy.obstructionMask, enemy.groundLayer);
+                enemy.currentState = new PursueState(enemy.gameObject, enemy.anim, enemy.agent, enemy.player, enemy.waypoints, enemy.obstructionMask, enemy.groundLayer);
             }
         }
     }

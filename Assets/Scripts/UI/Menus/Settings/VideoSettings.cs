@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class VideoSettings : MonoBehaviour
 {
+    [Header("Screen Size Control")]
+    [SerializeField] private Button fullScreenButton;
+    [SerializeField] private Button windowedButton;
+    
     [SerializeField] private TMP_Dropdown resolutionDropdown;
-    [SerializeField] private TMP_Dropdown windowModeDropdown;
+    [SerializeField] private TMP_Dropdown graphicsDropdown;
     [SerializeField] private TMP_Dropdown fpsLimitDropdown;
 
     private Resolution[] resolutions;
@@ -34,7 +38,7 @@ public class VideoSettings : MonoBehaviour
 
         foreach(Resolution resolution in filteredResolutions)
         {
-            string resolutionOption = $"{resolution.width}x{resolution.height} {resolution.refreshRateRatio.value}Hz";
+            string resolutionOption = $"{resolution.width}x{resolution.height}";
             options.Add(resolutionOption);
             if (resolution.width == Screen.width && resolution.height == Screen.height && GameInfo.currentResolutionIndex == -1)
             {
@@ -48,21 +52,35 @@ public class VideoSettings : MonoBehaviour
 
         //Fps limit dropdown Update
         fpsLimitDropdown.value = GameInfo.currentFpsLimitIndex;
-
-        //Window Mode dropdown Update
+        
+        //Change Buttons Colors
         if (GameInfo.fullScreen)
-            windowModeDropdown.value = 0;
+        {
+            fullScreenButton.interactable = false;
+            windowedButton.interactable = true;
+            
+            //Set Colors to the texts
+            fullScreenButton.gameObject.GetComponentInChildren<TMP_Text>().color = Color.white;
+            windowedButton.gameObject.GetComponentInChildren<TMP_Text>().color = Color.black;
+        }
         else
-            windowModeDropdown.value = 1;
+        {
+            fullScreenButton.interactable = true;
+            windowedButton.interactable = false;
+            
+            //Set Colors to the texts
+            fullScreenButton.gameObject.GetComponentInChildren<TMP_Text>().color = Color.black;
+            windowedButton.gameObject.GetComponentInChildren<TMP_Text>().color = Color.white;
+        }
     }
-    public void SetResolution(int resolutionIndex)
+    void SetResolution(int resolutionIndex)
     {
         Resolution resolution = filteredResolutions[resolutionIndex];
         GameInfo.currentResolutionIndex = resolutionIndex;
         Screen.SetResolution(resolution.width, resolution.height, GameInfo.fullScreen);
     }
 
-    public void SetFpsLimit(int fpsLimitIndex)
+    void SetFpsLimit(int fpsLimitIndex)
     {
         GameInfo.currentFpsLimitIndex = fpsLimitIndex;
         switch (fpsLimitIndex)
@@ -82,7 +100,7 @@ public class VideoSettings : MonoBehaviour
         }
     }
 
-    public void SetWindowMode(int windowModeIndex)
+    void SetWindowMode(int windowModeIndex)
     {
         if(windowModeIndex == 0)
         {
@@ -94,5 +112,77 @@ public class VideoSettings : MonoBehaviour
             Screen.fullScreen = false;
             GameInfo.fullScreen = false;
         }
+    }
+
+    public void ActivateButton(Button btn)
+    {
+        btn.interactable = true;
+        btn.GetComponentInChildren<TMP_Text>().color = Color.black;
+    }
+    public void DeactivateButton(Button btn)
+    {
+        btn.interactable = false;
+        btn.GetComponentInChildren<TMP_Text>().color = Color.white;
+    }
+
+    //Resolution
+    public void NextResolution()
+    {
+        resolutionDropdown.value = NextDropdownValue(resolutionDropdown.value, resolutionDropdown.options.Count - 1);
+        SetResolution(resolutionDropdown.value);
+    }
+    
+    public void LastResolution()
+    {
+        resolutionDropdown.value = LastDropdownValue(resolutionDropdown.value, resolutionDropdown.options.Count - 1);
+        SetResolution(resolutionDropdown.value);
+    }
+    
+    //Fps
+    public void NextFps()
+    {
+        fpsLimitDropdown.value = NextDropdownValue(fpsLimitDropdown.value, fpsLimitDropdown.options.Count - 1);
+        SetFpsLimit(fpsLimitDropdown.value);
+    }
+    
+    public void LastFps()
+    {
+        fpsLimitDropdown.value = NextDropdownValue(fpsLimitDropdown.value, fpsLimitDropdown.options.Count - 1);
+        SetFpsLimit(fpsLimitDropdown.value);
+    }
+    
+    //Graphics
+    public void NextGraphic()
+    {
+        graphicsDropdown.value = NextDropdownValue(graphicsDropdown.value, graphicsDropdown.options.Count - 1);
+        //SetGraphics(graphicsDropdown.value);
+    }
+    
+    public void LastGraphic()
+    {
+        graphicsDropdown.value = NextDropdownValue(graphicsDropdown.value, graphicsDropdown.options.Count - 1);
+        //SetGraphics(graphicsDropdown.value);
+    }
+    
+    //Auxiliary Functions
+    int NextDropdownValue(int value, int maxValue)
+    {
+        value++;
+        if (value > maxValue)
+        {
+            value = 0;
+        }
+
+        return value;
+    }
+    int LastDropdownValue(int value, int maxValue)
+    {
+        value--;
+        if (value < 0)
+        {
+            value = maxValue;
+        }
+
+        return value;
     }
 }

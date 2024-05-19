@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,14 +19,15 @@ public class VideoSettings : MonoBehaviour
 
     void Start()
     {
-        //Resolution Control Start
+        #region Resolution Control
+        // Do not change this part plsss, I created this region to say that without it, nothing works on the resolution part :)
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
 
         resolutionDropdown.ClearOptions();
 
+        //Filter Resolutions According to the refreshing ratio of the monitor
         float currentRefreshRateRatio = (float)Screen.currentResolution.refreshRateRatio.value;
-
         foreach(Resolution resolution in resolutions)
         {
             if (resolution.refreshRateRatio.value == currentRefreshRateRatio)
@@ -33,9 +35,8 @@ public class VideoSettings : MonoBehaviour
                 filteredResolutions.Add(resolution);
             }
         }
-
+        //Update the options of screen size
         List<string> options = new List<string>();
-
         foreach(Resolution resolution in filteredResolutions)
         {
             string resolutionOption = $"{resolution.width}x{resolution.height}";
@@ -45,15 +46,20 @@ public class VideoSettings : MonoBehaviour
                 GameInfo.currentResolutionIndex = filteredResolutions.IndexOf(resolution);
             }
         }
-
+        //Add options and refresh to show the current
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = GameInfo.currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+        #endregion
+        
+        //Graphics Level
+        graphicsDropdown.AddOptions(QualitySettings.names.ToList());
+        graphicsDropdown.value = QualitySettings.GetQualityLevel();
 
         //Fps limit dropdown Update
         fpsLimitDropdown.value = GameInfo.currentFpsLimitIndex;
         
-        //Change Buttons Colors
+        //Change Buttons Colors according the the mode selected
         if (GameInfo.fullScreen)
         {
             fullScreenButton.interactable = false;
@@ -78,6 +84,10 @@ public class VideoSettings : MonoBehaviour
         Resolution resolution = filteredResolutions[resolutionIndex];
         GameInfo.currentResolutionIndex = resolutionIndex;
         Screen.SetResolution(resolution.width, resolution.height, GameInfo.fullScreen);
+    }
+    void SetGraphic(int graphicIndex)
+    {
+        QualitySettings.SetQualityLevel(graphicIndex);
     }
 
     void SetFpsLimit(int fpsLimitIndex)
@@ -114,17 +124,6 @@ public class VideoSettings : MonoBehaviour
         }
     }
 
-    public void ActivateButton(Button btn)
-    {
-        btn.interactable = true;
-        btn.GetComponentInChildren<TMP_Text>().color = Color.black;
-    }
-    public void DeactivateButton(Button btn)
-    {
-        btn.interactable = false;
-        btn.GetComponentInChildren<TMP_Text>().color = Color.white;
-    }
-
     //Resolution
     public void NextResolution()
     {
@@ -155,16 +154,28 @@ public class VideoSettings : MonoBehaviour
     public void NextGraphic()
     {
         graphicsDropdown.value = NextDropdownValue(graphicsDropdown.value, graphicsDropdown.options.Count - 1);
-        //SetGraphics(graphicsDropdown.value);
+        SetGraphic(graphicsDropdown.value);
     }
     
     public void LastGraphic()
     {
-        graphicsDropdown.value = NextDropdownValue(graphicsDropdown.value, graphicsDropdown.options.Count - 1);
-        //SetGraphics(graphicsDropdown.value);
+        graphicsDropdown.value = LastDropdownValue(graphicsDropdown.value, graphicsDropdown.options.Count - 1);
+        SetGraphic(graphicsDropdown.value);
     }
     
     //Auxiliary Functions
+    public void ActivateButton(Button btn)
+    {
+        btn.interactable = true;
+        btn.GetComponentInChildren<TMP_Text>().color = Color.black;
+    }
+    
+    public void DeactivateButton(Button btn)
+    {
+        btn.interactable = false;
+        btn.GetComponentInChildren<TMP_Text>().color = Color.white;
+    }
+    
     int NextDropdownValue(int value, int maxValue)
     {
         value++;

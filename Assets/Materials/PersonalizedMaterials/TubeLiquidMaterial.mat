@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: TubeLiquidMaterial
+  m_Shader: {fileID: 4800000, guid: d409f6ccdc0580e47ae58c3c230bbb5b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -85,7 +85,7 @@ Material:
     - _Velocity: 10
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.0012345314, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.36404657, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Tint: {r: 0.28813046, g: 0.07516552, b: 0.78113204, a: 1}
   m_BuildTextureStacks: []

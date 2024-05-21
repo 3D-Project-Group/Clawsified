@@ -33043,10 +33043,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 7940149476383349926}
-    - target: {fileID: 6235142287310359203, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
-      propertyPath: maxAngle
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -8,11 +8,16 @@ public class CamController : MonoBehaviour
 
     [Header("Cam Movement")]
     public bool canMoveCam = true;
+    [Space]
     [SerializeField] private float sensitivityX = 1f;
     [SerializeField] private float sensitivityY = 1f;
+    [Space]
     [SerializeField] private float maxDistance = 8f;
     [SerializeField] private float minDistance = 2f;
     [SerializeField] private float currentDistance = 8f;
+    [Space]
+    [SerializeField] private float maxAngle;
+    [Space]
     [SerializeField] private LayerMask layersToCollide;
 
     bool isColliding = true;
@@ -30,7 +35,8 @@ public class CamController : MonoBehaviour
 
             Vector3 rotation = transform.eulerAngles;
             rotation.z = 0;
-            if (rotation.x < 180) rotation.x = Mathf.Min(rotation.x, 80);
+            //Limit rotation
+            if (rotation.x < 180) rotation.x = Mathf.Min(rotation.x, maxAngle);
             else rotation.x = 0;
             transform.rotation = Quaternion.Euler(rotation);
 
@@ -48,6 +54,7 @@ public class CamController : MonoBehaviour
 
     void CheckCollision()
     {
+        //Throws a raycast to the target direction, if it hits smth then places the camera in the position of the hit
         if (Physics.Linecast(target.position, target.position - this.transform.forward * maxDistance, out RaycastHit hit))
         {
             if ((layersToCollide & 1 << hit.collider.gameObject.layer) == 1 << hit.collider.gameObject.layer)

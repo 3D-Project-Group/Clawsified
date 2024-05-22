@@ -21,9 +21,9 @@ public class DroppableObjects : Interact
 
     public override void Interaction()
     {
-        base.Interaction();
         if (activate)
         {
+            base.Interaction();
             //Add force according to the direction chosen
             switch (direction)
             {

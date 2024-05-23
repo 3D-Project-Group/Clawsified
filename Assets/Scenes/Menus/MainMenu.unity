@@ -4215,7 +4215,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 935496761}
         m_TargetAssemblyTypeName: VideoSettings, Assembly-CSharp
-        m_MethodName: SetResolution
+        m_MethodName: SetWindowMode
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4227,10 +4227,10 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 935496761}
         m_TargetAssemblyTypeName: VideoSettings, Assembly-CSharp
-        m_MethodName: DeactivateButton
+        m_MethodName: ActivateButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 589908709}
+          m_ObjectArgument: {fileID: 614280517}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4239,10 +4239,10 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 935496761}
         m_TargetAssemblyTypeName: VideoSettings, Assembly-CSharp
-        m_MethodName: ActivateButton
+        m_MethodName: DeactivateButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 614280517}
+          m_ObjectArgument: {fileID: 589908709}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4506,7 +4506,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 935496761}
         m_TargetAssemblyTypeName: VideoSettings, Assembly-CSharp
-        m_MethodName: SetResolution
+        m_MethodName: SetWindowMode
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4518,10 +4518,10 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 935496761}
         m_TargetAssemblyTypeName: VideoSettings, Assembly-CSharp
-        m_MethodName: DeactivateButton
+        m_MethodName: ActivateButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 614280517}
+          m_ObjectArgument: {fileID: 589908709}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4530,10 +4530,10 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 935496761}
         m_TargetAssemblyTypeName: VideoSettings, Assembly-CSharp
-        m_MethodName: ActivateButton
+        m_MethodName: DeactivateButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 589908709}
+          m_ObjectArgument: {fileID: 614280517}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0

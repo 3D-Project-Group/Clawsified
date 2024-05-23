@@ -20,35 +20,55 @@ public class VideoSettings : MonoBehaviour
     void Start()
     {
         #region Resolution Control
-        // Do not change this part plsss, I created this region to say that without it, nothing works on the resolution part :)
+        // Ensure to retain this region for the resolution functionality
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
 
         resolutionDropdown.ClearOptions();
 
-        //Filter Resolutions According to the refreshing ratio of the monitor
+        // Filter Resolutions According to the current refresh rate of the monitor
         float currentRefreshRateRatio = (float)Screen.currentResolution.refreshRateRatio.value;
-        foreach(Resolution resolution in resolutions)
+        foreach (Resolution resolution in resolutions)
         {
-            if (resolution.refreshRateRatio.value == currentRefreshRateRatio)
+            if ((float)resolution.refreshRateRatio.value == currentRefreshRateRatio)
             {
                 filteredResolutions.Add(resolution);
             }
         }
-        //Update the options of screen size
-        List<string> options = new List<string>();
-        foreach(Resolution resolution in filteredResolutions)
+
+        // Check if filteredResolutions is empty, fallback to default resolutions if needed
+        if (filteredResolutions.Count == 0)
         {
+            // Optionally log a warning if no resolutions match the refresh rate ratio
+            Debug.LogWarning("No resolutions found matching the current refresh rate ratio. Using all available resolutions.");
+            filteredResolutions.AddRange(resolutions);
+        }
+
+        // Update the options of screen size
+        List<string> options = new List<string>();
+        int currentResolutionIndex = -1;
+        for (int i = 0; i < filteredResolutions.Count; i++)
+        {
+            Resolution resolution = filteredResolutions[i];
             string resolutionOption = $"{resolution.width}x{resolution.height}";
             options.Add(resolutionOption);
-            if (resolution.width == Screen.width && resolution.height == Screen.height && GameInfo.currentResolutionIndex == -1)
+
+            if (resolution.width == Screen.width && resolution.height == Screen.height)
             {
-                GameInfo.currentResolutionIndex = filteredResolutions.IndexOf(resolution);
+                currentResolutionIndex = i;
             }
         }
-        //Add options and refresh to show the current
+
+        // Check if currentResolutionIndex was set, if not, set it to a default value
+        if (currentResolutionIndex == -1)
+        {
+            currentResolutionIndex = filteredResolutions.Count - 1;
+            Debug.LogWarning("Current resolution not found in the list. Defaulting to the first resolution.");
+        }
+
+        // Add options and refresh to show the current value
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = GameInfo.currentResolutionIndex;
+        resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
         #endregion
         
@@ -79,7 +99,7 @@ public class VideoSettings : MonoBehaviour
             windowedButton.gameObject.GetComponentInChildren<TMP_Text>().color = Color.white;
         }
     }
-    void SetResolution(int resolutionIndex)
+    public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = filteredResolutions[resolutionIndex];
         GameInfo.currentResolutionIndex = resolutionIndex;
@@ -110,17 +130,19 @@ public class VideoSettings : MonoBehaviour
         }
     }
 
-    void SetWindowMode(int windowModeIndex)
+    public void SetWindowMode(int windowModeIndex)
     {
         if(windowModeIndex == 0)
         {
             Screen.fullScreen = true;
             GameInfo.fullScreen = true;
+            Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, GameInfo.fullScreen);
         }
         else
         {
             Screen.fullScreen = false;
             GameInfo.fullScreen = false;
+            Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, GameInfo.fullScreen);
         }
     }
 

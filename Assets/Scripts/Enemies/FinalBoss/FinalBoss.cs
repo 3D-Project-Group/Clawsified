@@ -13,6 +13,7 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawn;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Animator anim;
 
     [Header("Movement")]
     [SerializeField] private Transform[] tubeSpawnPoint;
@@ -35,11 +36,13 @@ public class FinalBoss : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Slider bossHpSlider;
 
+    private Rigidbody projectileRb;
     
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         bossCurrentHp = bossMaxHp;
 
         //Set a tube for the boss
@@ -56,6 +59,7 @@ public class FinalBoss : MonoBehaviour
             case 0: 
                 if(!isWaiting)
                     StartCoroutine(Wait());
+                anim.SetFloat("CurrentState", currentState);
                 break;
             case 1:
                 if (isSwitching)
@@ -73,9 +77,10 @@ public class FinalBoss : MonoBehaviour
                         if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
                         {
                             rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+                            anim.SetFloat("CurrentState", currentState);
 
                             //If its close enough it stops
-                            if (Vector3.Distance(transform.position, tubeSpawnPoint[currentPipe].position) < 2)
+                            if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(tubeSpawnPoint[currentPipe].position.x, 0, tubeSpawnPoint[currentPipe].position.z)) < 2)
                             {
                                 goingIn = false;
                                 SwitchTube();
@@ -100,9 +105,10 @@ public class FinalBoss : MonoBehaviour
                         if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
                         {
                             rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+                            anim.SetFloat("CurrentState", currentState);
 
                             //If its close enough it stops
-                            if (Vector3.Distance(transform.position, tubeEndingPoint[currentPipe].position) < 1)
+                            if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(tubeEndingPoint[currentPipe].position.x, 0, tubeEndingPoint[currentPipe].position.z)) < 1)
                             {
                                 isSwitching = false;
                                 goingOut = false;
@@ -122,8 +128,12 @@ public class FinalBoss : MonoBehaviour
                 }
                 break;
             case 2:
-                if(!isAttacking)
-                    Attack();
+                if (!isAttacking)
+                {
+                    isAttacking = true;
+                    anim.SetBool("isAttacking", true);
+                    currentState = 2;
+                }
                 break;
             default:
                 //Randomize a new state
@@ -167,9 +177,6 @@ public class FinalBoss : MonoBehaviour
 
     void Attack()
     {
-        isAttacking = true;
-        currentState = 2;
-
         //Calculate player's direction
         Vector3 playerDirection = player.transform.position - transform.position;
         playerDirection.y = 0;
@@ -180,27 +187,30 @@ public class FinalBoss : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
 
         //Instantiate the projectile and throw it
-        GameObject projectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        ApplyForceOnProj(rb);
-
-        currentState = 0;
-        isAttacking = false;
+        GameObject projectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity, projectileSpawn.transform);
+        projectileRb = projectile.GetComponent<Rigidbody>();
+        projectileRb.useGravity = false;
     }
 
-    void ApplyForceOnProj(Rigidbody rb)
+    void ApplyForceOnProj()
     {
         float distance = Vector3.Distance(player.transform.position, transform.position);
         float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
         float horizontalSpeed = distance / time;
-        float projHeight = Mathf.Abs(player.transform.position.y - transform.position.y) + 1.0f; // Jump Height
+        float projHeight = Mathf.Abs(player.transform.position.y - transform.position.y) + 1.0f;
         float verticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * projHeight);
 
         Vector3 direction = (player.transform.position - transform.position).normalized;
         Vector3 horizontalVelocity = direction * horizontalSpeed;
         Vector3 verticalVelocity = Vector3.up * verticalSpeed;
 
-        rb.velocity = horizontalVelocity + verticalVelocity;
+        projectileRb.transform.parent = null;
+        projectileRb.velocity = horizontalVelocity + verticalVelocity;
+        projectileRb.useGravity = true;
+        
+        currentState = 0;
+        anim.SetBool("isAttacking", false);
+        isAttacking = false;
     }
 
     public void TakeDamage(float amount)
@@ -208,8 +218,13 @@ public class FinalBoss : MonoBehaviour
         bossCurrentHp -= amount;
         if(bossCurrentHp <= 0)
         {
-            //Call Win Scene 
-            SceneManager.LoadSceneAsync("WinMenu");
+            anim.SetBool("isDead", true);
         }
+    }
+
+    void CallWinMenu()
+    {
+        //Call Win Scene 
+        SceneManager.LoadSceneAsync("WinMenu");
     }
 }

@@ -20,11 +20,7 @@ public class Interact : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) < 2 && activate)
         {
             interactableImage.SetActive(true);
-            //Calculate the direction
-            Vector3 direction = Camera.main.transform.position - interactableImage.transform.position;
-            //Get the angle
-            var rotation = Quaternion.LookRotation(direction);
-            interactableImage.transform.rotation = Quaternion.Slerp(interactableImage.transform.rotation, rotation, 50);        }
+        }
         else interactableImage.SetActive(false);
     }
 }

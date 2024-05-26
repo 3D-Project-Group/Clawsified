@@ -759,17 +759,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159400685}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &194690272 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1892757360283100030, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-  m_PrefabInstance: {fileID: 1071185357401107741}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &211559869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,21 +3075,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1726247199}
     - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
-      propertyPath: rotationSpeed
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
-      propertyPath: staminaWheelBG
-      value: 
-      objectReference: {fileID: 1526446105}
-    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
       propertyPath: staminaWheelAnim
       value: 
       objectReference: {fileID: 1726247200}
-    - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
-      propertyPath: staminaWheelFill
-      value: 
-      objectReference: {fileID: 194690272}
     - target: {fileID: 5621488015317430784, guid: 53e6f2db9f7229241948ec501a76c45d, type: 3}
       propertyPath: cheeseCooldownSlider
       value: 
@@ -5092,6 +5069,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6244494686891250287, guid: bd8d141c59d7ee34d9a99a3ac7fe9c0b, type: 3}
+      propertyPath: visionCone
+      value: 
+      objectReference: {fileID: 1582880596}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5367,17 +5348,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4400031192609353513, guid: 569cb3fe8c078d54cb15fc7e2af77a04, type: 3}
   m_PrefabInstance: {fileID: 4805930184860303733}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1526446105 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6714052402425712516, guid: fce49a60e94a93a49b26e4b997267166, type: 3}
-  m_PrefabInstance: {fileID: 1071185357401107741}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1531771292
 GameObject:
   m_ObjectHideFlags: 0
@@ -5690,6 +5660,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556898116}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1582880596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7127324546907790264, guid: bd8d141c59d7ee34d9a99a3ac7fe9c0b, type: 3}
+  m_PrefabInstance: {fileID: 1316251952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1660170280
 GameObject:
   m_ObjectHideFlags: 0
@@ -6855,7 +6830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2144121177
 MonoBehaviour:
   m_ObjectHideFlags: 0

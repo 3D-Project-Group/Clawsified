@@ -249,15 +249,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.97
+      value: -45.85
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25199965
+      value: 0.11689464
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.199997
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 363dbc910996bda41a03369bb5975a57, type: 3}
       propertyPath: m_LocalRotation.w
@@ -370,11 +370,11 @@ MonoBehaviour:
   maxHp: 100
   currentHp: 100
   playerRestoreHpTime: 4
-  staminaLossMultiplier: 3
+  staminaLossMultiplier: 10
   normalSpeed: 3
   currentSpeed: 3
   runningSpeed: 8
-  rotationSpeed: 300
+  rotationSpeed: 500
   cheesePrefab: {fileID: 6582629836457918641, guid: 3b3508974c9a2434c87a80b4d2504265, type: 3}
   amountOfCheese: 2
   cheeseCooldown: 3

@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class CameraAI : MonoBehaviour
 {
-    Material objMaterial;
-    LineRenderer lineRenderer;
-
     public Transform player;
     public PlayerController playerController;
     public bool activated = true;
+    
+    [Header("Components")]
+    private Material objMaterial;
+    private LineRenderer lineRenderer;
 
     [Header("Enemy Calling")]
     [SerializeField] private float callRadius;
@@ -50,6 +51,7 @@ public class CameraAI : MonoBehaviour
             objMaterial.color = Color.black;
             lineRenderer.startColor = Color.green;
             lineRenderer.endColor = Color.green;
+            lineRenderer.enabled = false;
         }
     }
 

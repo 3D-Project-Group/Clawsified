@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108192975655065987}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 47.99527, y: 4.8685594, z: 70.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -120,14 +120,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8696b2bfd88911428ef107de0f4a90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerController: {fileID: 0}
+  activated: 1
   callRadius: 100
   enemyLayer:
     serializedVersion: 2
     m_Bits: 2048
   enemiesList: []
   calledEnemiesList: []
-  player: {fileID: 0}
-  activated: 1
   visDist: 20
   visAngle: 30
 --- !u!1 &872515971783643709
@@ -291,22 +292,15 @@ LineRenderer:
   m_Positions:
   - {x: 7.511631, y: 1, z: 3.0847654}
   - {x: 7.5224757, y: 1, z: 2.4723349}
-  - {x: 2.1810248, y: 1, z: 21.682024}
-  - {x: 3.343656, y: 1, z: 21.937017}
-  - {x: 4.7073746, y: 1, z: 22.204224}
-  - {x: 5.257928, y: 1, z: 22.297098}
-  - {x: 6.3122215, y: 1, z: 22.367416}
-  - {x: 6.989659, y: 1, z: 22.373768}
-  - {x: 8.140783, y: 1, z: 22.359762}
-  - {x: 9.059601, y: 1, z: 22.307531}
-  - {x: 9.629414, y: 1, z: 22.265915}
-  - {x: 9.99304, y: 1, z: 22.222153}
-  - {x: 10.396845, y: 1, z: 22.157608}
-  - {x: 10.768173, y: 1, z: 22.090876}
-  - {x: 11.1227, y: 1, z: 22.030432}
-  - {x: 11.522028, y: 1, z: 21.936317}
-  - {x: 12.017536, y: 1, z: 21.834867}
-  - {x: 12.802267, y: 1, z: 21.668621}
+  - {x: -0.2934549, y: 1, z: 20.864948}
+  - {x: 1.783549, y: 1, z: 21.618034}
+  - {x: 3.8605528, y: 1, z: 22.16944}
+  - {x: 5.9375567, y: 1, z: 22.444103}
+  - {x: 8.014561, y: 1, z: 22.517082}
+  - {x: 10.122213, y: 1, z: 22.30627}
+  - {x: 12.229865, y: 1, z: 21.893776}
+  - {x: 14.337517, y: 1, z: 21.20454}
+  - {x: 16.44517, y: 1, z: 20.313622}
   - {x: 7.5616155, y: 1, z: 2.485709}
   m_Parameters:
     serializedVersion: 3

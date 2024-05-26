@@ -66,10 +66,11 @@ public class MemoryPuzzleController : MonoBehaviour
 
         for (int i = 0; i < correctOrder.Count; i++)
         {
+            Image btnImage = buttons[correctOrder.ElementAt(i)].GetComponent<Image>();
             yield return new WaitForSeconds(0.2f);
-            buttons[correctOrder.ElementAt(i)].GetComponent<Image>().color = Color.blue;
+            btnImage.color = Color.blue;
             yield return new WaitForSeconds(0.5f);
-            buttons[correctOrder.ElementAt(i)].GetComponent<Image>().color = Color.white;
+            btnImage.color = Color.white;
         }
 
         ActivateButtons();

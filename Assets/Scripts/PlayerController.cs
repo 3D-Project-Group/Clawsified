@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
                 Movement();
 
             if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
-                currentHp += Time.deltaTime;
+                currentHp += Time.fixedDeltaTime;
 
             UIControl();
         }

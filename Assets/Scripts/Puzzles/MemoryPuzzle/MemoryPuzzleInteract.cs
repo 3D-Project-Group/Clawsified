@@ -21,10 +21,11 @@ public class MemoryPuzzleInteract : Interact
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().doingPuzzle = true;
 
             memoryPuzzle.SetActive(true);
-            memoryPuzzle.GetComponent<MemoryPuzzleController>().objectsToUnactivate = objsToUnactivate;
-            memoryPuzzle.GetComponent<MemoryPuzzleController>().UIToShow = UIToHide;
-            memoryPuzzle.GetComponent<MemoryPuzzleController>().puzzleToDeactivate = this;
-            memoryPuzzle.GetComponent<MemoryPuzzleController>().StartPuzzle();
+            MemoryPuzzleController puzzleController = memoryPuzzle.GetComponent<MemoryPuzzleController>();
+            puzzleController.objectsToUnactivate = objsToUnactivate;
+            puzzleController.UIToShow = UIToHide;
+            puzzleController.puzzleToDeactivate = this;
+            puzzleController.StartPuzzle();
         }
     }
 }

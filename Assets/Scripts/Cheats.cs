@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cheats : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class Cheats : MonoBehaviour
     public void Invisible() //Does not work on boss
     {
         player.GetComponent<PlayerController>().isInvisible = !player.GetComponent<PlayerController>().isInvisible;
+    }
+    
+    public void GoToBossRoom()
+    {
+        SceneManager.LoadSceneAsync("BossScene");
     }
 
     public void BossKill()

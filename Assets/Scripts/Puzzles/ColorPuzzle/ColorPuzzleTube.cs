@@ -6,6 +6,7 @@ using static ColorPuzzleController;
 public class ColorPuzzleTube : MonoBehaviour
 {
     public ColorPuzzleController controller;
+    [SerializeField] private MeshRenderer tubeLiquidMeshRenderer;
 
     [SerializeField] private int objPosition = 0;
     [SerializeField] private Material[] materials;
@@ -17,7 +18,7 @@ public class ColorPuzzleTube : MonoBehaviour
         if (controller.isActive)
         {
             currentColor = controller.currentValues[objPosition];
-            this.gameObject.GetComponent<MeshRenderer>().material = materials[(int)currentColor];
+            tubeLiquidMeshRenderer.material = materials[(int)currentColor];
         }
     }
 
@@ -25,7 +26,7 @@ public class ColorPuzzleTube : MonoBehaviour
     {
         currentColor = value;
         controller.currentValues[objPosition] = value;
-        this.gameObject.GetComponent<MeshRenderer>().material = materials[(int)value];
+        tubeLiquidMeshRenderer.material = materials[(int)value];
 
         if (controller.currentValues.SequenceEqual(controller.correctAnswer))
         {

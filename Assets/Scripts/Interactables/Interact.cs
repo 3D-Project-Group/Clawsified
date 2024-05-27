@@ -15,7 +15,7 @@ public class Interact : MonoBehaviour
     {
         activate = false;
     }
-    void Update()
+    public virtual void Update()
     {
         if (Vector3.Distance(transform.position, player.transform.position) < 2 && activate)
         {

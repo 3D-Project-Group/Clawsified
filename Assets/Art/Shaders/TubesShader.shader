@@ -56,7 +56,7 @@ Shader "MyShaders/MyShader01"
             {
                 Interpolators i;
                 i.position = vd.position; // Set the position to the position of the vertex
-                i.localposition = vd.position / 5;
+                i.localposition = vd.position / 10;
 
                 // Only modify vertices above the threshold
                 if (vd.position.y >= _TopThreshold)

@@ -19,18 +19,51 @@ public class ColorPuzzleController : MonoBehaviour
         if (isActive && randomStart)
         {
             currentValues = new ColorPuzzle[correctAnswer.Length];
-            for (int i = 0; i < currentValues.Length; i++)
+        
+            do
             {
-                currentValues[i] = (ColorPuzzle)Random.Range(0, 3);
+                for (int i = 0; i < currentValues.Length; i++)
+                {
+                    currentValues[i] = (ColorPuzzle)Random.Range(0, 3);
+                }
             }
+            while (IsMatch(currentValues, correctAnswer));
         }
     }
 
+    // Helper method to check if two arrays are equal
+    private bool IsMatch(ColorPuzzle[] array1, ColorPuzzle[] array2)
+    {
+        if (array1.Length != array2.Length)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < array1.Length; i++)
+        {
+            if (array1[i] != array2[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    
     public void UnactiveObjects()
     {
         foreach (GameObject obj in gameObjectsToUnactivate)
         {
-            obj.SetActive(false);
+            Animator objAnim = obj.GetComponent<Animator>();
+            if (objAnim != null)
+            {
+                objAnim.SetBool("Open", true);
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
+            
             isActive = false;
         }
     }

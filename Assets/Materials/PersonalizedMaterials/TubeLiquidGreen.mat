@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TubeLiquidMaterial
+  m_Name: TubeLiquidGreen
   m_Shader: {fileID: 4800000, guid: d409f6ccdc0580e47ae58c3c230bbb5b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 5000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -87,5 +87,5 @@ Material:
     m_Colors:
     - _Color: {r: 0, g: 0.36404657, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Tint: {r: 0.28813046, g: 0.07516552, b: 0.78113204, a: 1}
+    - _Tint: {r: 0, g: 1, b: 0.07262468, a: 1}
   m_BuildTextureStacks: []

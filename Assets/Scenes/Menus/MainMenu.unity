@@ -3846,10 +3846,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 347035122}
   m_HandleRect: {fileID: 496134934}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -8675,6 +8675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7f4ac3eac161143ab6a504434202e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 4df24c6e8477e4744a9d8f0c852a4a22, type: 2}
   masterVolumeSlider: {fileID: 541192785}
   musicVolumeSlider: {fileID: 1593642337}
   soundFxVolumeSlider: {fileID: 1500461557}
@@ -11430,10 +11431,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 389739377}
   m_HandleRect: {fileID: 1296934035}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -11874,10 +11875,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1668084844}
   m_HandleRect: {fileID: 1126179416}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 52.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

@@ -12,9 +12,9 @@ public class GameInfo
     public static bool fullScreen = true;
 
     //Volume Control
-    public static float currentMasterVolume = 100;
-    public static float currentMusicVolume = 100;
-    public static float currentSoundFxVolume = 100;
+    public static float currentMasterVolume = 1;
+    public static float currentMusicVolume = 1;
+    public static float currentSoundFxVolume = 1;
 
     public static bool showingPopup = false;
     //Tutorial popups

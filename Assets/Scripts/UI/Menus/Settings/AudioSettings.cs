@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class AudioSettings : MonoBehaviour
 {
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider soundFxVolumeSlider;
@@ -17,16 +19,19 @@ public class AudioSettings : MonoBehaviour
     public void SetMasterVolume(float volume)
     {
         GameInfo.currentMasterVolume = volume;
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SetMusicVolume(float volume)
     {
         GameInfo.currentMusicVolume = volume;
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
     }
     
     public void SetSoundFxVolume(float volume)
     {
         GameInfo.currentSoundFxVolume = volume;
+        audioMixer.SetFloat("FXVolume", Mathf.Log10(volume) * 20);
     }
 
     //For buttons

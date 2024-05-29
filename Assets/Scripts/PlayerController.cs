@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     public bool isInvisible;
 
     Transform[] jumpWaypoints = new Transform[8];
+    Vector3 defaultGravity = new Vector3(0, -9.81f, 0);
     bool isJumping = false;
 
     Vector3 movementDirection;
@@ -169,6 +170,8 @@ public class PlayerController : MonoBehaviour
                     ThrowCheese();
 
                 canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
+                if(canWalk && Physics.gravity != defaultGravity)
+                    Physics.gravity = defaultGravity;
             }
         }
     }
@@ -326,6 +329,7 @@ public class PlayerController : MonoBehaviour
         newDirection.Normalize();
 
         // Scale direction vector by force magnitude
+        Physics.gravity = new Vector3(0, -38, 0);
         Vector3 forceVector = newDirection * Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (goal - transform.position).magnitude);
 
         // Apply force to Rigidbody or character controller

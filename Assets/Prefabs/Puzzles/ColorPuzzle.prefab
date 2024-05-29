@@ -719,11 +719,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   tubeLiquidMeshRenderer: {fileID: 1275338926730180318}
+  lights:
+  - {fileID: 4832379345510204678}
   objPosition: 0
   materials:
   - {fileID: 2100000, guid: 52284143b0f1f6248916cff95fe0372c, type: 2}
   - {fileID: 2100000, guid: 2425f77ce05fa1d49b806fe812b5a56d, type: 2}
   - {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+  lightColors:
+  - {r: 0.65882355, g: 0.64705884, b: 0.13333334, a: 1}
+  - {r: 0.16078432, g: 0.65882355, b: 0.16862746, a: 1}
+  - {r: 0.28627452, g: 0.18431373, b: 0.5019608, a: 1}
   currentColor: 0
 --- !u!1001 &4212204759284823347
 PrefabInstance:
@@ -985,11 +991,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   tubeLiquidMeshRenderer: {fileID: 2129359284276058390}
+  lights:
+  - {fileID: 3075168968654248012}
   objPosition: 1
   materials:
   - {fileID: 2100000, guid: 52284143b0f1f6248916cff95fe0372c, type: 2}
   - {fileID: 2100000, guid: 2425f77ce05fa1d49b806fe812b5a56d, type: 2}
   - {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+  lightColors:
+  - {r: 0.65882355, g: 0.64705884, b: 0.13333334, a: 1}
+  - {r: 0.16078432, g: 0.65882355, b: 0.16862746, a: 1}
+  - {r: 0.28627452, g: 0.18431373, b: 0.5019608, a: 1}
   currentColor: 0
 --- !u!4 &4388605059043706221 stripped
 Transform:
@@ -1150,6 +1162,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: faabc555a56056f45a5ada33f15d59cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5610832936595009893, guid: faabc555a56056f45a5ada33f15d59cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.46
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faabc555a56056f45a5ada33f15d59cc, type: 3}
       propertyPath: m_Name
@@ -1667,11 +1683,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   tubeLiquidMeshRenderer: {fileID: 6722248489166630329}
+  lights:
+  - {fileID: 2818654032858654745}
   objPosition: 2
   materials:
   - {fileID: 2100000, guid: 52284143b0f1f6248916cff95fe0372c, type: 2}
   - {fileID: 2100000, guid: 2425f77ce05fa1d49b806fe812b5a56d, type: 2}
   - {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+  lightColors:
+  - {r: 0.65882355, g: 0.64705884, b: 0.13333334, a: 1}
+  - {r: 0.16078432, g: 0.65882355, b: 0.16862746, a: 1}
+  - {r: 0.28627452, g: 0.18431373, b: 0.5019608, a: 1}
   currentColor: 0
 --- !u!4 &8944233052340679106 stripped
 Transform:

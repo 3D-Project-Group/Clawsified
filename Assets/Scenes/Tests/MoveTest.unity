@@ -2390,11 +2390,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   tubeLiquidMeshRenderer: {fileID: 0}
+  lights: []
   objPosition: 2
   materials:
   - {fileID: 2100000, guid: 5567f7f2b38c35c4fb7e2632069423fc, type: 2}
   - {fileID: 2100000, guid: 22fe597ef1004d944badfac647cef612, type: 2}
   - {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+  lightColors: []
   currentColor: 0
 --- !u!136 &703437254
 CapsuleCollider:
@@ -3989,11 +3991,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   tubeLiquidMeshRenderer: {fileID: 0}
+  lights: []
   objPosition: 1
   materials:
   - {fileID: 2100000, guid: 5567f7f2b38c35c4fb7e2632069423fc, type: 2}
   - {fileID: 2100000, guid: 22fe597ef1004d944badfac647cef612, type: 2}
   - {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+  lightColors: []
   currentColor: 0
 --- !u!136 &1152058697
 CapsuleCollider:
@@ -5092,11 +5096,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   tubeLiquidMeshRenderer: {fileID: 0}
+  lights: []
   objPosition: 0
   materials:
   - {fileID: 2100000, guid: 5567f7f2b38c35c4fb7e2632069423fc, type: 2}
   - {fileID: 2100000, guid: 22fe597ef1004d944badfac647cef612, type: 2}
   - {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+  lightColors: []
   currentColor: 0
 --- !u!136 &1531771295
 CapsuleCollider:
@@ -6939,10 +6945,6 @@ PrefabInstance:
     - target: {fileID: 6276131623065668230, guid: 267a6b395d5bf26478e898814317831a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6451058192190994961, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

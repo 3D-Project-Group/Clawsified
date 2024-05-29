@@ -3,7 +3,7 @@ using UnityEngine;
 public class ColorPuzzleButton : Interact
 {
     [SerializeField] private int tubeID = 0;
-    [SerializeField] private ColorPuzzleController tubeController ;
+    [SerializeField] private ColorPuzzleController tubeController;
 
     new void Start()
     {

@@ -300,16 +300,21 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Hide()
     {
         isHidden = true;
+        
+        //Creating variable to avoid errors by missing the position when we move the player
+        Vector3 goalPosition = camGoalPosition.position;
+        Quaternion goalRotation = camGoalPosition.rotation;
+        
         GetComponent<MeshRenderer>().enabled = false;
-        transform.rotation = camGoalPosition.rotation;
-        transform.position = camGoalPosition.position;
+        transform.rotation = goalRotation;
+        transform.position = goalPosition;
 
         float t = 0;
         float time = 0.25f;
         for (; t < time; t += camLerpVelocity * Time.deltaTime)
         {
-            Camera.main.gameObject.transform.position = Vector3.Lerp(Camera.main.gameObject.transform.position, camGoalPosition.position + new Vector3(0, 1, 0), t / time);
-            Camera.main.gameObject.transform.rotation = camGoalPosition.rotation;
+            Camera.main.gameObject.transform.position = Vector3.Slerp(Camera.main.gameObject.transform.position, goalPosition, t / time);
+            Camera.main.gameObject.transform.rotation = goalRotation;
             yield return null;
         }
     }

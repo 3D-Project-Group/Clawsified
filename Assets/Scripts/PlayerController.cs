@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
     Transform[] jumpWaypoints = new Transform[8];
     Vector3 defaultGravity = new Vector3(0, -9.81f, 0);
+    Vector3 jumpGravity = new Vector3(0, -38f, 0);
     bool isJumping = false;
 
     Vector3 movementDirection;
@@ -334,7 +335,7 @@ public class PlayerController : MonoBehaviour
         newDirection.Normalize();
 
         // Scale direction vector by force magnitude
-        Physics.gravity = new Vector3(0, -38, 0);
+        Physics.gravity = jumpGravity;
         Vector3 forceVector = newDirection * Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (goal - transform.position).magnitude);
 
         // Apply force to Rigidbody or character controller

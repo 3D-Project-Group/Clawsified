@@ -194,18 +194,15 @@ public class FinalBoss : MonoBehaviour
 
     void ApplyForceOnProj()
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-        float time = Mathf.Sqrt(2 * distance / Physics.gravity.magnitude);
-        float horizontalSpeed = distance / time;
-        float projHeight = Mathf.Abs(player.transform.position.y - transform.position.y) + 1.0f;
-        float verticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * projHeight);
+        Vector3 direction = player.transform.position - transform.position;
+        Vector3 newDirection = new Vector3(direction.x, direction.y * 2, direction.z );
+        newDirection.Normalize();
 
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        Vector3 horizontalVelocity = direction * horizontalSpeed;
-        Vector3 verticalVelocity = Vector3.up * verticalSpeed;
+        // Scale direction vector by force magnitude
+        Vector3 forceVector = newDirection * Mathf.Sqrt(2 * projectileRb.mass * Physics.gravity.magnitude * (player.transform.position - transform.position).magnitude);
 
+        projectileRb.AddForce(forceVector, ForceMode.Impulse);
         projectileRb.transform.parent = null;
-        projectileRb.velocity = horizontalVelocity + verticalVelocity;
         projectileRb.useGravity = true;
         
         currentState = 0;

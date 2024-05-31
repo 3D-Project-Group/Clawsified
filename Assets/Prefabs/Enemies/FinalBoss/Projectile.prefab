@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 3
-  dmgRadius: 4
+  dmgRadius: 10
   dmgMultiplier: 10
   playerLayer:
     serializedVersion: 2

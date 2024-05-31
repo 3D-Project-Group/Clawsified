@@ -98,10 +98,9 @@ public class MemoryPuzzleController : MonoBehaviour
             button.GetComponent<Image>().color = Color.green;
         }
         yield return new WaitForSeconds(1f);
-        foreach (GameObject obj in objectsToUnactivate)
-        {
-            obj.SetActive(false);
-        }
+
+        UnactiveObjects();
+        
         puzzleToDeactivate.active = false;
         ClosePuzzle();
     }
@@ -147,6 +146,7 @@ public class MemoryPuzzleController : MonoBehaviour
         waitingForResult = false;
         showingPattern = false;
     }
+    
     void ResetSelectedOrder()
     {
         currentSelectedOrder.Clear();
@@ -163,5 +163,22 @@ public class MemoryPuzzleController : MonoBehaviour
         }
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().doingPuzzle = false;
     }
+    
     public void SetValue(int value) { currentSelectedOrder.Add(value); }
+    
+    void UnactiveObjects()
+    {
+        foreach (GameObject obj in objectsToUnactivate)
+        {
+            Animator objAnim = obj.GetComponent<Animator>();
+            if (objAnim != null)
+            {
+                objAnim.SetBool("Open", true);
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
+        }
+    }
 }

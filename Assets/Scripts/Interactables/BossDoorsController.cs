@@ -21,7 +21,15 @@ public class BossDoorsController : MonoBehaviour
         {
             foreach (GameObject obj in objsToUnactivate)
             {
-                obj.SetActive(false);
+                Animator anim = obj.GetComponent<Animator>();
+                if (anim != null)
+                {
+                    anim.SetBool("Open", true);
+                }
+                else
+                {
+                    obj.SetActive(false);
+                }
             }
         }
     }

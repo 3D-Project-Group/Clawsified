@@ -12,11 +12,13 @@ public class BossTransition : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadSceneAsync(sceneName);
+        GameInfo.SceneToLoad = sceneName;
+        GameInfo.SceneToUnload = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(Transition("BossScene"));
             GameInfo.Fighting_Boss = true;

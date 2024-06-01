@@ -64,7 +64,7 @@ public class PursueState : EnemyState
             else
             {
                 //If can't see the player starts Random patrolling
-                if (!CanSeePlayer() && Vector3.Distance(npc.transform.position, player.position) > minDistanceOfPlayer)
+                if (!CanSeePlayer() && Vector3.Distance(npc.transform.position, player.position) > minDistanceOfPlayer || playerController.isHidden)
                 {
                     nextState = new RandomPatrolState(npc, anim, agent, player, waypoints, obstructionMask, groundLayer);
                     stage = EVENT.EXIT;

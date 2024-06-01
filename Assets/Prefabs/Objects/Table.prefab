@@ -312,62 +312,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_LocalPosition.x
-      value: -22.32434
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalPosition.y
-      value: -21.219461
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalPosition.z
-      value: -29.055471
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Name
-      value: Table
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd09dd2ed7b7e2841955fadbfb8a6a2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.25
+      value: 38.9297
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd09dd2ed7b7e2841955fadbfb8a6a2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.75
+      value: 1.939748
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd09dd2ed7b7e2841955fadbfb8a6a2f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.600505
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fd09dd2ed7b7e2841955fadbfb8a6a2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a570df03a3479d4d9ae49a670039522, type: 2}
     - target: {fileID: 919132149155446097, guid: fd09dd2ed7b7e2841955fadbfb8a6a2f, type: 3}
       propertyPath: m_Name
       value: Table
@@ -381,10 +341,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd09dd2ed7b7e2841955fadbfb8a6a2f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7623692667957691607}
+      addedObject: {fileID: 3066824680919363887}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd09dd2ed7b7e2841955fadbfb8a6a2f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3066824680919363887}
+      addedObject: {fileID: 7623692667957691607}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fd09dd2ed7b7e2841955fadbfb8a6a2f, type: 3}
       insertIndex: -1

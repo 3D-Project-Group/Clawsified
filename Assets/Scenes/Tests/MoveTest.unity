@@ -182,7 +182,7 @@ Transform:
   - {fileID: 333273354}
   - {fileID: 1225221266}
   - {fileID: 1773579784}
-  - {fileID: 1297285297}
+  - {fileID: 1241137533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &105765931
@@ -1078,6 +1078,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1773579784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &351612727 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4462668059129783757, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+  m_PrefabInstance: {fileID: 5903815277837060810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &371293393
 GameObject:
   m_ObjectHideFlags: 0
@@ -3451,6 +3456,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052656360}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!108 &1093149399 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 2791565762694204402, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+  m_PrefabInstance: {fileID: 5903815277837060810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1112299136
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,6 +4151,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237954210}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1241137533 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5721773653471988967, guid: a0d23401bc055f14287a13c4932c2819, type: 3}
+  m_PrefabInstance: {fileID: 776429700520563811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1261221873
 GameObject:
   m_ObjectHideFlags: 0
@@ -4283,10 +4298,10 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &1297285297 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7437120329259385152, guid: a0d23401bc055f14287a13c4932c2819, type: 3}
-  m_PrefabInstance: {fileID: 776429700520563811}
+--- !u!108 &1268746912 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1338410783446975828, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+  m_PrefabInstance: {fileID: 5903815277837060810}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1316251952
 PrefabInstance:
@@ -4836,6 +4851,11 @@ MeshFilter:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7127324546907790264, guid: bd8d141c59d7ee34d9a99a3ac7fe9c0b, type: 3}
   m_PrefabInstance: {fileID: 1316251952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1602854659 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1273015736221692444, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+  m_PrefabInstance: {fileID: 5903815277837060810}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1660170280
 GameObject:
@@ -5947,6 +5967,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!108 &2014691475 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1299940339722200916, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+  m_PrefabInstance: {fileID: 5903815277837060810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2099068236
 GameObject:
   m_ObjectHideFlags: 0
@@ -5978,6 +6003,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 567355747}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!108 &2127499874 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7955930055597556372, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+  m_PrefabInstance: {fileID: 5903815277837060810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2144121176
 GameObject:
   m_ObjectHideFlags: 0
@@ -6400,6 +6430,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 9090501906062878241}
+    - target: {fileID: 4393874190271315837, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+      propertyPath: lights.Array.data[1]
+      value: 
+      objectReference: {fileID: 1268746912}
+    - target: {fileID: 4393874190271315837, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+      propertyPath: lights.Array.data[2]
+      value: 
+      objectReference: {fileID: 351612727}
     - target: {fileID: 4579392353288068656, guid: 267a6b395d5bf26478e898814317831a, type: 3}
       propertyPath: m_Camera
       value: 
@@ -6412,6 +6450,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColorPuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 6200711142453851541, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+      propertyPath: lights.Array.data[1]
+      value: 
+      objectReference: {fileID: 1602854659}
+    - target: {fileID: 6200711142453851541, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+      propertyPath: lights.Array.data[2]
+      value: 
+      objectReference: {fileID: 2014691475}
     - target: {fileID: 6276131623065668230, guid: 267a6b395d5bf26478e898814317831a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6452,6 +6498,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6677509518519511156, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+      propertyPath: lights.Array.data[1]
+      value: 
+      objectReference: {fileID: 2127499874}
+    - target: {fileID: 6677509518519511156, guid: 267a6b395d5bf26478e898814317831a, type: 3}
+      propertyPath: lights.Array.data[2]
+      value: 
+      objectReference: {fileID: 1093149399}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

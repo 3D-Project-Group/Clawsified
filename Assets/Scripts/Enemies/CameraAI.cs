@@ -1,17 +1,22 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using UnityEditor;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class CameraAI : MonoBehaviour
 {
     public Transform player;
     public PlayerController playerController;
     public bool activated = true;
+    private Animator camAnim;
     
     [Header("Components")]
-    private Material objMaterial;
     private LineRenderer lineRenderer;
+    private AudioSource soundToPlay;
+    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private MeshRenderer camSwitchRenderer;
 
     [Header("Enemy Calling")]
     [SerializeField] private float callRadius;
@@ -22,35 +27,48 @@ public class CameraAI : MonoBehaviour
     public float visDist = 20.0f;
     public float visAngle = 30.0f;
 
+    private Vector3 playerPosition;
+    private Vector3 camPosition;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        camAnim = GetComponentInChildren<Animator>();
         playerController = player.GetComponent<PlayerController>();
+        soundToPlay = GetComponent<AudioSource>();
         enemiesList = FindObjectsOfType<EnemyAI>().ToList();
-        objMaterial = this.gameObject.GetComponent<MeshRenderer>().material;
         lineRenderer = GetComponentInChildren<LineRenderer>();
+        
+        camPosition = new Vector3(this.transform.position.x, 0, this.transform.position.z);
     }
 
     void Update()
     {
+        playerPosition = new Vector3(player.position.x, 0, player.position.z);
         if (activated)
         {
             if (!CanSeePlayer())
             {
                 calledEnemiesList.Clear();
-                objMaterial.color = Color.green;
             }
             else
             {
+                if(!soundToPlay.isPlaying)
+                    soundToPlay.Play();
                 CallOtherEnemies();
-                objMaterial.color = Color.red;
             }
         }
         else
         {
-            objMaterial.color = Color.black;
-            lineRenderer.startColor = Color.green;
-            lineRenderer.endColor = Color.green;
+            // objMaterial.color = Color.black;
+            // lineRenderer.startColor = Color.green;
+            // lineRenderer.endColor = Color.green;
+            Material[] materialList = camSwitchRenderer.materials;
+            materialList[2] = defaultMaterial;
+            materialList[3] = defaultMaterial;
+            camSwitchRenderer.materials = materialList;
+            
+            camAnim.enabled = false;
             lineRenderer.enabled = false;
         }
     }
@@ -77,10 +95,10 @@ public class CameraAI : MonoBehaviour
 
     public bool CanSeePlayer()
     {
-        Vector3 direction = player.position - transform.position;
-        float angle = Vector3.Angle(direction, transform.forward);
+        Vector3 direction = playerPosition - camPosition;
+        float angle = Vector3.Angle(direction, -transform.forward);
 
-        if (direction.magnitude < visDist && angle < visAngle && !playerController.isInvisible)
+        if (direction.magnitude < visDist && angle < visAngle && !playerController.isInvisible && Vector3.Distance(playerPosition, camPosition) > 3)
         {
             return true;
         }

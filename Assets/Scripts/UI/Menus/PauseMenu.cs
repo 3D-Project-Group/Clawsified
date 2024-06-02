@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private Animator transitionAnimator;
+    [SerializeField] private GameManager gameManager;
     public void ContinueGame()
     {
         this.gameObject.SetActive(false); 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1.0f;
+        gameManager.UnpauseGameSounds();
     }
 
     public void LoadScene(string sceneName)

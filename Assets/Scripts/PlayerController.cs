@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Components")]
     private Rigidbody rb;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private Transform groundCheckStart;
     [SerializeField] private Transform groundCheckEnd;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Animator anim;
 
     [Header("Player Stats")]
     [SerializeField] private float maxStamina = 100f;
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float staminaLossMultiplier = 3f;
 
     [SerializeField] private float normalSpeed = 3f;
-    [SerializeField] private float currentSpeed = 3f;
+    [SerializeField] private float currentSpeed;
     [SerializeField] private float runningSpeed = 8f;
     [SerializeField] private float rotationSpeed = 2f;
 
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     [Header("Hiding")]
     [SerializeField] private Transform camGoalPosition;
     [SerializeField] private float camLerpVelocity;
+    private SkinnedMeshRenderer playerRenderer;
 
     [Header("Interact")]
     [SerializeField] private float interactRadius;
@@ -75,11 +78,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject cheatList;
     public bool isInvisible;
 
+    /*Jump Variables*/
     Transform[] jumpWaypoints = new Transform[8];
+    Vector3 jumpGoal;
+    
     Vector3 defaultGravity = new Vector3(0, -9.81f, 0);
     Vector3 jumpGravity = new Vector3(0, -38f, 0);
+    
     bool isJumping = false;
-
+    
+    /*Movement  Variables*/
     Vector3 movementDirection;
     float hor;
     float ver;
@@ -89,6 +97,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        playerRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         staminaWheel.maxValue = maxStamina;
         cheeseCooldownSlider.maxValue = cheeseCooldown; 
         Cursor.lockState = CursorLockMode.Locked;
@@ -120,6 +130,7 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                gameManager.PauseGameSounds();
                 pauseMenu.SetActive(true);
             }
 
@@ -130,7 +141,7 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.F))
                 CallInteraction();
 
-            if (!isHidden)
+            if (!isHidden) 
             {
                 if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && !isResting)
                 {
@@ -150,8 +161,9 @@ public class PlayerController : MonoBehaviour
                     isRunning = false;
                     currentSpeed = normalSpeed;
                 }
+                anim.SetFloat("currentSpeed", currentSpeed);
 
-                if (Input.GetKeyDown(KeyCode.Space) && canJump)
+                if (Input.GetKeyDown(KeyCode.Space) && canJump && !isJumping)
                 {
                     Transform closestWaypoint = null;
                     foreach (Transform t in jumpWaypoints)
@@ -170,6 +182,15 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetMouseButtonDown(1) && amountOfCheese > 0 && canThrowCheese)
                     ThrowCheese();
 
+                if (!Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping && rb.velocity.y < 0.7f)
+                {
+                    anim.SetBool("isFalling", true);
+                }
+                else
+                {
+                    anim.SetBool("isFalling", false);
+                }
+                    
                 canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
                 if(canWalk && Physics.gravity != defaultGravity)
                     Physics.gravity = defaultGravity;
@@ -196,8 +217,11 @@ public class PlayerController : MonoBehaviour
             if (currentStamina < maxStamina && !isRunning)
                 currentStamina += 0.1f;
 
-            if (isJumping && Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer))
+            if (isJumping && Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && anim.GetBool("isJumping") == false)
+            {
                 isJumping = false;
+                anim.applyRootMotion = true;
+            }
 
             if (canWalk)
                 Movement();
@@ -306,7 +330,7 @@ public class PlayerController : MonoBehaviour
         Vector3 goalPosition = camGoalPosition.position;
         Quaternion goalRotation = camGoalPosition.rotation;
         
-        GetComponent<MeshRenderer>().enabled = false;
+        playerRenderer.enabled = false;
         transform.rotation = goalRotation;
         transform.position = goalPosition;
 
@@ -323,24 +347,39 @@ public class PlayerController : MonoBehaviour
     private void UnHide()
     {
         isHidden = false;
-        GetComponent<MeshRenderer>().enabled = true;
+        playerRenderer.enabled = true;
     }
 
     private void Jump(Vector3 goal)
     {
         isJumping = true;
+        jumpGoal = goal;
+        transform.LookAt(new Vector3(jumpGoal.x, transform.position.y, jumpGoal.z));
 
-        Vector3 direction = goal - transform.position;
+        anim.applyRootMotion = false;
+        
+        anim.SetBool("isJumping", true);
+    }
+
+    private void ApplyJumpForce()
+    {
+        Vector3 direction = jumpGoal - transform.position;
         Vector3 newDirection = new Vector3(direction.x / 2, direction.y * 2, direction.z / 2 );
         newDirection.Normalize();
 
         // Scale direction vector by force magnitude
         Physics.gravity = jumpGravity;
-        Vector3 forceVector = newDirection * Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (goal - transform.position).magnitude);
+        Vector3 forceVector = newDirection * Mathf.Sqrt(2 * rb.mass * Physics.gravity.magnitude * (jumpGoal - transform.position).magnitude);
 
         // Apply force to Rigidbody or character controller
         rb.velocity = Vector3.zero;
         rb.AddForce(forceVector, ForceMode.VelocityChange);
+        Invoke("ResetJumpAnim", 0.5f);
+    }
+
+    void ResetJumpAnim()
+    {
+        anim.SetBool("isJumping", false);
     }
 
     private void Movement()
@@ -364,6 +403,11 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.fixedDeltaTime);
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
         }
         // Walk
         rb.velocity = new Vector3(movementDirection.x * currentSpeed, rb.velocity.y, movementDirection.z * currentSpeed);

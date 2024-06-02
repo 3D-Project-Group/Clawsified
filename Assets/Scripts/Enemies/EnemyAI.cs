@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -10,26 +11,30 @@ public class EnemyAI : MonoBehaviour
 
     public EnemyType enemyType = EnemyType.Normal;
 
-    [Header("Enemy Calling")]
-    [SerializeField] private float callRadius;
-    [SerializeField] private LayerMask enemyLayer;
-    [Space]
-    public List<EnemyAI> enemiesList = new List<EnemyAI>();
-    public List<EnemyAI> calledEnemiesList = new List<EnemyAI>();
-
     [Header("Components")]
     public NavMeshAgent agent;
     public EnemyState currentState;
     public Transform player;
     public Animator anim;
     public LayerMask obstructionMask, groundLayer;
-
+    [SerializeField] private AudioSource ratFootstepSound;
+    [SerializeField] private AudioSource ratYellingSound;
+    
+    [Header("Enemy Calling")]
+    [SerializeField] private float callRadius;
+    [SerializeField] private LayerMask enemyLayer;
+    [Space]
+    public List<EnemyAI> enemiesList = new List<EnemyAI>();
+    public List<EnemyAI> calledEnemiesList = new List<EnemyAI>();
+    
     [Header("Attraction")]
     public bool beingAtracted = false;
     public float attractionTime = 3f;
 
     [Header("Patrol")]
     public List<GameObject> waypoints = new List<GameObject>();
+
+    private bool invokedSound = false;
 
     void Start()
     {
@@ -58,7 +63,14 @@ public class EnemyAI : MonoBehaviour
         {
             currentState = currentState.Process();
             if (currentState.name == EnemyState.STATE.PURSUE)
+            {
+                if (!invokedSound)
+                {
+                    invokedSound = true;
+                    Invoke("PlayYellingSound", Random.Range(1.5f, 2.5f));
+                }
                 CallOtherEnemies();
+            }
             else
                 calledEnemiesList.Clear();
         }
@@ -66,6 +78,17 @@ public class EnemyAI : MonoBehaviour
         {
             Invoke("DeactivateAttraction", attractionTime);
         }
+    }
+    
+    void PlayFootstepSound()
+    {
+        ratFootstepSound.Play();
+    }
+    
+    void PlayYellingSound()
+    {
+        ratYellingSound.Play();
+        invokedSound = false;
     }
 
     void DeactivateAttraction()

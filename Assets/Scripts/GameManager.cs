@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Music Control")]
+    [SerializeField] private AudioSource bgMusic;
+    [SerializeField] private float bgMusicMaxVolume;
+    [SerializeField] private AudioSource[] gameAudioSources;
+    
     [Header("Popup Control")]
     [SerializeField] private GameObject popUpObj;
     [SerializeField] private Image popUpCurrentImg;
@@ -15,8 +21,16 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public Queue<Popup> popUpQueue = new Queue<Popup>();
 
-    private void Update()
+    private void Awake()
     {
+        gameAudioSources = FindObjectsOfType<AudioSource>();
+    }
+
+    void Update()
+    {
+        if(bgMusic.volume < bgMusicMaxVolume)
+            FadeInMusic();
+        
         if (!GameInfo.showingPopup && popUpQueue.Count > 0)
         {
             ShowPopUp(popUpQueue.Dequeue());
@@ -25,6 +39,34 @@ public class GameManager : MonoBehaviour
         {
             HidePopUp();
         }
+    }
+
+    public void PauseGameSounds()
+    {
+        foreach (AudioSource audio in gameAudioSources)
+        {
+            if(audio.isPlaying)
+                audio.Pause();
+        }
+    }
+    
+    public void UnpauseGameSounds()
+    {
+        foreach (AudioSource audio in gameAudioSources)
+        {
+            if(!audio.isPlaying)
+                audio.UnPause();
+        }
+    }
+
+    void FadeInMusic()
+    {
+        bgMusic.volume += 0.01f;
+    }
+    
+    void FadeOutMusic()
+    {
+        bgMusic.volume -= 0.01f;
     }
 
     public void AddPopupToQueue(Popup popUp)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DroppableObjects : Interact
@@ -8,6 +9,7 @@ public class DroppableObjects : Interact
     private Rigidbody rb;
     [SerializeField] private ThrowDirection direction;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private AudioSource audioToPlay;
 
     [Header("Throw Control")]
     [SerializeField] private float throwingForce;
@@ -60,6 +62,14 @@ public class DroppableObjects : Interact
                     }
                 }
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == 3)
+        {
+            audioToPlay.Play();
         }
     }
 

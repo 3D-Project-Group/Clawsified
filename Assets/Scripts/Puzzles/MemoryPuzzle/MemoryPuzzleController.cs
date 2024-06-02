@@ -6,6 +6,18 @@ using UnityEngine.UI;
 
 public class MemoryPuzzleController : MonoBehaviour
 {
+    
+    [Header("Components")]
+    [SerializeField] private GameObject[] buttons;
+    public MemoryPuzzleInteract puzzleToDeactivate;
+    public GameObject[] objectsToUnactivate;
+    public GameObject[] UIToShow;
+    
+    [Header("Sounds")]
+    [SerializeField] private AudioSource loseSound;
+    [SerializeField] private AudioSource winSound;
+    [SerializeField] private AudioSource tickSound;
+    
     [Header("Rounds Control")]
     [SerializeField] private int startCount = 2;
     [SerializeField] private int currentRound = 0;
@@ -18,11 +30,6 @@ public class MemoryPuzzleController : MonoBehaviour
     [Header("Lists")]
     [SerializeField] private List<int> correctOrder = new List<int>();
     [SerializeField] private List<int> currentSelectedOrder = new List<int>();
-
-    [SerializeField] private GameObject[] buttons;
-    public MemoryPuzzleInteract puzzleToDeactivate;
-    public GameObject[] objectsToUnactivate;
-    public GameObject[] UIToShow;
 
     void Update()
     {
@@ -68,6 +75,8 @@ public class MemoryPuzzleController : MonoBehaviour
         {
             Image btnImage = buttons[correctOrder.ElementAt(i)].GetComponent<Image>();
             yield return new WaitForSeconds(0.2f);
+            tickSound.pitch = Random.Range(1.0f, 3.0f);
+            tickSound.Play();
             btnImage.color = Color.blue;
             yield return new WaitForSeconds(0.5f);
             btnImage.color = Color.white;
@@ -92,6 +101,7 @@ public class MemoryPuzzleController : MonoBehaviour
 
     IEnumerator Win()
     {
+        winSound.Play();
         foreach (GameObject button in buttons)
         {
             button.GetComponent<Button>().interactable = false;
@@ -101,19 +111,20 @@ public class MemoryPuzzleController : MonoBehaviour
 
         UnactiveObjects();
         
-        puzzleToDeactivate.active = false;
+        puzzleToDeactivate.activate = false;
         ClosePuzzle();
     }
 
     IEnumerator Lose()
     {
         ResetPuzzle();
+        loseSound.Play();
         foreach (GameObject button in buttons)
         {
             button.GetComponent<Button>().interactable = false;
             button.GetComponent<Image>().color = Color.red;
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         foreach (GameObject button in buttons)
         {
             button.GetComponent<Image>().color = Color.white;

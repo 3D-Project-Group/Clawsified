@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator anim;
+    [SerializeField] private Animator transitionAnimator;
+    [SerializeField] private AudioSource deathSound;
 
     [Header("Player Stats")]
     [SerializeField] private float maxStamina = 100f;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask interactLayer;
 
     [Header("Public Bools")]
+    public bool isDead;
     public bool isHidden = false;
     public bool canHide = false;
     public bool canJump = false;
@@ -423,9 +426,24 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
+        isDead = true;
+        StartCoroutine(DeathAction()); // we do this bcz the enemies Patrol State script can't call coroutines, so we call a function that calls this coroutine instead
+    }
+    
+    IEnumerator DeathAction()
+    {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        SceneManager.LoadScene("GameOver");
+        
+        deathSound.Play();
+        
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1f);
+
+        GameInfo.SceneToLoad = "GameOver";
+        GameInfo.SceneToUnload = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("LoadingScreen");
     }
 
     private void OnTriggerEnter(Collider other)

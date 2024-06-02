@@ -6,13 +6,12 @@ public class MemoryPuzzleInteract : Interact
     [SerializeField] private GameObject memoryPuzzle;
     [SerializeField] private GameObject[] UIToHide;
     [SerializeField] private GameObject[] objsToUnactivate;
-    public bool active = true;
+    
+    
     public override void Interaction()
     {
-        if (active)
+        if (activate)
         {
-            base.Interaction();
-
             foreach (GameObject obj in UIToHide)
             {
                 obj.SetActive(false);

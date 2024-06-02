@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource bgMusic;
     [SerializeField] private float bgMusicMaxVolume;
     [SerializeField] private AudioSource[] gameAudioSources;
+    [SerializeField] private AudioSource[] nonPausableAudios;
     
     [Header("Popup Control")]
     [SerializeField] private GameObject popUpObj;
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (AudioSource audio in gameAudioSources)
         {
-            if(audio.isPlaying)
+            if(audio.isPlaying && !nonPausableAudios.Contains(audio))
                 audio.Pause();
         }
     }

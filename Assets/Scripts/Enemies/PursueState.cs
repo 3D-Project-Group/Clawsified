@@ -57,7 +57,7 @@ public class PursueState : EnemyState
         if (agent.hasPath)
         {
             //If the rat gets close to the player
-            if (Vector3.Distance(npc.transform.position, player.position) <= 2 && !playerController.isHidden)
+            if (Vector3.Distance(npc.transform.position, player.position) <= 2 && !playerController.isHidden && !playerController.isDead)
             {
                 player.gameObject.GetComponent<PlayerController>().Death();
             }

@@ -7,6 +7,7 @@ public class LabEntrance : Interact
 {
     [SerializeField] private Animator anim;
     [SerializeField] private Animator transitionAnimator;
+    [SerializeField] private AudioSource gateOpen;
 
     new void Start()
     {
@@ -17,6 +18,11 @@ public class LabEntrance : Interact
     public override void Interaction()
     {
         anim.SetBool("Open", true);
+    }
+
+    void OpenSound()
+    {
+        gateOpen.Play();
     }
     
     IEnumerator Transition(string sceneName)

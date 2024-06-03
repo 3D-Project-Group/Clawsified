@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
     public EnemyState currentState;
     public Transform player;
+    public PlayerController playerController;
     public Animator anim;
     public LayerMask obstructionMask, groundLayer;
     [SerializeField] private AudioSource ratFootstepSound;
@@ -72,7 +73,9 @@ public class EnemyAI : MonoBehaviour
                 CallOtherEnemies();
             }
             else
+            {
                 calledEnemiesList.Clear();
+            }
         }
         else
         {

@@ -47,17 +47,17 @@ public class AudioSettings : MonoBehaviour
     
     float NextSliderValue(float value)
     {
-        value++;
-        if (value > 100)
+        value += 0.01f;
+        if (value > 1)
         {
-            value = 100;
+            value = 1;
         }
 
         return value;
     }
     float LastSliderValue(float value)
     {
-        value--;
+        value -= 0.01f;
         if (value < 0)
         {
             value = 0;

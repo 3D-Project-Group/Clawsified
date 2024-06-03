@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private AudioSource deathSound;
+    [SerializeField] private AudioSource normalBg;
+    [SerializeField] private AudioSource pursueBg;
 
     [Header("Player Stats")]
     [SerializeField] private float maxStamina = 100f;
@@ -112,6 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!doingPuzzle)
         {
+            
             if(cheatList != null && Input.GetKeyDown(KeyCode.J))
             {
                 if (cheatList.activeSelf)

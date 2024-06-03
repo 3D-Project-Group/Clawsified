@@ -15,7 +15,8 @@ public class MenusController : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;    
-        Cursor.visible = true;    
+        Cursor.visible = true;
+        GameInfo.bossButtonsTutorial = false;
     }
 
     void Update()

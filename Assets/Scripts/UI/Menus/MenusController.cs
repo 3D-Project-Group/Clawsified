@@ -6,10 +6,11 @@ public class MenusController : MonoBehaviour
 {
     [Header("Start Screen")]
     public bool waitingForClick = true;
+    [SerializeField] private AudioSource bgMusic;
 
-    [SerializeField]private Animator transitionAnimator;
-    [SerializeField]private GameObject startScreen;
-    [SerializeField]private GameObject menusScreen;
+    [SerializeField] private Animator transitionAnimator;
+    [SerializeField] private GameObject startScreen;
+    [SerializeField] private GameObject menusScreen;
 
     private void Start()
     {
@@ -42,11 +43,18 @@ public class MenusController : MonoBehaviour
         Time.timeScale = 1.0f;
         transitionAnimator.SetTrigger("Start");
 
-        yield return new WaitForSeconds(2f);
+        do
+        {
+            bgMusic.volume -= Time.deltaTime;
+            yield return null;
+        } while (bgMusic.volume > 0);
+
+        yield return new WaitForSeconds(1f);
+        // yield return null;
 
         GameInfo.SceneToLoad = sceneName;
         GameInfo.SceneToUnload = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene("LoadingScreen");
+        SceneManager.LoadSceneAsync("LoadingScreen");
     }
 
     public void Revive()

@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1256556694889103808}
   - component: {fileID: 4715280394790603601}
   m_Layer: 10
-  m_Name: CableToCut
+  m_Name: ButtonToDisableCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

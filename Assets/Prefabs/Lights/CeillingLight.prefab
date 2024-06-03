@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 7194003666803105524}
   - component: {fileID: 2535916727492879575}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ Light:
   m_InnerSpotAngle: 6
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -172,7 +172,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -196,9 +196,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8700617353114198275, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000000059604645
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -206,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.601221
+      value: 30.398777
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -236,6 +240,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2005616429711798076, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
       propertyPath: m_Name
       value: CeillingLight
@@ -243,6 +251,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5100068591777345685, guid: 84672541d221ecd438e78aa4a8c3000f, type: 3}
       propertyPath: m_Materials.Array.data[0]

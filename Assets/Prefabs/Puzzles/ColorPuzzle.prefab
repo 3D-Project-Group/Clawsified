@@ -138,13 +138,13 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 179
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -172,7 +172,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -297,7 +297,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5075425704771241135
 Transform:
@@ -307,13 +307,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3231198327793887643}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5000003, y: -0.4999997, z: 0.4999997, w: 0.5000003}
-  m_LocalPosition: {x: 68, y: 11, z: -2.96}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 68.12, y: 11, z: -2.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6276131623065668230}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
 --- !u!212 &4048663360791472655
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -504,13 +504,13 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 179
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -538,7 +538,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -569,7 +569,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6276131623065668230
 Transform:
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38488ab7d3f2364468aa10a62fb24f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnswer: 020000000000000001000000
+  correctAnswer: 020000000100000002000000
   currentValues: 
   tubes:
   - {fileID: 6677509518519511156}
@@ -753,13 +753,13 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 179
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -787,7 +787,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1162,6 +1162,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab175ddfe27f62341b3c9d5cba6fdd2d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1217,6 +1221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5031806be21c431438786396de0cee4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactRadius: 2
+  interactionCenter: {fileID: 0}
   interactableImage: {fileID: 5289914064091795902}
   player: {fileID: 0}
   activate: 1
@@ -1371,9 +1377,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7012857780643670106, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7012857780643670106, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_Name
       value: separated_water_tube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2801463875915053968, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_CastShadows
@@ -1391,6 +1413,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+    - target: {fileID: 2884943139952315065, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2884943139952315065, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -1550,6 +1576,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab175ddfe27f62341b3c9d5cba6fdd2d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1605,6 +1635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5031806be21c431438786396de0cee4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactRadius: 2
+  interactionCenter: {fileID: 0}
   interactableImage: {fileID: 6870304536651339530}
   player: {fileID: 0}
   activate: 1
@@ -1759,9 +1791,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7012857780643670106, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7012857780643670106, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_Name
       value: separated_water_tube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2801463875915053968, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_CastShadows
@@ -1779,6 +1827,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+    - target: {fileID: 2884943139952315065, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2041,6 +2093,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab175ddfe27f62341b3c9d5cba6fdd2d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2096,6 +2152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5031806be21c431438786396de0cee4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactRadius: 2
+  interactionCenter: {fileID: 0}
   interactableImage: {fileID: 3492194458334806803}
   player: {fileID: 0}
   activate: 1
@@ -2357,9 +2415,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7012857780643670106, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7012857780643670106, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_Name
       value: separated_water_tube (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2801463875915053968, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_CastShadows
@@ -2381,6 +2455,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2cadd341e73bfe04da2db8a9959feac6, type: 2}
+    - target: {fileID: 2884943139952315065, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

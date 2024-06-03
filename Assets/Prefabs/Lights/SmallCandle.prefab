@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8787380879100909954}
   - component: {fileID: 7677226791518417544}
   m_Layer: 8
-  m_Name: Spot Light
+  m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -104,15 +104,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 68b738e61abbc6c4a8a99779749009a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.109056
+      value: 18.97811
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68b738e61abbc6c4a8a99779749009a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12269203
+      value: 0.12269251
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68b738e61abbc6c4a8a99779749009a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 46.882153
+      value: 54.555317
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68b738e61abbc6c4a8a99779749009a7, type: 3}
       propertyPath: m_LocalRotation.w

@@ -36,6 +36,11 @@ public class FinalBoss : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Slider bossHpSlider;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource ratWalking;
+    [SerializeField] private AudioSource ratYelling;
+    [SerializeField] private AudioSource ratTakingDmg;
+
     private Rigidbody projectileRb;
     
     void Start()
@@ -210,8 +215,19 @@ public class FinalBoss : MonoBehaviour
         isAttacking = false;
     }
 
+    void YellingSound()
+    {
+        ratYelling.Play();
+    }
+    
+    void WalkSound()
+    {
+        ratWalking.Play();
+    }
+
     public void TakeDamage(float amount)
     {
+        ratTakingDmg.Play();
         bossCurrentHp -= amount;
         if(bossCurrentHp <= 0)
         {

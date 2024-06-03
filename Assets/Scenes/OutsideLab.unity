@@ -2172,7 +2172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgMusic: {fileID: 1739179729}
-  bgMusicMaxVolume: 1
+  bgMusicMaxVolume: 0.7
   gameAudioSources: []
   nonPausableAudios:
   - {fileID: 1739179729}
@@ -10964,6 +10964,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1349868039}
+    - target: {fileID: 7715463278869267373, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7715463278869267373, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a62525b82bdacec4f9b487b460762199, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -8,6 +8,7 @@ public class FinalBossShot : MonoBehaviour
     private GameObject player;
     private PlayerController playerController;
     private Vector3 collisionPosition;
+    [SerializeField] private AudioSource poisonSound;
 
     [Header("Dmg Control")]
     [SerializeField] private float timeToDestroy = 3.0f;
@@ -64,6 +65,7 @@ public class FinalBossShot : MonoBehaviour
         collisionPosition = collision.contacts[0].point;
         collisionPosition.y = 0f; // Ensure the circle is drawn on the ground
         DrawCircle();
+        poisonSound.Play();
         Destroy(this.gameObject, timeToDestroy);
     }
 }

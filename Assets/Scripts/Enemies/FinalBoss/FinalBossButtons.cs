@@ -10,6 +10,7 @@ public class FinalBossButtons : Interact
     [SerializeField] private float timeToActivate = 5f;
     [SerializeField] private float damage = 20;
     [SerializeField] private int pipeSelected = 0;
+    [SerializeField] private AudioSource explosionSound;
 
     [Space]
     [SerializeField] private GameObject[] pipesExplosionPoints;
@@ -33,6 +34,7 @@ public class FinalBossButtons : Interact
                 }
             }
             pipesExplosionPoints[pipeSelected].GetComponent<ParticleSystem>().Play();
+            explosionSound.Play();
             activated = false;
             StartCoroutine(ActivateButton());
         }

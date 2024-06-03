@@ -16,6 +16,7 @@ public class FinalBossButtons : Interact
 
     private new void Start()
     {
+        base.Start();
         boss = GameObject.FindWithTag("Boss").GetComponent<FinalBoss>();
     }
 

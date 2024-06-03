@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 4140189343472223553}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -1.811}
-  m_LocalScale: {x: 2.7960978, y: 2.796098, z: 2.796098}
+  m_LocalPosition: {x: 0, y: 0, z: -0.561}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3688073378637045781}
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 084936ba41ce3b74abf399babeb0292e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55121c8d0c831ab4aaf318b2c541b189, type: 3}
   m_Color: {r: 1, g: 0.05884601, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.11, y: 2.19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -288,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a74a0b2fe3313e84fac1a75a5991a141, type: 2}
     - target: {fileID: 919132149155446097, guid: d333a8b0fd507e848947b659b4105b19, type: 3}
       propertyPath: m_Name
-      value: Securitycamera
+      value: SecurityCamera
       objectReference: {fileID: 0}
     - target: {fileID: 7420493379351249311, guid: d333a8b0fd507e848947b659b4105b19, type: 3}
       propertyPath: m_LocalPosition.y
@@ -359,6 +359,8 @@ MonoBehaviour:
   player: {fileID: 0}
   playerController: {fileID: 0}
   activated: 1
+  defaultMaterial: {fileID: 0}
+  camSwitchRenderer: {fileID: 0}
   callRadius: 100
   enemyLayer:
     serializedVersion: 2

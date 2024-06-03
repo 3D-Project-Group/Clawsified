@@ -438,6 +438,8 @@ public class PlayerController : MonoBehaviour
         deathSound.Play();
         
         transitionAnimator.SetTrigger("Start");
+        anim.enabled = false;
+        this.enabled = false;
 
         yield return new WaitForSeconds(1f);
 

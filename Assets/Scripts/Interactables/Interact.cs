@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
+    public float interactRadius = 2;
+    public Transform interactionCenter;
     public GameObject interactableImage;
     public GameObject player;
 
@@ -10,6 +13,8 @@ public class Interact : MonoBehaviour
     public virtual void Start()
     {
         player = GameObject.FindWithTag("Player");
+        if (interactionCenter == null)
+            interactionCenter = this.transform;
     }
     public virtual void Interaction()
     {
@@ -17,10 +22,16 @@ public class Interact : MonoBehaviour
     }
     public virtual void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 2 && activate)
+        if (Vector3.Distance(interactionCenter.position, player.transform.position) < interactRadius && activate)
         {
             interactableImage.SetActive(true);
         }
         else interactableImage.SetActive(false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(interactionCenter != null)
+            Gizmos.DrawWireSphere(interactionCenter.position, interactRadius);
     }
 }

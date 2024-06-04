@@ -73,6 +73,7 @@ crashlytics-build.properties
 
 # Art Asset Folders
 /[Aa]ssets/[Aa]rt/[Gg]itignore/
+/[Aa]ssets/[Ss]cenes/[Ll]ab/LightingData.asset
 .idea/.idea.Clawsified/.idea/indexLayout.xml
 .idea/.idea.Clawsified/.idea/projectSettingsUpdater.xml
 .idea/.idea.Clawsified/.idea/vcs.xml

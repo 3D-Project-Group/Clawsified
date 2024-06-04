@@ -458,6 +458,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4039022864529267377, guid: 7f694dc343b91fd4f8cb81d104750ecf, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -531,6 +535,7 @@ MonoBehaviour:
   enemyType: 1
   agent: {fileID: 0}
   player: {fileID: 0}
+  playerController: {fileID: 0}
   anim: {fileID: 0}
   obstructionMask:
     serializedVersion: 2

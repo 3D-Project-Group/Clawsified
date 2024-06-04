@@ -398,6 +398,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6805457939965072776}
     m_Modifications:
+    - target: {fileID: 406289370406831209, guid: c6de946a1d7951a418eab2e894d045e1, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3562200190756742025, guid: c6de946a1d7951a418eab2e894d045e1, type: 3}
       propertyPath: m_Name
       value: blind_rat_model
@@ -649,6 +653,7 @@ MonoBehaviour:
   enemyType: 2
   agent: {fileID: 0}
   player: {fileID: 0}
+  playerController: {fileID: 0}
   anim: {fileID: 0}
   obstructionMask:
     serializedVersion: 2

@@ -7363,6 +7363,10 @@ PrefabInstance:
       propertyPath: cheeseCooldownSlider
       value: 
       objectReference: {fileID: 869373377}
+    - target: {fileID: 5621488015317430784, guid: a9f2bc52e65fec64c8a1db218652b510, type: 3}
+      propertyPath: staminaLossMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8227667598209101250, guid: a9f2bc52e65fec64c8a1db218652b510, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.79

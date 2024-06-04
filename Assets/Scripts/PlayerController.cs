@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider staminaWheel;
     [SerializeField] private Animator staminaWheelAnim;
     [Space]
-    [SerializeField] private GameObject jumpUI;
+    [CanBeNull][SerializeField] private GameObject jumpUI;
     [SerializeField] private GameObject hideText;
     [SerializeField] private GameObject unhideText;
     [Space]
@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour
                 Movement();
 
             if (Time.time - lastTimeTookDmg >= playerRestoreHpTime && currentHp < maxHp)
-                currentHp += Time.fixedDeltaTime;
+                currentHp += Time.fixedDeltaTime / 2;
 
             UIControl();
         }
@@ -291,25 +291,9 @@ public class PlayerController : MonoBehaviour
         {
             jumpUI.SetActive(true);
         }
-        else
+        else if(jumpUI != null)
         {
             jumpUI.SetActive(false);
-        }
-
-        if(isHidden)
-        {
-            hideText.SetActive(false);
-            unhideText.SetActive(true);
-        }
-        else if (canHide)
-        {
-            unhideText.SetActive(false);
-            hideText.SetActive(true);
-        }
-        else
-        {
-            unhideText.SetActive(false);
-            hideText.SetActive(false);
         }
     }
 

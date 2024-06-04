@@ -19,7 +19,7 @@ public class CutCables : Interact
         }
         else
         {
-            doorToDeactivate.GetComponent<Door>().activated = false;
+            doorToDeactivate.GetComponent<Animator>().SetBool("Open", true);
         }
     }
 }

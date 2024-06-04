@@ -10,6 +10,19 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
+    
+    /*----------READ IT FIRST--------------*/
+    /* I don't know if you started reading the code here, but well...
+     * We know we should remove GameObject.Find or .GetComponent
+     * But we didn't have time for that, we had 2 and a half weeks to
+     * finish the game, it was a crazy delivery XD, we intend
+     * continue working on this project, which was the best and most fun
+     * game we have already created, so please take into consideration the time
+     * we had for this. And also, we would appreciate it if you could give us
+     * feedback on what we can improve to make this project a professional one,
+     * game loop, code, optimization, mechanics, everything is welcome */
+    /*----------READ IT FIRST--------------*/
+    
     [Header("Components")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameManager gameManager;
@@ -120,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>(); 
         anim = GetComponent<Animator>();
         playerRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         staminaWheel.maxValue = maxStamina;

@@ -58,6 +58,12 @@ public class MemoryPuzzleController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        
+        foreach (GameObject button in buttons)
+        {
+            button.GetComponent<Button>().interactable = false;
+            button.GetComponent<Image>().color = Color.white;
+        }
 
         //Create first 2 numbers
         for (int i = 1; i < startCount; i++)

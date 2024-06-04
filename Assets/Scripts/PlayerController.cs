@@ -13,16 +13,21 @@ public class PlayerController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameObject UICam;
+    [Space]
     //Ground Check
     [SerializeField] private Transform groundCheckStart;
     [SerializeField] private Transform groundCheckEnd;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask groundLayer;
+    [Space]
     //Animations
     [SerializeField] private Animator anim;
     [SerializeField] private Animator transitionAnimator;
+    [Space]
     //Sounds
     [SerializeField] private AudioSource deathSound;
+    [Space]
     //Testing
     [SerializeField] private TMP_Text fpsText;
     
@@ -79,8 +84,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator staminaWheelAnim;
     [Space]
     [CanBeNull][SerializeField] private GameObject jumpUI;
-    [SerializeField] private GameObject hideText;
-    [SerializeField] private GameObject unhideText;
     [Space]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private TMP_Text cheeseText;
@@ -255,6 +258,11 @@ public class PlayerController : MonoBehaviour
                 isJumping = false;
                 anim.applyRootMotion = true;
             }
+
+            if (isHidden && UICam.activeSelf)
+                UICam.SetActive(false);
+            else if(!isHidden && !UICam.activeSelf)
+                UICam.SetActive(true);
 
             if (canWalk)
                 Movement();

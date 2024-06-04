@@ -7204,6 +7204,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 929539880}
     - target: {fileID: 5621488015317430784, guid: a9f2bc52e65fec64c8a1db218652b510, type: 3}
+      propertyPath: UICam
+      value: 
+      objectReference: {fileID: 1739179728}
+    - target: {fileID: 5621488015317430784, guid: a9f2bc52e65fec64c8a1db218652b510, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 929539876}
@@ -8552,6 +8556,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
+--- !u!1 &1739179728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7337230148303818862, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
+  m_PrefabInstance: {fileID: 1739179727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1739179729 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7715463278869267373, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}

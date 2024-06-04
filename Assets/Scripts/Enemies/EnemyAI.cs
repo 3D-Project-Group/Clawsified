@@ -88,6 +88,7 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(attractionTime);
         
         beingAtracted = false;
+        agent.ResetPath();
         currentState = new RandomPatrolState(gameObject, anim, agent, player, waypoints, obstructionMask, groundLayer);
     }
     

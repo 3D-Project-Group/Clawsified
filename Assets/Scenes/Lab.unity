@@ -26407,10 +26407,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
-    - target: {fileID: 3276046595383915626, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 69064
-      objectReference: {fileID: 0}
     - target: {fileID: 4628954345137660932, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
       propertyPath: m_Name
       value: BigCandle (1)
@@ -27689,6 +27685,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2096640549}
     m_Modifications:
+    - target: {fileID: 15762537522463591, guid: 692a6e23f58b0404a8a513e87b7b833c, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 467426297869684602, guid: 692a6e23f58b0404a8a513e87b7b833c, type: 3}
+      propertyPath: throwingForce
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 6161894380186586005, guid: 692a6e23f58b0404a8a513e87b7b833c, type: 3}
       propertyPath: m_Name
       value: Skull

@@ -78,10 +78,10 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 68936
+    m_Bits: 69064
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
@@ -104,15 +104,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a95913cf4a082ac458f42c4be94ee8d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.25
+      value: 12.791535
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a95913cf4a082ac458f42c4be94ee8d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3138523
+      value: 0.21254183
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a95913cf4a082ac458f42c4be94ee8d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.884
+      value: 58.923637
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a95913cf4a082ac458f42c4be94ee8d2, type: 3}
       propertyPath: m_LocalRotation.w

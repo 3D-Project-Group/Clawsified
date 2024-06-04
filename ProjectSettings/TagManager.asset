@@ -10,6 +10,7 @@ TagManager:
   - PuzzleButton
   - Boss
   - Death
+  - Poison
   layers:
   - Default
   - TransparentFX

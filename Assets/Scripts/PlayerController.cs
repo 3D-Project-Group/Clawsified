@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -475,6 +476,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Poison"))
+    //     {
+    //         TakeDamage(2 * Time.deltaTime);
+    //     }
+    // }
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("JumpArea"))

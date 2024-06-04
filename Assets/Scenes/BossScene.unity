@@ -4619,7 +4619,7 @@ MonoBehaviour:
   lastState: -1
   currentState: -1
   player: {fileID: 0}
-  projectilePrefab: {fileID: 6538272593259026167, guid: 79f301175c5b430419658ce340590e90, type: 3}
+  projectilePrefab: {fileID: 1547910986153481400, guid: a0e68d2a1b41314489c7b09b41bd4b31, type: 3}
   projectileSpawn: {fileID: 1739677244}
   rb: {fileID: 0}
   anim: {fileID: 0}
@@ -19886,7 +19886,7 @@ PrefabInstance:
     - target: {fileID: 7715463278869267373, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 07caafae09408f74aa5f969c348b047e, type: 3}
+      objectReference: {fileID: 8300000, guid: 845536812bf74e64ea2979f3ba1c7baa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

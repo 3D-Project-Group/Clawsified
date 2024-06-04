@@ -202,6 +202,10 @@ public class PlayerController : MonoBehaviour
                 if(canWalk && Physics.gravity != defaultGravity)
                     Physics.gravity = defaultGravity;
             }
+            else
+            {
+                isRunning = false;
+            }
         }
     }
 
@@ -475,14 +479,6 @@ public class PlayerController : MonoBehaviour
             Death();
         }
     }
-
-    // private void OnTriggerStay(Collider other)
-    // {
-    //     if (other.gameObject.CompareTag("Poison"))
-    //     {
-    //         TakeDamage(2 * Time.deltaTime);
-    //     }
-    // }
     
     private void OnTriggerExit(Collider other)
     {

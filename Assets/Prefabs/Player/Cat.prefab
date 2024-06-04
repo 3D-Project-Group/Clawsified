@@ -10939,6 +10939,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   transitionAnimator: {fileID: 0}
   deathSound: {fileID: 3216158969977388911}
+  normalBg: {fileID: 0}
+  pursueBg: {fileID: 0}
   maxStamina: 100
   currentStamina: 100
   maxHp: 100
@@ -10949,7 +10951,7 @@ MonoBehaviour:
   currentSpeed: 3
   runningSpeed: 8
   rotationSpeed: 500
-  cheesePrefab: {fileID: 8412648504825489250, guid: 3b3508974c9a2434c87a80b4d2504265, type: 3}
+  cheesePrefab: {fileID: 7866782969393090505, guid: 2a193c2b4e641ea48b7b3389f37b48b3, type: 3}
   amountOfCheese: 2
   cheeseCooldown: 3
   projectileSpeed: 10

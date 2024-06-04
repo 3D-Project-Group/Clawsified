@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a1d34edc2114d043b96872e5d8f0823, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a1d34edc2114d043b96872e5d8f0823, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a1d34edc2114d043b96872e5d8f0823, type: 3}
       propertyPath: m_LocalRotation.y
@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd15aaf25eac23e409cdd9fe35953002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactRadius: 2
+  interactionCenter: {fileID: 0}
   interactableImage: {fileID: 4615963383875431046}
   player: {fileID: 0}
   activate: 1

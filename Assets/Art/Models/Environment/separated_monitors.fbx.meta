@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: rubber
-    second: {fileID: 2100000, guid: cb38cf961bd1d334ca368fa954d9b649, type: 2}
+    second: {fileID: 2100000, guid: cc2b464fad866f04080a9ba8f466d892, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -6,6 +6,7 @@ public class BossDoorsButton : Interact
     [SerializeField] private string tutorialText;
     [SerializeField] private int tutorialImgIndex;
     [SerializeField] private Light[] lightsToChange;
+    [SerializeField] private AudioSource energyCut;
 
     public override void Update()
     {
@@ -19,6 +20,7 @@ public class BossDoorsButton : Interact
     public override void Interaction()
     {
         base.Interaction();
+        energyCut.Play();
         if (!GameInfo.bossButtonsTutorial)
         {
             GameInfo.bossButtonsTutorial = true;

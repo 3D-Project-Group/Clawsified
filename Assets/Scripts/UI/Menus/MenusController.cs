@@ -34,6 +34,13 @@ public class MenusController : MonoBehaviour
         menuToLoad.SetActive(true);
     }
 
+    public void Play()
+    {
+        GameInfo.bossButtonsTutorial = false;
+        GameInfo.Fighting_Boss = false;
+        StartCoroutine(Transition("Outsidelab"));
+    }
+
     public void LoadScene(string sceneName)
     {
         StartCoroutine(Transition(sceneName));

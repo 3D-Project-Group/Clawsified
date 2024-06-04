@@ -174,11 +174,11 @@ public class PlayerController : MonoBehaviour
                 pauseMenu.SetActive(true);
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden && !isMeowing)
+            if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden)
                 StartCoroutine(Hide());
             else if (Input.GetKeyDown(KeyCode.F) && isHidden)
                 UnHide();
-            else if (Input.GetKeyDown(KeyCode.F) && !isMeowing)
+            else if (Input.GetKeyDown(KeyCode.F))
                 CallInteraction();
 
             if (!isHidden) 
@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(MeowAction());
                 }
                 
-                if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && !isResting && !isMeowing)
+                if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && !isResting)
                 {
                     if (hor != 0 || ver != 0)
                     {
@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
                 }
                 anim.SetFloat("currentSpeed", currentSpeed);
 
-                if (Input.GetKeyDown(KeyCode.Space) && canJump && !isJumping && !isMeowing)
+                if (Input.GetKeyDown(KeyCode.Space) && canJump && !isJumping)
                 {
                     Transform closestWaypoint = null;
                     foreach (Transform t in jumpWaypoints)
@@ -236,7 +236,7 @@ public class PlayerController : MonoBehaviour
                     anim.SetBool("isFalling", false);
                 }
                     
-                canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping && !isMeowing;
+                canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
                 if(canWalk && Physics.gravity != defaultGravity)
                     Physics.gravity = defaultGravity;
             }
@@ -321,7 +321,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator MeowAction()
     {
         isMeowing = true;
-        anim.SetBool("isMoving", false);
         AudioClip audio = meowSounds[Random.Range(0, meowSounds.Length)];
         meowSource.PlayOneShot(audio);
         

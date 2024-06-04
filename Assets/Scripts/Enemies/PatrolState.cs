@@ -110,7 +110,7 @@ public class PatrolState : EnemyState
 
     private void CheckPlayerDistance()
     {
-        if (Vector3.Distance(player.transform.position, npc.transform.position) <= minDistanceOfPlayer && !playerController.isHidden)
+        if (Vector3.Distance(player.transform.position, npc.transform.position) <= minDistanceOfPlayer && !playerController.isInvisible && !playerController.isHidden)
         {
             nextState = new PursueState(npc, anim, agent, player, waypoints, obstructionMask, groundLayer);
             stage = EVENT.EXIT;

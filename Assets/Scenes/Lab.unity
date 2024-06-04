@@ -547,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb2bc101151227f448dde21154a2b493, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb2bc101151227f448dde21154a2b493, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -705,7 +705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 44110972}
   - component: {fileID: 44110971}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,6 +787,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3432577404154586908, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 3828092452608591226, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
       propertyPath: m_Name
       value: SmallCandle
@@ -855,7 +859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 53479171}
   - component: {fileID: 53479170}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,6 +941,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3276046595383915626, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 4628954345137660932, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
       propertyPath: m_Name
       value: BigCandle (2)
@@ -1192,7 +1200,7 @@ Transform:
   m_GameObject: {fileID: 69150966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.051, z: -0}
+  m_LocalPosition: {x: -0, y: -0.051, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1244,12 +1252,12 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1311,6 +1319,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
       propertyPath: m_Name
       value: poster8 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2260,7 +2272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 123637855}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Posters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2615,7 +2627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 134995797}
   - component: {fileID: 134995796}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2773,7 +2785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 140553420}
   - component: {fileID: 140553419}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2917,11 +2929,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb2bc101151227f448dde21154a2b493, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb2bc101151227f448dde21154a2b493, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3299,6 +3311,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeillingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000000059604645
@@ -3405,14 +3421,6 @@ PrefabInstance:
     - target: {fileID: 5440671430862789482, guid: b2e1d433fd9aa0141ad408715307c0f2, type: 3}
       propertyPath: m_Name
       value: ClosedLockers
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440671430862789482, guid: b2e1d433fd9aa0141ad408715307c0f2, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440671430862789482, guid: b2e1d433fd9aa0141ad408715307c0f2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3554,6 +3562,10 @@ PrefabInstance:
       value: poster8 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3616,7 +3628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6523b6f07d6f24b4cb3d66a705de28ba, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6523b6f07d6f24b4cb3d66a705de28ba, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3896,6 +3908,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4306,6 +4322,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3432577404154586908, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 3828092452608591226, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
       propertyPath: m_Name
       value: SmallCandle (4)
@@ -4627,6 +4647,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5244,10 +5268,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClosedDoor
       objectReference: {fileID: 0}
-    - target: {fileID: 1601347546742037649, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 2122024115332236843, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.95
@@ -5287,18 +5307,6 @@ PrefabInstance:
     - target: {fileID: 2122024115332236843, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5451621674079711562, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740777254261523159, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7074657258325074384, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
-      propertyPath: m_Layer
-      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6590,7 +6598,7 @@ GameObject:
   - component: {fileID: 419255039}
   - component: {fileID: 419255038}
   - component: {fileID: 419255037}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: Gate (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6738,6 +6746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeillingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -6849,8 +6861,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -7146521406498821007, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6859,6 +6879,10 @@ PrefabInstance:
     - target: {fileID: -516098083770646512, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_Name
       value: DoorCasing
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -516098083770646512, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_IsActive
@@ -6879,6 +6903,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8416272007918961125, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7250,7 +7278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458955471}
   - component: {fileID: 458955470}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7905,6 +7933,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3276046595383915626, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 4628954345137660932, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
       propertyPath: m_Name
       value: BigCandle (3)
@@ -8220,7 +8252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 546296840}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Posters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8719,6 +8751,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9811,12 +9847,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: -7146521406498821007, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -516098083770646512, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9828,11 +9876,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8416272007918961125, guid: c0a91cff29fc56e4b8e40252474bdeca, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10183,6 +10235,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10971,7 +11027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601347546742037649, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2122024115332236843, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11015,15 +11071,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5451621674079711562, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6740777254261523159, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7074657258325074384, guid: 9bdf620bf2732064cb6b37da97e07547, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11531,7 +11587,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2120
+    m_Bits: 69064
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
@@ -12104,6 +12160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeillingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.5
@@ -12215,6 +12275,10 @@ PrefabInstance:
       value: poster
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 905085c65997caf448bc7a574973066c, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 905085c65997caf448bc7a574973066c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -12306,12 +12370,12 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -13176,7 +13240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 931017098}
   - component: {fileID: 931017097}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13812,7 +13876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb2bc101151227f448dde21154a2b493, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb2bc101151227f448dde21154a2b493, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14060,14 +14124,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 593320500}
     m_Modifications:
-    - target: {fileID: 3026267712463428328, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3026267712463428328, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 127
-      objectReference: {fileID: 0}
     - target: {fileID: 5208658939454357920, guid: 267a6b395d5bf26478e898814317831a, type: 3}
       propertyPath: m_Name
       value: ColorPuzzle (Room 1)
@@ -14112,38 +14168,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6750367840756645004, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: m_ReceiveGI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6750367840756645004, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6750367840756645004, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: m_ScaleInLightmap
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6750367840756645004, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851551055935656498, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: correctAnswer.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851551055935656498, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: correctAnswer.Array.data[2]
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8851551055935656498, guid: 267a6b395d5bf26478e898814317831a, type: 3}
       propertyPath: gameObjectsToUnactivate.Array.data[0]
       value: 
       objectReference: {fileID: 1374027820}
-    - target: {fileID: 8873102124058808551, guid: 267a6b395d5bf26478e898814317831a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14757,6 +14785,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3432577404154586908, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 3828092452608591226, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
       propertyPath: m_Name
       value: SmallCandle (1)
@@ -15344,6 +15376,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16288,6 +16324,10 @@ PrefabInstance:
       value: poster8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -16375,6 +16415,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17181,6 +17225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 593320500}
     m_Modifications:
+    - target: {fileID: 3276046595383915626, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 68936
+      objectReference: {fileID: 0}
     - target: {fileID: 4628954345137660932, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
       propertyPath: m_Name
       value: BigCandle
@@ -19175,6 +19223,10 @@ PrefabInstance:
       value: poster4 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cff47eacf15f12441bbeed63e7985b8f, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cff47eacf15f12441bbeed63e7985b8f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -20456,17 +20508,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2044312516083834471, guid: c87168b7d0f422649801199399f9a956, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2044312516083834471, guid: c87168b7d0f422649801199399f9a956, type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2044312516083834471, guid: c87168b7d0f422649801199399f9a956, type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
+    - target: {fileID: 8046078214755606865, guid: c87168b7d0f422649801199399f9a956, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20711,6 +20755,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21081,6 +21129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeillingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.6
@@ -21367,6 +21419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeillingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.5
@@ -21615,6 +21671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeillingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.25
@@ -21853,6 +21913,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24264,12 +24328,12 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -25003,7 +25067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1611807147}
   - component: {fileID: 1611807146}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25088,6 +25152,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25249,6 +25317,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25593,6 +25665,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
       propertyPath: m_Name
       value: poster8 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31003e1b36807f647a8ee80df4174b50, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26098,7 +26174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1681679459}
   - component: {fileID: 1681679458}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26427,6 +26503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeillingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000002026558
@@ -26623,6 +26703,10 @@ PrefabInstance:
       value: poster
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 905085c65997caf448bc7a574973066c, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 905085c65997caf448bc7a574973066c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -26694,6 +26778,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 38b2c0a47b5bde54ea3933f179b7698e, type: 3}
       propertyPath: m_Name
       value: poster6 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 38b2c0a47b5bde54ea3933f179b7698e, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 38b2c0a47b5bde54ea3933f179b7698e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -28171,7 +28259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1778207522}
   - component: {fileID: 1778207521}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29413,7 +29501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1910747469}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Posters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29864,7 +29952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -516098083770646512, guid: faabc555a56056f45a5ada33f15d59cc, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -516098083770646512, guid: faabc555a56056f45a5ada33f15d59cc, type: 3}
       propertyPath: m_IsActive
@@ -29880,7 +29968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faabc555a56056f45a5ada33f15d59cc, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: faabc555a56056f45a5ada33f15d59cc, type: 3}
       propertyPath: m_IsActive
@@ -30076,6 +30164,10 @@ PrefabInstance:
       value: poster6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 38b2c0a47b5bde54ea3933f179b7698e, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 38b2c0a47b5bde54ea3933f179b7698e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -30165,6 +30257,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3432577404154586908, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 3828092452608591226, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
       propertyPath: m_Name
       value: SmallCandle (3)
@@ -30806,6 +30902,10 @@ PrefabInstance:
       value: poster7 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 177e035da462f3148863cd9865b7bc10, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 177e035da462f3148863cd9865b7bc10, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -30884,6 +30984,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3432577404154586908, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 3828092452608591226, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
       propertyPath: m_Name
       value: SmallCandle (2)
@@ -31466,6 +31570,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5476369140985914684, guid: 913eaeef3b3b62a4b8e47368f4d2fa9a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31489,6 +31597,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3276046595383915626, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 4628954345137660932, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
       propertyPath: m_Name
       value: BigCandle (1)
@@ -31553,7 +31665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2120082039}
   - component: {fileID: 2120082038}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31816,7 +31928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2122354990}
   - component: {fileID: 2122354989}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: poster9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31904,7 +32016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 655880510389007583, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 28639
+      value: 94175
       objectReference: {fileID: 0}
     - target: {fileID: 1478755968731681670, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
       propertyPath: m_Name
@@ -31962,6 +32074,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 7940149476383349926}
+    - target: {fileID: 6235142287310359203, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
+      propertyPath: layersToCollide.m_Bits
+      value: 74120
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3346693851505718793, guid: ed3d842a0a990dc418384d4377e12b2c, type: 3}
     m_RemovedGameObjects: []
@@ -32724,6 +32840,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3276046595383915626, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 4628954345137660932, guid: 99307acbe797f3e49b934e152a5c6a5a, type: 3}
       propertyPath: m_Name
       value: BigCandle
@@ -32825,6 +32945,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5476369140985914684, guid: 913eaeef3b3b62a4b8e47368f4d2fa9a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32841,6 +32965,10 @@ PrefabInstance:
     - target: {fileID: 5115783582789957080, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_Name
       value: CeillingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287546175899234404, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
       objectReference: {fileID: 0}
     - target: {fileID: 5599446294143184738, guid: a1b84638006abac46bb75dd20ad3ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32898,6 +33026,10 @@ PrefabInstance:
     - target: {fileID: 6161894380186586005, guid: 692a6e23f58b0404a8a513e87b7b833c, type: 3}
       propertyPath: m_Name
       value: Skull
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161894380186586005, guid: 692a6e23f58b0404a8a513e87b7b833c, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6829887944452411695, guid: 692a6e23f58b0404a8a513e87b7b833c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32996,6 +33128,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8046078214755606865, guid: c87168b7d0f422649801199399f9a956, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33082,6 +33218,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522914471}
     m_Modifications:
+    - target: {fileID: 3432577404154586908, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 69064
+      objectReference: {fileID: 0}
     - target: {fileID: 3828092452608591226, guid: d0ede37be5e95b143ae67636b1af1bce, type: 3}
       propertyPath: m_Name
       value: SmallCandle

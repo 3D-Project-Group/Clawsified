@@ -172,7 +172,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -538,7 +538,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38488ab7d3f2364468aa10a62fb24f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnswer: 020000000100000002000000
+  correctAnswer: 020000000000000001000000
   currentValues: 
   tubes:
   - {fileID: 6677509518519511156}
@@ -787,7 +787,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1383,7 +1383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7012857780643670106, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 127
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12138c5bf599d6d4a8c426e622f2367e, type: 3}
       propertyPath: m_Name

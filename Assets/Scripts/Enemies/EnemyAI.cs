@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,9 +16,9 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
     public EnemyState currentState;
     public Transform player;
-    public PlayerController playerController;
-    public Animator anim;
     public LayerMask obstructionMask, groundLayer;
+    
+    public Animator anim;
     [SerializeField] private AudioSource ratFootstepSound;
     [SerializeField] private AudioSource ratYellingSound;
     
@@ -77,10 +78,17 @@ public class EnemyAI : MonoBehaviour
                 calledEnemiesList.Clear();
             }
         }
-        else
-        {
-            Invoke("DeactivateAttraction", attractionTime);
-        }
+    }
+
+    public IEnumerator Attract(Vector3 position)
+    { 
+        beingAtracted = true;
+        agent.SetDestination(position);
+
+        yield return new WaitForSeconds(attractionTime);
+        
+        beingAtracted = false;
+        currentState = new RandomPatrolState(gameObject, anim, agent, player, waypoints, obstructionMask, groundLayer);
     }
     
     void PlayFootstepSound()
@@ -92,12 +100,6 @@ public class EnemyAI : MonoBehaviour
     {
         ratYellingSound.Play();
         invokedSound = false;
-    }
-
-    void DeactivateAttraction()
-    {
-        beingAtracted = false;
-        currentState = new RandomPatrolState(gameObject, anim, agent, player, waypoints, obstructionMask, groundLayer);
     }
 
     private void CallOtherEnemies()
@@ -114,7 +116,8 @@ public class EnemyAI : MonoBehaviour
             foreach (EnemyAI enemy in calledEnemiesList)
             {
                 enemy.calledEnemiesList = this.calledEnemiesList;
-                enemy.currentState = new PursueState(enemy.gameObject, enemy.anim, enemy.agent, enemy.player, enemy.waypoints, enemy.obstructionMask, enemy.groundLayer);
+                if(enemy.currentState.name != EnemyState.STATE.PURSUE)
+                    enemy.currentState = new PursueState(enemy.gameObject, enemy.anim, enemy.agent, enemy.player, enemy.waypoints, enemy.obstructionMask, enemy.groundLayer);
             }
         }
     }

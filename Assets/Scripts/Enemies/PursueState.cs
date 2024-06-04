@@ -20,7 +20,6 @@ public class PursueState : EnemyState
     {
         name = STATE.PURSUE;
         enemyType = npc.GetComponent<EnemyAI>().enemyType;
-        
     }
 
     public override void Enter()

@@ -21,7 +21,5 @@ public class CutCables : Interact
         {
             doorToDeactivate.GetComponent<Door>().activated = false;
         }
-
-        this.gameObject.SetActive(false);
     }
 }

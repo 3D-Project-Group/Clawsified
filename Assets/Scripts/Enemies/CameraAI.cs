@@ -98,7 +98,7 @@ public class CameraAI : MonoBehaviour
         Vector3 direction = playerPosition - camPosition;
         float angle = Vector3.Angle(direction, -transform.forward);
 
-        if (direction.magnitude < visDist && angle < visAngle && !playerController.isInvisible && Vector3.Distance(playerPosition, camPosition) > 3)
+        if (direction.magnitude < visDist && angle < visAngle && !playerController.isHidden && !playerController.isInvisible && Vector3.Distance(playerPosition, camPosition) > 3)
         {
             return true;
         }

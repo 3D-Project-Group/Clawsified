@@ -168,7 +168,7 @@ public class VideoSettings : MonoBehaviour
     
     public void LastFps()
     {
-        fpsLimitDropdown.value = NextDropdownValue(fpsLimitDropdown.value, fpsLimitDropdown.options.Count - 1);
+        fpsLimitDropdown.value = LastDropdownValue(fpsLimitDropdown.value, fpsLimitDropdown.options.Count - 1);
         SetFpsLimit(fpsLimitDropdown.value);
     }
     

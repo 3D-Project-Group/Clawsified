@@ -57,7 +57,7 @@ public class PatrolState : EnemyState
         }
         
         //If can see the player and there's nothing blocking the vision
-        if (CanSeePlayer() && !Physics.Raycast(npc.transform.position, player.position, Vector3.Distance(npc.transform.position, player.transform.position), obstructionMask))
+        if (CanSeePlayer() && !Physics.Raycast(npc.transform.position, player.position, Vector3.Distance(npc.transform.position, player.transform.position), obstructionMask) && !playerController.isHidden)
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Running", false);

@@ -1,24 +1,41 @@
 using System;
 using System.Collections;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Components")]
-    private Rigidbody rb;
+    [SerializeField] private Rigidbody rb;
     [SerializeField] private GameManager gameManager;
+    //Ground Check
     [SerializeField] private Transform groundCheckStart;
     [SerializeField] private Transform groundCheckEnd;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask groundLayer;
+    //Animations
     [SerializeField] private Animator anim;
     [SerializeField] private Animator transitionAnimator;
+    //Sounds
     [SerializeField] private AudioSource deathSound;
-    [SerializeField] private AudioSource normalBg;
-    [SerializeField] private AudioSource pursueBg;
+    //Testing
+    [SerializeField] private TMP_Text fpsText;
+    
+    [Header("Public Bools")]
+    public bool isMeowing;
+    public bool isDead;
+    public bool isHidden = false;
+    public bool canHide = false;
+    public bool canJump = false;
+    public bool canWalk = false;
+    public bool isResting = false;
+    public bool isRunning = false;
+    public bool doingPuzzle = false;
 
     [Header("Player Stats")]
     [SerializeField] private float maxStamina = 100f;
@@ -57,21 +74,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float interactRadius;
     [SerializeField] private LayerMask interactLayer;
 
-    [Header("Public Bools")]
-    public bool isDead;
-    public bool isHidden = false;
-    public bool canHide = false;
-    public bool canJump = false;
-    public bool canWalk = false;
-    public bool isResting = false;
-    public bool isRunning = false;
-    public bool doingPuzzle = false;
-
     [Header("Player UI")]
     [SerializeField] private Slider staminaWheel;
     [SerializeField] private Animator staminaWheelAnim;
     [Space]
-    [SerializeField] private GameObject jumpText;
+    [SerializeField] private GameObject jumpUI;
     [SerializeField] private GameObject hideText;
     [SerializeField] private GameObject unhideText;
     [Space]
@@ -82,23 +89,31 @@ public class PlayerController : MonoBehaviour
 
     [Header("Cheats")]
     [SerializeField] private GameObject cheatList;
+
+    [Header("Player Meow :3")]
+    [SerializeField] private AudioSource meowSource;
+    [SerializeField] private AudioClip[] meowSounds;
+    [SerializeField] private float attractEnemiesRadius;
+    [SerializeField] private LayerMask enemiesLayer;
+    
     public bool isInvisible;
 
     /*Jump Variables*/
-    Transform[] jumpWaypoints = new Transform[8];
-    Vector3 jumpGoal;
+    private Transform[] jumpWaypoints = new Transform[8];
+    private Vector3 jumpGoal;
+    private Transform jumpUIPosition;
     
-    Vector3 defaultGravity = new Vector3(0, -9.81f, 0);
-    Vector3 jumpGravity = new Vector3(0, -38f, 0);
+    private Vector3 defaultGravity = new Vector3(0, -9.81f, 0);
+    private Vector3 jumpGravity = new Vector3(0, -38f, 0);
     
-    bool isJumping = false;
+    private bool isJumping = false;
     
     /*Movement  Variables*/
-    Vector3 movementDirection;
-    float hor;
-    float ver;
+    private Vector3 movementDirection;
+    private float hor;
+    private float ver;
 
-    float lastTimeTookDmg;
+    private float lastTimeTookDmg;
 
     void Start()
     {
@@ -113,6 +128,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(fpsText != null)
+            fpsText.text = ((int)(1 / Time.deltaTime)).ToString();
         if (!doingPuzzle)
         {
             
@@ -141,16 +158,21 @@ public class PlayerController : MonoBehaviour
                 pauseMenu.SetActive(true);
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden)
+            if (Input.GetKeyDown(KeyCode.F) && canHide && !isHidden && !isMeowing)
                 StartCoroutine(Hide());
             else if (Input.GetKeyDown(KeyCode.F) && isHidden)
                 UnHide();
-            else if (Input.GetKeyDown(KeyCode.F))
+            else if (Input.GetKeyDown(KeyCode.F) && !isMeowing)
                 CallInteraction();
 
             if (!isHidden) 
             {
-                if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && !isResting)
+                if (Input.GetMouseButtonDown(0) && canWalk && !isHidden && !isMeowing)
+                {
+                    StartCoroutine(MeowAction());
+                }
+                
+                if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && !isResting && !isMeowing)
                 {
                     if (hor != 0 || ver != 0)
                     {
@@ -170,7 +192,7 @@ public class PlayerController : MonoBehaviour
                 }
                 anim.SetFloat("currentSpeed", currentSpeed);
 
-                if (Input.GetKeyDown(KeyCode.Space) && canJump && !isJumping)
+                if (Input.GetKeyDown(KeyCode.Space) && canJump && !isJumping && !isMeowing)
                 {
                     Transform closestWaypoint = null;
                     foreach (Transform t in jumpWaypoints)
@@ -198,7 +220,7 @@ public class PlayerController : MonoBehaviour
                     anim.SetBool("isFalling", false);
                 }
                     
-                canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping;
+                canWalk = Physics.CheckCapsule(groundCheckStart.position, groundCheckEnd.position, groundCheckRadius, groundLayer) && !isJumping && !isMeowing;
                 if(canWalk && Physics.gravity != defaultGravity)
                     Physics.gravity = defaultGravity;
             }
@@ -222,7 +244,7 @@ public class PlayerController : MonoBehaviour
                 isRunning = false;
             }
 
-            if (isResting && currentStamina >= 50)
+            if (isResting && currentStamina >= 20)
                 isResting = false;
 
             if (currentStamina < maxStamina && !isRunning)
@@ -265,10 +287,14 @@ public class PlayerController : MonoBehaviour
             staminaWheelAnim.SetTrigger("FadeOut");
         }
 
-        if(canJump)
-            jumpText.SetActive(true);
+        if (canJump)
+        {
+            jumpUI.SetActive(true);
+        }
         else
-            jumpText.SetActive(false);
+        {
+            jumpUI.SetActive(false);
+        }
 
         if(isHidden)
         {
@@ -285,6 +311,33 @@ public class PlayerController : MonoBehaviour
             unhideText.SetActive(false);
             hideText.SetActive(false);
         }
+    }
+
+    IEnumerator MeowAction()
+    {
+        isMeowing = true;
+        anim.SetBool("isMoving", false);
+        AudioClip audio = meowSounds[Random.Range(0, meowSounds.Length)];
+        meowSource.PlayOneShot(audio);
+        
+        Collider[] colliders = Physics.OverlapSphere(transform.position, attractEnemiesRadius, enemiesLayer);
+
+        // If it finds any object, calls the method "Interaction" inside the object
+        if (colliders.Length > 0)
+        {
+            foreach (Collider collider in colliders)
+            {
+                EnemyAI enemy = collider.gameObject.GetComponent<EnemyAI>();
+                if (enemy.beingAtracted == false)
+                {
+                    StartCoroutine(enemy.Attract(transform.position));
+                    yield return null;
+                }
+            }
+        }
+        yield return new WaitForSeconds(audio.length);
+
+        isMeowing = false;
     }
 
     public void AddCheese(int amount)
@@ -460,6 +513,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("JumpArea"))
         {
+            jumpUIPosition = other.transform.GetChild(0).transform;
+            jumpUI.transform.position = jumpUIPosition.position;
+            
             canJump = true;
 
             for (int i = 0; i < other.transform.parent.GetChild(0).childCount; i++)
@@ -472,6 +528,7 @@ public class PlayerController : MonoBehaviour
         {
             canHide = true;
             camGoalPosition = other.gameObject.transform.GetChild(0).GetComponent<Transform>();
+            other.gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
 
         if (other.gameObject.CompareTag("Death"))
@@ -491,6 +548,7 @@ public class PlayerController : MonoBehaviour
         {
             canHide = false;
             camGoalPosition = null;
+            other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 
@@ -499,5 +557,9 @@ public class PlayerController : MonoBehaviour
         // Draw Interact Radius
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, interactRadius);
+        
+        // Draw Meow Radius
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, attractEnemiesRadius);
     }
 }
